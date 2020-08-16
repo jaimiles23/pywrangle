@@ -2,13 +2,18 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-08-15 17:25:12
- * @modify date 2020-08-15 17:50:10
+ * @modify date 2020-08-15 18:07:37
  * @desc [
     Library with utility functions to clean pandas data frames.
 
     Auxiliary methods to handle:
     - Missing data
     - String cleaning
+
+    TODO:
+    - Typically see private methods within a class - research underscore private convention 
+    for non-class bound methods.
+        - May consider OOP organization for methods, or groups of methods.
  ]
  */
 """
@@ -18,6 +23,7 @@
 # Imports
 ##########
 
+## functools for wrappers
 import numpy as np
 import pandas as pd
 
@@ -28,6 +34,11 @@ import pandas as pd
 """
 TODO:
 - Create function that shows correlation between NULL values in columns.
+    - Barchart with levels per number of columns.
+        - show number of rows with NULL in only 1 column, 2 columns, 3 columns etc.
+        - May like to include optional parameters to show correlation b/w NULL values in different columns?
+    - Should also print number of rows with NULL in x columns. 
+        - optional sort parameter to desc sort by num NULL
 """
 
 def get_nulls_per_col(df) -> None:
@@ -35,8 +46,8 @@ def get_nulls_per_col(df) -> None:
     Calculates number of null values in each column and prints result.
     
     Calls 2 auxiliary functions:
-    - count_column_nulls
-    - print_column_nulls
+    - _count_column_nulls
+    - _print_column_nulls
 
     ## Tests
     >>> df_winereviews = pd.read_csv("../input/wine-reviews/winemag-data_first150k.csv")
@@ -60,7 +71,7 @@ def get_nulls_per_col(df) -> None:
         - Update testing documentation to be compliant with pytests
     """
     
-    def count_column_nulls(df) -> list:
+    def _count_column_nulls(df) -> list:
         """
         Returns list of tuples (int, str) indicating number of nulls per column.
         """
@@ -76,11 +87,11 @@ def get_nulls_per_col(df) -> None:
         return col_nulls
 
 
-    def print_column_nulls(null_per_columns: list) -> None:
+    def _print_column_nulls(null_per_columns: list) -> None:
         """
         Prints null values and column name in tuple.
 
-        Pass list returned from count_column_nulls.
+        Pass list returned from _count_column_nulls.
         """
         print("NULLS\tColumn_name")
         for val, name in null_per_columns:
@@ -88,13 +99,20 @@ def get_nulls_per_col(df) -> None:
     
     
     ## Call auxiliary functions.
-    null_per_column = count_column_nulls(df)
-    print_column_nulls(null_per_column)
+    null_per_column = _count_column_nulls(df)
+    _print_column_nulls(null_per_column)
 
 
 ##########
 # String cleaning
 ##########
+"""
+TODO: 
+- Nest clean_str_data inside clean_str_columns.
+
+    - Reconsider function names.
+
+"""
 
 def _clean_str_data(
         df: object, 
