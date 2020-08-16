@@ -14,6 +14,8 @@
     - Typically see private methods within a class - research underscore private convention 
     for non-class bound methods.
         - May consider OOP organization for methods, or groups of methods.
+
+    - Add input type checks & appropriate messages.s
  ]
  */
 """
