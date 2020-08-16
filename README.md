@@ -2,7 +2,14 @@
 Library with auxiliary functions to clean pandas data frames. Available on PyPI [here]()
 
 ## Install
+- Python 3.6+
+- numpy
+- pandas
 
+To install pywrangle, use pip:
+```
+pip install pywrangle
+```
 
 
 ## Contents
@@ -11,3 +18,5 @@ Library with auxiliary functions to clean pandas data frames. Available on PyPI 
 
 ### String cleaning
 
+## TODO:
+TODO lists available in pywrangle functions.
