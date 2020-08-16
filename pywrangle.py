@@ -125,7 +125,8 @@ def _clean_str_data(
     Auxiliary function called on by the clean_str_columns function below.
     Cleans strings in dataframe for passed column name.
     
-    Ordinal case control structure to determine case:
+    Ordinal case control structure to determine sentence case:
+    NOTE: case control structure for case is ostentatious. Re-try.
     0 : lower_case
     1 : title_case
     2 : upper_case
