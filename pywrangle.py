@@ -4,7 +4,7 @@
  * @create date 2020-08-15 17:25:12
  * @modify date 2020-08-15 17:50:10
  * @desc [
-    Library with utility data cleaning functions for pandas data frames.
+    Library with utility functions to clean pandas data frames.
 
     Auxiliary methods to handle:
     - Missing data
