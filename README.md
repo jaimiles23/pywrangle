@@ -18,6 +18,7 @@ pip install pywrangle
 
 ### String cleaning
 
+
 ## TODO:
 TODO lists available in pywrangle functions.
 
@@ -30,5 +31,5 @@ TODO lists available in pywrangle functions.
 2. Create wrapper that prints changes in the data frame size.
    1. Helpful when dropping is_na rows.
    2. Can create optional param to assert that dropped_rows = num_na before
-
+3. Create pywrangle documentation website?
 
