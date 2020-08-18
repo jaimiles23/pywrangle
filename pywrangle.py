@@ -34,27 +34,19 @@ import pandas as pd
 
 class PyWrangler(object):
     """
-    Class to contain data cleaning functions:
+    Class containing pandas datafrmae cleaning functions:
         - Missing data
         - String cleaning
         - DF wrappers
     
-    Per convention, the PyWrangler class can be imported as pw via:
+    The PyWrangler class can be imported as pw via:
     >>> from pywrangle import PyWrangler as pw
     """
 
     ##########
     # Missing data
     ##########
-    """
-    TODO:
-    - Create function that shows correlation between NULL values in columns.
-        - Barchart with levels per number of columns.
-            - show number of rows with NULL in only 1 column, 2 columns, 3 columns etc.
-            - May like to include optional parameters to show correlation b/w NULL values in different columns?
-        - Should also print number of rows with NULL in x columns. 
-            - optional sort parameter to desc sort by num NULL
-    """
+
     @staticmethod
     def get_nulls_per_col(df) -> None:
         """
@@ -122,11 +114,6 @@ class PyWrangler(object):
     ##########
     # String cleaning
     ##########
-    """
-    TODO: 
-        - Reconsider function names.
-
-    """
 
     @staticmethod
     def clean_str_columns(df: object, str_col_name_case: tuple):
@@ -138,7 +125,7 @@ class PyWrangler(object):
         0 : lower_case
         1 : title_case
         2 : upper_case
-
+        
         ## Tests
         >>> df_winereviews = pd.read_csv("../input/wine-reviews/winemag-data_first150k.csv")
         >>> str_col_name_case = (
@@ -162,7 +149,7 @@ class PyWrangler(object):
             case: int,
             max_coltitle_len: int,
             spacing: str,
-        ) -> object:
+            ) -> object:
             """
             Auxiliary function called on by the clean_str_columns.
             Cleans strings in dataframe for passed column name.
@@ -245,9 +232,6 @@ class PyWrangler(object):
     ##########
     # DF change wrapper function
     ##########
-    """
-    TODO:
-    - Create wrapper function that prints changes in the data frame size. 
-        - This will be helpful when dropping is_na rows, etc.
-        - Can create optional param to assert that dropped rows = num_na before. 
-    """
+
+
+
