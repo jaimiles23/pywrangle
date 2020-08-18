@@ -12,7 +12,7 @@
 
     TODO:
 
-    - Add input type checks & appropriate messages.s
+    - Add input type checks & appropriate messages.
  ]
  */
 """
@@ -124,73 +124,9 @@ class PyWrangler(object):
     ##########
     """
     TODO: 
-    - Nest clean_str_data inside clean_str_columns.
         - Reconsider function names.
 
     """
-    @staticmethod
-    def _clean_str_data(
-            df: object, 
-            col_name: str, 
-            case: int,
-            max_coltitle_len: int,
-            spacing: str,
-        ) -> object:
-        """
-        Auxiliary function called on by the clean_str_columns function below.
-        Cleans strings in dataframe for passed column name.
-        
-        Ordinal case control structure to determine sentence case:
-        NOTE: case control structure for case is ostentatious. Re-try.
-        0 : lower_case
-        1 : title_case
-        2 : upper_case
-
-        NOTE: 
-        df not accepting pandas str methods as first class functions.
-        Implemented with if-else statements. Retained dict for case-cleaning message.
-
-        TODO:
-        - Add testing documentation
-        """
-        
-        ## 1st class functions
-        case_structure = {
-            0 : str.lower,
-            1 : str.title,
-            2 : str.upper
-        }
-        
-        if col_name not in df.columns:
-            print(f"{col_name} not found in columns names: \n {df.columns}")
-            raise NameError
-
-        # Considers case_structure as a df attribute...
-        # df[col_name] = df.loc[:, col_name].case_structure[case]().strip()
-        
-        df[col_name] = df.loc[:, col_name].str.strip()
-        
-        if case == 0:
-            df[col_name] = df.loc[:, col_name].str.lower()
-        elif case == 1:
-            df[col_name] = df.loc[:, col_name].str.title()
-        elif case == 2:
-            df[col_name] = df.loc[:, col_name].str.upper()
-        else:
-            print(f"{case} not supported case.")
-            return df
-            
-        extra_space = max_coltitle_len - len(col_name)
-        print_message = [
-            col_name, 
-            " " * extra_space,
-            spacing, 
-            str(case_structure[case].__name__)
-        ]
-        print_message = ''.join(print_message)
-        print(print_message)
-        
-        return df
 
     @staticmethod
     def clean_str_columns(df: object, str_col_name_case: tuple):
@@ -218,6 +154,73 @@ class PyWrangler(object):
         
         https://www.kaggle.com/jaimiles23/wine-tasting
         """
+
+        @staticmethod
+        def _clean_str_data(
+            df: object, 
+            col_name: str, 
+            case: int,
+            max_coltitle_len: int,
+            spacing: str,
+        ) -> object:
+            """
+            Auxiliary function called on by the clean_str_columns.
+            Cleans strings in dataframe for passed column name.
+            
+            Ordinal case control structure to determine sentence case:
+            NOTE: case control structure for case is ostentatious. Re-try.
+            0 : lower_case
+            1 : title_case
+            2 : upper_case
+
+            NOTE: 
+            df not accepting pandas str methods as first class functions.
+            Implemented with if-else statements. Retained dict for case-cleaning message.
+
+            TODO:
+            - Add testing documentation
+            """
+            
+            ## 1st class functions
+            case_structure = {
+                0 : str.lower,
+                1 : str.title,
+                2 : str.upper
+            }
+            
+            if col_name not in df.columns:
+                print(f"{col_name} not found in columns names: \n {df.columns}")
+                raise NameError
+
+            # Considers case_structure as a df attribute...
+            # df[col_name] = df.loc[:, col_name].case_structure[case]().strip()
+            
+            df[col_name] = df.loc[:, col_name].str.strip()
+            
+            if case == 0:
+                df[col_name] = df.loc[:, col_name].str.lower()
+            elif case == 1:
+                df[col_name] = df.loc[:, col_name].str.title()
+            elif case == 2:
+                df[col_name] = df.loc[:, col_name].str.upper()
+            else:
+                print(f"{case} not supported case.")
+                return df
+                
+            extra_space = max_coltitle_len - len(col_name)
+            print_message = [
+                col_name, 
+                " " * extra_space,
+                spacing, 
+                str(case_structure[case].__name__)
+            ]
+            print_message = ''.join(print_message)
+            print(print_message)
+            
+            return df
+
+
+        ## Cleans string column names
         title = "column name:"
         spacing = "\t" * 2
         
@@ -229,7 +232,7 @@ class PyWrangler(object):
         
         
         for col_name, sent_case in str_col_name_case:
-            df = PyWrangler._clean_str_data(
+            df = _clean_str_data(
                 df = df,
                 col_name = col_name,
                 case = sent_case,
