@@ -48,7 +48,7 @@ class PyWrangler(object):
     ##########
 
     @staticmethod
-    def get_nulls_per_col(df) -> None:
+    def print_nulls_per_col(df) -> None:
         """
         Calculates number of null values in each column and prints result.
         
@@ -58,7 +58,7 @@ class PyWrangler(object):
 
         ## Tests
         >>> df_winereviews = pd.read_csv("../input/wine-reviews/winemag-data_first150k.csv")
-        >>> get_nulls_per_col(df_winereviews)
+        >>> print_nulls_per_col(df_winereviews)
             89977	region_2
             45735	designation
             25060	region_1
@@ -116,10 +116,10 @@ class PyWrangler(object):
     ##########
 
     @staticmethod
-    def clean_str_columns(df: object, str_col_name_case: tuple):
-        """Master function to clean string columns using str_col_name_case key.
+    def clean_str_columns(df: object, col_strcase_tuple: tuple) -> object:
+        """Master function to clean string columns using col_strcase_tuple key.
 
-        str_col_name_case is a tuple of tuples representing the column names to be cleaned
+        col_strcase_tuple is a tuple of tuples representing the column names to be cleaned
         and an ordinal number for the pandas str cleaning method to use.
         Ordinal case control structure to determine case:
         0 : lower_case
@@ -128,12 +128,12 @@ class PyWrangler(object):
         
         ## Tests
         >>> df_winereviews = pd.read_csv("../input/wine-reviews/winemag-data_first150k.csv")
-        >>> str_col_name_case = (
+        >>> col_strcase_tuple = (
                 ("country", 2),
                 ("description", 0)
                 ("province", 1),
             )
-        >>> df_winereviews = clean_str_columns( df_winereviews, str_col_name_case)
+        >>> df_winereviews = clean_str_columns( df_winereviews, col_strcase_tuple)
             column name:0		str.clean_method
             country     		upper
             description 		lower
@@ -218,7 +218,7 @@ class PyWrangler(object):
         print(f"{title}{extra_space}{spacing}str.clean_method")
         
         
-        for col_name, sent_case in str_col_name_case:
+        for col_name, sent_case in col_strcase_tuple:
             df = _clean_str_data(
                 df = df,
                 col_name = col_name,
