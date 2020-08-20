@@ -26,7 +26,7 @@ import numpy as np
 
 
 ##########
-# Personal
+# PyWrangle functions
 ##########
 
 from string_cleaning import clean_str_columns
