@@ -11,13 +11,25 @@
  */
 """
 
+
 ##########
-# Imports
+# Standard
 ##########
 
-import numpy as np
+
+##########
+# 3rd party
+##########
+
 import pandas as pd
+import numpy as np
 
 
-from missing_data import print_nulls_per_col
+##########
+# Personal
+##########
+
 from string_cleaning import clean_str_columns
+from missing_data import print_nulls_per_col
+
+
