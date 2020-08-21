@@ -83,7 +83,8 @@ setup_args = dict(
 ##########
 
 install_requires = [
-    'pandas == 1.1.0',
+    'pandas == 1.0.3',
+    'numpy == 1.14.4',
     
 ]
 
