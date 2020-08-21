@@ -13,7 +13,9 @@
 # Imports
 ##########
 
-import typing
+from typing import (
+    Tuple,
+)
 
 import numpy as np
 import pandas as pd
@@ -23,7 +25,7 @@ import pandas as pd
 # Imports
 ##########
 
-def clean_str_columns(df: object, col_strcase_tuple: tuple) -> object:
+def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int]) -> "DataFrame":
     """Master function to clean string columns using col_strcase_tuple key.
 
     col_strcase_tuple is a tuple of tuples representing the column names to be cleaned
@@ -55,7 +57,7 @@ def clean_str_columns(df: object, col_strcase_tuple: tuple) -> object:
         case: int,
         max_coltitle_len: int,
         spacing: str,
-        ) -> object:
+        ) -> "DataFrame":
         """
         Auxiliary function called on by the clean_str_columns.
         Cleans strings in dataframe for passed column name.
@@ -117,7 +119,7 @@ def clean_str_columns(df: object, col_strcase_tuple: tuple) -> object:
     title = "column name:"
     spacing = "\t" * 2
     
-    max_coltitle_length = len(
+    max_coltitle_length: int = len(
         max((df.columns, title), key = len))
     extra_space = max_coltitle_length - len(title)
     
