@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-08-20 16:08:16
- * @modify date 2020-08-20 16:08:16
+ * @modify date 2020-08-20 23:16:16
  * @desc [
     Contains auxiliary functions for cleaning missing data.
  ]
@@ -14,10 +14,14 @@
 # Imports
 ##########
 
+from typing import (
+    List,
+    Tuple
+)
+
 ## functools for wrappers
 import numpy as np
 import pandas as pd
-
 
 
 ##########
@@ -55,7 +59,7 @@ def print_nulls_per_col(df) -> None:
     """
 
 
-    def _count_column_nulls(df) -> list:
+    def _count_column_nulls(df) -> List[ Tuple[ int, str]]:
         """
         Returns list of tuples (int, str) indicating number of nulls per column.
         """
@@ -71,7 +75,7 @@ def print_nulls_per_col(df) -> None:
         return col_nulls
 
 
-    def _print_column_nulls(null_per_columns: list) -> None:
+    def _print_column_nulls(null_per_columns: List[ Tuple[ int, str]]) -> None:
         """
         Prints null values and column name in tuple.
 
@@ -80,6 +84,7 @@ def print_nulls_per_col(df) -> None:
         print("NULLS\tColumn_name")
         for val, name in null_per_columns:
             print(val, name, sep = "\t")
+        return
     
     
     ## Call auxiliary functions.
