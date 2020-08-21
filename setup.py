@@ -37,7 +37,7 @@ from setuptools import setup, find_packages
 ##########
 
 name = "pywrangle"
-version = "0.2.3"
+version = "0.2.31"
 description = "Auxiliary functions to clean pandas data frames"
 author = "Jai Miles"
 author_email = "jaimiles23@gmail.com"
@@ -56,6 +56,7 @@ with open('README.md') as readme_file:
 try:
     with open('HISTORY.md') as history_file:
         HISTORY = history_file.read()
+        
 except FileNotFoundError:
     print("HISTORY.md not found.")
     HISTORY = "---"

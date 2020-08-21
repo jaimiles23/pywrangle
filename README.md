@@ -20,16 +20,19 @@ Per convention with Python Analysis modules, import pywrangle as follows:
 ```
 
 ### Missing Data
-print_nulls_per_col(df) -> None:
-    Calculates number of null values in each column and prints result.
+> print_nulls_per_col(df) -> None:
+
+Calculates number of null values in each column and prints result.
     
 
 ### String cleaning
-def clean_str_columns(df: object, col_strcase_tuple: tuple) -> df:
-    Master function to clean string columns using col_strcase_tuple key.
+> def clean_str_columns(df: object, col_strcase_tuple: tuple) -> df:
+
+Master function to clean string columns using col_strcase_tuple key.
 
 
 ## TODO:
+
 TODO lists available in pywrangle functions.
 
 
