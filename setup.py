@@ -50,8 +50,12 @@ download_url = ''
 with open('README.md') as readme_file:
     README = readme_file.read()
 
-with open('HISTORY.md') as history_file:
-    HISTORY = history_file.read()
+try:
+    with open('HISTORY.md') as history_file:
+        HISTORY = history_file.read()
+except FileNotFoundError:
+    print("HISTORY.md not found.")
+    HISTORY = "---"
 
 
 ##########
