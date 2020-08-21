@@ -29,7 +29,12 @@ import numpy as np
 # PyWrangle functions
 ##########
 
-from string_cleaning import clean_str_columns
-from missing_data import print_nulls_per_col
+try:
+    from pywrangle.string_cleaning import clean_str_columns
+    from pywrangle.missing_data import print_nulls_per_col
+    
+except ModuleNotFoundError:
+    from string_cleaning import clean_str_columns
+    from missing_data import print_nulls_per_col
 
 
