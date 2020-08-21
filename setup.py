@@ -8,7 +8,7 @@
     Setup for AlexaUtils PyPi
 
 Steps When uploading changes:
-    - update verison
+    - update verison variable below
     - cmd, navigate to dir:
         - python setup.py sdist
         - twine upload dist/*
@@ -17,6 +17,9 @@ Steps When uploading changes:
 
 NOTE:
     - If run into HTTPError: 403 Forbidden, may need to delete old version in dist to avoid duplicate uploads.  
+
+TODO:
+    - Use script to automatically use username & pw in twine upload 
  ]
  */
 """
@@ -34,7 +37,7 @@ from setuptools import setup, find_packages
 ##########
 
 name = "pywrangle"
-version = "0.2.2"
+version = "0.2.3"
 description = "Auxiliary functions to clean pandas data frames"
 author = "Jai Miles"
 author_email = "jaimiles23@gmail.com"
@@ -83,8 +86,8 @@ setup_args = dict(
 ##########
 
 install_requires = [
-    'pandas == 1.0.3',
-    'numpy == 1.14.4',
+    'pandas >= 1.0.3',
+    'numpy >= 1.14.4',
     
 ]
 
