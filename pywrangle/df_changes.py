@@ -24,6 +24,7 @@ import pandas as pd
 try:
     import printing
     import aux_functions
+
 except:
     from pywrangle import printing
     from pywrangle import aux_functions
@@ -51,6 +52,12 @@ def _create_dict( key_info: Tuple[ str, Any]) -> dict:
 def record_df_info(df, _name: str = "before") -> dict:
     """Records information about the dataframe.
     
+    Information includes:
+        - name (state of the dict, before or after)
+        - number of columns
+        - size of df
+        - shape of df
+
     recorded dataframe information is passed to compare_dfs()
     to check differences between dataframes.
     """
@@ -102,7 +109,7 @@ def print_df_changes(
     def get_df_diff_info(dict_recorded_info: dict, dict_new_info: dict) -> tuple:
         """Returns tuple with info on differences b/w dfs.
         
-        Tuple: (missing_cols, new_cols, diff_cols).
+        Tuple: (diff_cols, diff_size, diff_shape).
         """
         ## Columns
         num_cols_before, num_cols_after = (
@@ -150,3 +157,4 @@ def print_df_changes(
         dict_diff_info
     ]
     printing.print_formatted_dict(df_dicts)
+

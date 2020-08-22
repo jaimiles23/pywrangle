@@ -88,7 +88,11 @@ def _print_tuple_with_spacing(
 # Print formatted dict
 ##########
 
-def print_formatted_dict( df_dicts: List[dict], spacing: str = "\t" * 2, header_key: str = "name") -> None:
+def print_formatted_dict(
+    df_dicts: List[dict], 
+    spacing: str = "\t" * 2, 
+    header_key: str = "name"
+    ) -> None:
     """
     Prints dictionaries for proper formatting.
     """
