@@ -1,5 +1,6 @@
 # API Token
 API_token.txt
+*.pypirc
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
