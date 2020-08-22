@@ -67,6 +67,23 @@ def record_df_info(df, _name: str = "before") -> dict:
 
 
 ##########
+# Dataframe key
+##########
+
+def _get_df_info_dicr() -> dict:
+    """
+    Returns dictionary with information abou the dataframes to be printed.
+    """
+    key_info = (
+        ('name', 'Dataframe'),
+        ('columns', 'Num columns'),
+        ('size', 'df size'),
+        ('shape', 'df shape')
+    )
+    return _create_dict(key_info)
+
+
+##########
 # Print df changes
 ##########
 
@@ -77,12 +94,15 @@ def print_df_changes(
     ) -> None:
     """Differences between dataframe and previously recorded information.
     
-    Calls auxiliary get_columns_difference method.
+    Creates dicts of differences by calling 2 helper method:
+        - get_df_diff_info
+        - get_dict_df_diff
     """
 
-
-    def get_df_diff_info(dict_recorded_info: dict, dict_new_info: dict) -> list:
-        """Returns tuple with info on new df: (missing_cols, new_cols, diff_cols).
+    def get_df_diff_info(dict_recorded_info: dict, dict_new_info: dict) -> tuple:
+        """Returns tuple with info on differences b/w dfs.
+        
+        Tuple: (missing_cols, new_cols, diff_cols).
         """
         ## Columns
         num_cols_before, num_cols_after = (
@@ -97,24 +117,34 @@ def print_df_changes(
             dict_recorded_info['shape'][i] for i in range(2)])
 
         return (diff_cols, diff_size, diff_shape)
+    
+
+    def get_dict_df_diff(dict_recorded_info: dict, dict_new_info: dict) -> dict:
+        """Helper func to return dict of dataframe differences."""
+        ## Get df diff info
+        diff_cols, diff_size, diff_shape = (
+            get_df_diff_info( dict_recorded_info, dict_new_info))
+
+        diff_info_keys = (
+            ('name', "difference"),
+            ('columns', diff_cols),
+            ('size', diff_size),
+            ('shape', diff_shape)
+        )
+        return _create_dict(diff_info_keys)
 
 
     ## Info on new df
     dict_new_info = record_df_info(df, _name = "after")
 
-    ## Get df diff info
-    diff_cols, diff_size, diff_shape = (
-        get_df_diff_info( dict_recorded_info, dict_new_info))
-
-    diff_info_keys = (
-        ('name', "difference"),
-        ('columns', diff_cols),
-        ('size', diff_size),
-        ('shape', diff_shape)
-    )
-    dict_diff_info = _create_dict(diff_info_keys)
+    ## Info on df diffs
+    dict_diff_info = get_dict_df_diff( dict_recorded_info, dict_new_info)
+    
+    ## Info on dicts
+    dict_df_info = _get_df_info_dicr()
 
     df_dicts = [
+        dict_df_info,
         dict_recorded_info,
         dict_new_info,
         dict_diff_info
