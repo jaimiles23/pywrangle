@@ -23,6 +23,7 @@ import pandas as pd
 ##########
 # Max col length
 ##########
+
 def get_max_col_length(df, colname_header: str = "Column:") -> int:
     """
     Returns the longest column name from the dataframe, including the passed colname_header.
@@ -30,7 +31,6 @@ def get_max_col_length(df, colname_header: str = "Column:") -> int:
     max_coltitle_length: int = len(
         max((df.columns, colname_header), key = len))
     return max_coltitle_length
-
 
 
 ##########

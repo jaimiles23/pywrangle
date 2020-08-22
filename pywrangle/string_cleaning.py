@@ -17,8 +17,10 @@ from typing import (
     Tuple,
 )
 
+
 import numpy as np
 import pandas as pd
+
 
 try:
     from printing import (
@@ -116,7 +118,7 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int]) -> "DataFr
         extra_space = max_coltitle_len - len(col_name)
         print_message = [
             col_name, 
-            " " * extra_space,
+            ' ' * extra_space,
             spacing, 
             str(case_structure[case].__name__)
         ]

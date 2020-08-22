@@ -30,6 +30,7 @@ try:
 except:
     from pywrangle import printing
 
+
 ##########
 # Print Nulls per column
 ##########
@@ -97,5 +98,4 @@ def show_col_nulls(
     if show_null_heatmap:
         sns.heatmap( df.isnull(), cbar = False)
     return
-
 
