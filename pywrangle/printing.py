@@ -13,6 +13,9 @@
 # Imports
 ##########
 
+from typing import Tuple, Any, List
+
+
 import numpy as np
 import pandas as pd 
 
@@ -39,7 +42,7 @@ def _print_headers_colname_singleattr(
     singleattr_header: str,
     max_colname_length: int = None,
     colname_header: str = "Column:",
-    spacing = "\t" * 2,
+    spacing: str = "\t" * 2,
     ) -> None:
     """
     Prints the headers for column names and a single attribute.
@@ -50,6 +53,24 @@ def _print_headers_colname_singleattr(
     
     print(f"{colname_header}{extra_space}{spacing}{singleattr_header}")
     print(f"{len(colname_header) * '-'}{extra_space}{spacing}{'-' * len(singleattr_header)}")
+
+def _print_tuple_with_spacing(
+    two_val_tuple: Tuple[ str, Any],
+    max_colname_length: int = None,
+    spacing: str = "\t" * 2
+    ) -> None:
+    """
+    Prints tuple of values with spacing between two values.
+    """
+    for val1, val2 in two_val_tuple:
+        extra_spaces = ' ' * (max_colname_length - len(val1))
+        print(
+            val1,
+            extra_spaces,
+            spacing,
+            val2
+        )
+    return 
 
 
 ##########
