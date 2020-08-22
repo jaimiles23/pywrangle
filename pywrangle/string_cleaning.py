@@ -20,6 +20,17 @@ from typing import (
 import numpy as np
 import pandas as pd
 
+try:
+    from printing import (
+        _print_headers_colname_singleattr,
+        get_max_col_length
+        )
+except:
+    from pywrangle.printing import (
+        _print_headers_colname_singleattr,
+        get_max_col_length
+        )
+
 
 ##########
 # Imports
@@ -115,17 +126,16 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int]) -> "DataFr
         return df
 
 
-    ## Cleans string column names
-    title = "column name:"
+    ## Print column headers
     spacing = "\t" * 2
-    
-    max_coltitle_length: int = len(
-        max((df.columns, title), key = len))
-    extra_space = max_coltitle_length - len(title)
-    
-    print(f"{title}{extra_space}{spacing}str.clean_method")
-    
-    
+    max_coltitle_length: int = get_max_col_length(df)
+    _print_headers_colname_singleattr(
+        df= df,
+        singleattr_header = "Str Cleaning",
+        spacing = spacing,
+    )
+
+    ## Print column name, and sentence case
     for col_name, sent_case in col_strcase_tuple:
         df = _clean_str_data(
             df = df,
@@ -134,4 +144,5 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int]) -> "DataFr
             max_coltitle_len = max_coltitle_length,
             spacing = spacing
         )
+    
     return df
