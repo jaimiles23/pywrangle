@@ -12,6 +12,11 @@
 # Imports
 ##########
 
+from typing import (
+    Any,
+    Tuple
+)
+
 import numpy as np
 import pandas as pd
 
@@ -34,3 +39,18 @@ def to_str(var):
         except TypeError:
             return str(list(var))[1:-1] # numpy sequence
     return str(var) # everything else
+
+
+##########
+# Create dictionary
+##########
+   
+def create_dict( key_info: Tuple[ str, Any]) -> dict:
+    """Returns dictionary from key_info tuple."""
+    if not isinstance(key_info, tuple):       # note: can change to tuple, list generic"
+        raise Exception("Must pass tuple of keys and information")
+
+    new_dict = dict()
+    for key, info in key_info:
+        new_dict[key] = info
+    return new_dict
