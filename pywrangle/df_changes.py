@@ -4,7 +4,7 @@
  * @create date 2020-08-20 23:42:36
  * @modify date 2020-08-21 20:31:04
  * @desc [
-    @size_change decorated function to tell the change in data frame size after running a funciton.
+    @size_change decorated function to tell the change in data frame size after running a function.
  ]
  */
 """
