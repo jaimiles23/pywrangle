@@ -25,7 +25,6 @@ import pandas as pd
 # Auxiliary functions
 ##########
 
-
 def _create_dict( key_info: Tuple[ str, Any]) -> dict:
     """Returns dictionary from key_info tuple."""
     if not isinstance(key_info, tuple):       # note: can change to tuple, list generic"
@@ -38,7 +37,7 @@ def _create_dict( key_info: Tuple[ str, Any]) -> dict:
 
 
 ##########
-# Funcs
+# Record df info
 ##########
 
 def record_df_info(df, _name: str = "before") -> dict:
@@ -59,6 +58,10 @@ def record_df_info(df, _name: str = "before") -> dict:
     return _create_dict(key_info)
 
 
+##########
+# Print df changes
+##########
+
 def print_df_changes(
         df,
         dict_recorded_info: dict,
@@ -66,11 +69,11 @@ def print_df_changes(
     ) -> None:
     """Differences between dataframe and previously recorded information.
     
-    Calls auxiliary get_column_info method.
+    Calls auxiliary get_columns_difference method.
     """
     
 
-    def get_column_info(dict_recorded_info: dict, dict_new_info: dict) -> tuple:
+    def get_columns_difference(dict_recorded_info: dict, dict_new_info: dict) -> list:
         """Returns tuple with info on new df: (missing_cols, new_cols, diff_cols).
         """
         missing_cols = ['-' + column for column in
@@ -78,20 +81,20 @@ def print_df_changes(
         new_cols = np.setdiff1d( dict_new_info['columns'], dict_recorded_info['columns']).tolist()
 
         diff_cols = missing_cols + new_cols
-        return (missing_cols, new_cols, diff_cols)
+        return diff_cols
 
 
     ## Info on new dict
     dict_new_info = record_df_info(df, _name = "after")
 
     ## Get column information
-    missing_cols, new_cols, diff_cols = get_column_info(
+    diff_cols = get_columns_difference(
         dict_new_info, dict_recorded_info)
 
     ## Size & Shape
     diff_size = dict_new_info['size'] - dict_recorded_info['size']
     diff_shape = [dict_new_info['shape'][i] - dict_recorded_info['shape'][i] for i in range(2)]
-    
+
     diff_info_keys = (
         ('name', "Difference"),
         ('columns', diff_cols),
