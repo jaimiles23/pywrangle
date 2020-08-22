@@ -86,12 +86,12 @@ def show_col_nulls(
     ## Print Nulls per column
     column_nulls = _count_column_nulls(df)
     max_colname_length = printing.get_max_colname_length(df, "Null")
-    printing._print_headers_colname_singleattr(
+    printing._print_headers_colname_oneattr(
         df= df, 
-        singleattr_header= "Null",
+        attr_header_header= "Null",
         max_colname_length= max_colname_length,
     )
-    printing._print_tuple_with_spacing(
+    printing._print_tuple_with_colname_spacing(
         column_nulls, max_colname_length= max_colname_length)
 
     ## Null heatmap

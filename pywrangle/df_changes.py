@@ -2,9 +2,10 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-08-20 23:42:36
- * @modify date 2020-08-21 20:31:04
+ * @modify date 2020-08-22 15:16:38
  * @desc [
     @size_change decorated function to tell the change in data frame size after running a function.
+ 
  TODO:
  - Add number of rows
  - Refactor functions for clarity
@@ -111,6 +112,21 @@ def print_df_changes(
             ('shape', diff_shape)
         )
         return aux_functions.create_dict(diff_info_keys)
+    
+
+    def get_df_dict_headers() -> dict:
+        """
+        Returns dictionary with information abou the dataframes to be printed.
+
+        NOTE: func should specify df_change_headers
+        """
+        key_info = (
+            ('name', 'df'),
+            ('columns', 'Num columns'),
+            ('size', 'df.size'),
+            ('shape', 'df.shape')
+        )
+        return aux_functions.create_dict(key_info)
 
 
     ## Info on new df
@@ -119,10 +135,16 @@ def print_df_changes(
     ## Info on df diffs
     dict_diff_info = get_dict_df_diff( dict_recorded_info, dict_new_info)
     
+    ## Headers
+    df_headers: dict = get_df_dict_headers()
+
     df_dicts = [
         dict_recorded_info,
         dict_new_info,
         dict_diff_info
     ]
-    printing.print_formatted_dict(df_dicts)
+    printing.print_formatted_dict(
+        df_dicts = df_dicts,
+        header_dict = df_headers)
+        
 

@@ -4,7 +4,7 @@
  * @create date 2020-08-21 17:32:37
  * @modify date 2020-08-21 17:32:37
  * @desc [
-    Auxiliary functions to "pretty print" data structures.
+    Contains Auxiliary functions to print data structures for readability on console.
  ]
  */
 """
@@ -48,12 +48,12 @@ def get_max_colname_length(df, colname_header: str = "Column:") -> int:
 # Single Header
 ##########
 
-def _print_headers_colname_singleattr(
+def _print_dict_headers_colname_oneattr(
     df: object,
-    singleattr_header: str,
+    attr_header: str,
     max_colname_length: int = None,
     colname_header: str = "Column:",
-    spacing: str = "\t" * 2,
+    spacing: str = "\t" * 1,
     ) -> None:
     """
     Prints the headers for column names and a single attribute.
@@ -62,14 +62,14 @@ def _print_headers_colname_singleattr(
         max_colname_length = get_max_colname_length(df, colname_header= colname_header)
     extra_spaces = ' ' * (max_colname_length - len(colname_header))
     
-    print(f"{colname_header}{extra_spaces}{spacing}{singleattr_header}")
-    print(f"{len(colname_header) * '-'}{extra_spaces}{spacing}{'-' * len(singleattr_header)}")
+    print(f"{colname_header}{extra_spaces}{spacing}{attr_header}")
+    print(f"{len(colname_header) * '-'}{extra_spaces}{spacing}{'-' * len(attr_header)}")
 
 
-def _print_tuple_with_spacing(
+def _print_tuple_with_colname_spacing(
     two_val_tuple: Tuple[ str, Any],
     max_colname_length: int = None,
-    spacing: str = "\t" * 2
+    spacing: str = "\t" * 1
     ) -> None:
     """
     Prints tuple of values with spacing between two values.
@@ -93,30 +93,23 @@ def _print_tuple_with_spacing(
 
 def print_formatted_dict(
     df_dicts: List[dict], 
-    spacing: str = "\t" * 2,
+    header_dict: dict,
+    spacing: str = "\t" * 1,
     ) -> None:
     """
     Prints dictionaries for proper formatting.
-    """
-    
-    def get_df_dict_headers() -> dict:
-        """
-        Returns dictionary with information abou the dataframes to be printed.
 
-        NOTE: func should specify df_change_headers
-        """
-        key_info = (
-            ('name', 'df'),
-            ('columns', 'Num columns'),
-            ('size', 'df.size'),
-            ('shape', 'df.shape')
-        )
-        return aux_functions.create_dict(key_info)
-    
+    Calls two auxiliary functions:
+        - get_key_max_charlength
+        - print_dict_headers
+    """
 
     def get_key_max_charlength(df_dicts: List[dict]) -> dict:
         """
-        Returns dictionary with max character length for all values.
+        Returns dictionary with value max character length for all keys.
+
+        NOTE: Uses keys from 1st dict in list to construct max dictionary.
+        Can also create Set() to get all dictionary keys.
         """
         max_charlength_dict = dict()
 
@@ -124,7 +117,7 @@ def print_formatted_dict(
             max_char_length = 0
 
             for df_dict in df_dicts:
-                val = aux_functions.to_str(df_dict[k])
+                val = aux_functions.to_str(df_dict.get(k, ''))
                 if len(val) > max_char_length:
                     max_char_length = len(val)
 
@@ -132,37 +125,38 @@ def print_formatted_dict(
         
         return max_charlength_dict
     
-
-    ## Headers
-    df_headers: dict = get_df_dict_headers()
+    
+    def print_dict_headers( header_dict: dict, max_char_length: dict) -> None:
+        """Prints headers for reading dictionary output."""
+        for k in header_dict.keys():
+            header = header_dict[k]
+            num_extra_spaces = max_char_length[k] - len(header)
+            print(
+                header, 
+                ' ' * num_extra_spaces,
+                spacing,
+                end = '')
+        aux_functions.print_lines(1)
+        
+        for k in header_dict.keys():
+            header_dashes = len( header_dict[k]) * '-'
+            num_extra_spaces = max_char_length[k] - len(header_dashes)
+            print(
+                header_dashes, 
+                ' ' * num_extra_spaces,
+                spacing,
+                end = '')
+        aux_functions.print_lines(1)
+        return None
+    
 
     ## Get max char length dict
-    max_char_length: dict = get_key_max_charlength(df_dicts + [df_headers])
+    max_char_length: dict = get_key_max_charlength(df_dicts + [header_dict])
 
-    ## TODO: Refactor into funcs to print each for readability & reduction?
-    ## Print headers:
-    for k in df_headers.keys():
-        header = df_headers[k]
-        num_extra_spaces = max_char_length[k] - len(header)
-        print(
-            header, 
-            ' ' * num_extra_spaces,
-            spacing,
-            end = '')
-    print('')
+    ## Headers
+    print_dict_headers(header_dict, max_char_length)
 
-    ## Print header dashes
-    for k in df_headers.keys():
-        header_dashes = len( df_headers[k]) * '-'
-        num_extra_spaces = max_char_length[k] - len(header_dashes)
-        print(
-            header_dashes, 
-            ' ' * num_extra_spaces,
-            spacing,
-            end = '')
-    print('')
-
-    ## Print values
+    ## Print values from all dicts
     for df_dict in df_dicts:
         for k in df_dicts[0].keys():
             
