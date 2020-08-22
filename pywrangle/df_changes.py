@@ -101,7 +101,7 @@ def print_df_changes(
             get_df_diff_info( dict_recorded_info, dict_new_info))
 
         diff_info_keys = (
-            ('name', "difference"),
+            ('name', "df diff"),
             ('columns', diff_cols),
             ('size', diff_size),
             ('shape', diff_shape)

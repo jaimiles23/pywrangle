@@ -105,10 +105,10 @@ def print_formatted_dict(
         NOTE: func should specify df_change_headers
         """
         key_info = (
-            ('name', 'Dataframe'),
+            ('name', 'df'),
             ('columns', 'Num columns'),
-            ('size', 'df size'),
-            ('shape', 'df shape')
+            ('size', 'df.size'),
+            ('shape', 'df.shape')
         )
         return aux_functions.create_dict(key_info)
     
