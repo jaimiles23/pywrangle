@@ -26,6 +26,8 @@ import pandas as pd
 
 try:
     import aux_functions
+    import df_changes
+
 except (ModuleNotFoundError):
     from pywrangle import aux_functions
 
@@ -90,12 +92,27 @@ def _print_tuple_with_spacing(
 
 def print_formatted_dict(
     df_dicts: List[dict], 
-    spacing: str = "\t" * 2, 
-    header_key: str = "name"
+    spacing: str = "\t" * 2,
     ) -> None:
     """
     Prints dictionaries for proper formatting.
     """
+    
+    def get_df_dict_headers() -> dict:
+        """
+        Returns dictionary with information abou the dataframes to be printed.
+
+        NOTE: func should specify df_change_headers
+        """
+        key_info = (
+            ('name', 'Dataframe'),
+            ('columns', 'Num columns'),
+            ('size', 'df size'),
+            ('shape', 'df shape')
+        )
+        return aux_functions.create_dict(key_info)
+    
+
     def get_key_max_charlength(df_dicts: List[dict]) -> dict:
         """
         Returns dictionary with max character length for all values.
@@ -115,14 +132,17 @@ def print_formatted_dict(
         return max_charlength_dict
     
 
+    ## Headers
+    df_headers: dict = get_df_dict_headers()
+
     ## Get max char length dict
-    max_char_length: dict = get_key_max_charlength(df_dicts)
+    max_char_length: dict = get_key_max_charlength(df_dicts + [df_headers])
 
+    ## TODO: Refactor into funcs to print each for readability & reduction?
     ## Print headers:
-    for df_dict in df_dicts:
-
-        header = df_dict[header_key]
-        num_extra_spaces = max_char_length[header_key] - len(header)
+    for k in df_headers.keys():
+        header = df_headers[k]
+        num_extra_spaces = max_char_length[k] - len(header)
         print(
             header, 
             ' ' * num_extra_spaces,
@@ -131,10 +151,9 @@ def print_formatted_dict(
     print('')
 
     ## Print header dashes
-    for df_dict in df_dicts:
-
-        header_dashes = len(df_dict[header_key]) * '-'
-        num_extra_spaces = max_char_length[header_key] - len(header)
+    for k in df_headers.keys():
+        header_dashes = len( df_headers[k]) * '-'
+        num_extra_spaces = max_char_length[k] - len(header_dashes)
         print(
             header_dashes, 
             ' ' * num_extra_spaces,
@@ -145,12 +164,9 @@ def print_formatted_dict(
     ## Print values
     for df_dict in df_dicts:
         for k in df_dicts[0].keys():
-
-            if k == header_key:
-                continue
-
+            
             value = df_dict[k]
-            num_extra_spaces = max_char_length[k] - len(df_dict[k])
+            num_extra_spaces = max_char_length[k] - len(str(df_dict[k]))
             print(value, 
             ' ' * num_extra_spaces,
             spacing, 
