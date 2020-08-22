@@ -18,26 +18,21 @@ import pandas as pd
 
 
 ##########
-# print dataframe
+# Max col length
 ##########
-
-def print_dataframe(df: object) -> None:
+def get_max_col_length(df, colname_header: str = "Column:") -> int:
     """
-    Prints dataframe with appropriate spacing
+    Returns the longest column name from the dataframe, including the passed colname_header.
     """
-    return
+    max_coltitle_length: int = len(
+        max((df.columns, colname_header), key = len))
+    return max_coltitle_length
 
 
-def print_formatted_dicts() -> None:
-    return
 
-
-def print_formatted_list() -> None:
-    """
-
-    """
-    return
-
+##########
+# Single Header
+##########
 
 def _print_headers_colname_singleattr(
     df: object,
@@ -55,15 +50,6 @@ def _print_headers_colname_singleattr(
     
     print(f"{colname_header}{extra_space}{spacing}{singleattr_header}")
     print(f"{len(colname_header) * '-'}{extra_space}{spacing}{'-' * len(singleattr_header)}")
-
-
-def get_max_col_length(df, colname_header: str = "Column:") -> int:
-    """
-    Returns the longest column name from the dataframe, including the passed colname_header.
-    """
-    max_coltitle_length: int = len(
-        max((df.columns, colname_header), key = len))
-    return max_coltitle_length
 
 
 ##########
