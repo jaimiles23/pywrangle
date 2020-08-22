@@ -13,9 +13,8 @@
 # Imports
 ##########
 
-from functools import wraps
 from typing import (
-    Tuple, Any, NewType
+    Tuple, Any
 )
 
 import numpy as np
@@ -37,15 +36,12 @@ def _create_dict( key_info: Tuple[ str, Any]) -> dict:
         new_dict[key] = info
     return new_dict
 
-    
-
 
 ##########
 # Funcs
 ##########
 
-
-def record_df_info(df) -> dict:
+def record_df_info(df, _name: str = "before") -> dict:
     """Records information about the dataframe.
     
     recorded dataframe information is passed to compare_dfs()
@@ -55,6 +51,7 @@ def record_df_info(df) -> dict:
         raise Exception("Must pass pandas dataframe object.")
     
     key_info = (
+        ('name', _name),
         ('columns', df.columns.tolist()),
         ('size', df.size),
         ('shape', df.shape),
@@ -62,9 +59,13 @@ def record_df_info(df) -> dict:
     return _create_dict(key_info)
 
 
-def print_df_diff(df, dict_recorded_info: dict) -> None:
+def print_df_changes(
+        df,
+        dict_recorded_info: dict,
+        show_col_names: bool = False
+    ) -> None:
     """Differences between dataframe and previously recorded information."""
-    dict_new_info = record_df_info(df)
+    dict_new_info = record_df_info(df, _name = "after")
 
     # print(dict_recorded_info)
     # print(dict_new_info)
@@ -80,6 +81,7 @@ def print_df_diff(df, dict_recorded_info: dict) -> None:
     diff_shape = [dict_new_info['shape'][i] - dict_recorded_info['shape'][i] for i in range(2)]
 
     diff_info_keys = (
+        ('name', "Difference"),
         ('columns', diff_columns),
         ('size', diff_size),
         ('shape', diff_shape)
@@ -89,5 +91,3 @@ def print_df_diff(df, dict_recorded_info: dict) -> None:
     df_dfinfo = pd.DataFrame.from_dict([dict_recorded_info, dict_new_info, dict_diff_info])
     print(df_dfinfo)
 
-
-## TODO: Create function to pretty print dataframe how i want.
