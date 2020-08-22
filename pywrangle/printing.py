@@ -13,11 +13,21 @@
 # Imports
 ##########
 
-from typing import Tuple, Any, List
+from typing import (
+    Tuple, 
+    Any, 
+    List,
+)
 
 
 import numpy as np
 import pandas as pd 
+
+
+try:
+    import aux_functions
+except:
+    from pywrangle import aux_functions
 
 
 ##########
@@ -49,10 +59,10 @@ def _print_headers_colname_singleattr(
     """
     if not max_colname_length:
         max_colname_length = get_max_colname_length(df, colname_header= colname_header)
-    extra_space = ' ' * (max_colname_length - len(colname_header))
+    extra_spaces = ' ' * (max_colname_length - len(colname_header))
     
-    print(f"{colname_header}{extra_space}{spacing}{singleattr_header}")
-    print(f"{len(colname_header) * '-'}{extra_space}{spacing}{'-' * len(singleattr_header)}")
+    print(f"{colname_header}{extra_spaces}{spacing}{singleattr_header}")
+    print(f"{len(colname_header) * '-'}{extra_spaces}{spacing}{'-' * len(singleattr_header)}")
 
 
 def _print_tuple_with_spacing(
@@ -69,51 +79,81 @@ def _print_tuple_with_spacing(
             val1,
             extra_spaces,
             spacing,
-            val2
+            val2,
         )
     return 
 
 
 ##########
-# Print dataframe
+# Print formatted dict
 ##########
-def print_formatted_df(df, spacing: str = "\t" * 1) -> None:
-    """Prints dataframe with meta information for proper formatting."""
 
-    def get_list_columns_max_charlength(df) -> List[int]:
-        """Returns a list of each columns max character length."""
+def print_formatted_dict( df_dicts: List[dict], spacing: str = "\t" * 2, header_key: str = "name") -> None:
+    """
+    Prints dictionaries for proper formatting.
+    """
+    def get_key_max_charlength(df_dicts: List[dict]) -> dict:
+        """
+        Returns dictionary with max character length for all values.
+        """
+        max_charlength_dict = dict()
 
-        max_col_charlengths: List[int] = list()
+        for k in df_dicts[0].keys():
+            max_char_length = 0
 
-        for col in df.columns:
-            max_col_len = len(max( [ df[[col]], str(col)], key = len))
-            max_col_charlengths.append( max_col_len)
-        return max_col_charlengths
+            for df_dict in df_dicts:
+                val = aux_functions.to_str(df_dict[k])
+                if len(val) > max_char_length:
+                    max_char_length = len(val)
+
+            max_charlength_dict[k] = max_char_length
+        
+        return max_charlength_dict
     
 
-    df = df.astype(str)
-    max_col_charlengths = get_list_columns_max_charlength(df)
+    ## Get max char length dict
+    max_char_length: dict = get_key_max_charlength(df_dicts)
 
-    ## print headers
-    for _, row in df.iterrows():
-        for i in range(len(df.columns)):
+    ## Print headers:
+    for df_dict in df_dicts:
 
-            max_space = max_col_charlengths[i]
-            col = df.columns[i]
-            val =  row[col]
+        header = df_dict[header_key]
+        num_extra_spaces = max_char_length[header_key] - len(header)
+        print(
+            header, 
+            ' ' * num_extra_spaces,
+            spacing,
+            end = '')
+    print('')
 
-            print(max_space, col, val)
+    ## Print header dashes
+    for df_dict in df_dicts:
 
-            print(
-                val,
-                ' ' * max_space - len(str(val)),    # padding space
-                spacing,
-                end = ''
+        header_dashes = len(df_dict[header_key]) * '-'
+        num_extra_spaces = max_char_length[header_key] - len(header)
+        print(
+            header_dashes, 
+            ' ' * num_extra_spaces,
+            spacing,
+            end = '')
+    print('')
+
+    ## Print values
+    for df_dict in df_dicts:
+        for k in df_dicts[0].keys():
+
+            if k == header_key:
+                continue
+
+            value = df_dict[k]
+            num_extra_spaces = max_char_length[k] - len(df_dict[k])
+            print(value, 
+            ' ' * num_extra_spaces,
+            spacing, 
+            end = ''
             )
         print('')
-    return
 
-    
 
 
 ##########

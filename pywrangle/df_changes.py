@@ -23,8 +23,10 @@ import pandas as pd
 
 try:
     import printing
+    import aux_functions
 except:
     from pywrangle import printing
+    from pywrangle import aux_functions
 
 
 ##########
@@ -57,7 +59,7 @@ def record_df_info(df, _name: str = "before") -> dict:
     
     key_info = (
         ('name', _name),
-        ('columns', df.columns.tolist()),
+        ('columns', len(df.columns)),
         ('size', df.size),
         ('shape', df.shape),
     )
@@ -77,39 +79,45 @@ def print_df_changes(
     
     Calls auxiliary get_columns_difference method.
     """
-    
 
-    def get_columns_difference(dict_recorded_info: dict, dict_new_info: dict) -> list:
+
+    def get_df_diff_info(dict_recorded_info: dict, dict_new_info: dict) -> list:
         """Returns tuple with info on new df: (missing_cols, new_cols, diff_cols).
         """
-        missing_cols = ['-' + column for column in
-            np.setdiff1d( dict_recorded_info['columns'], dict_new_info['columns'], assume_unique = True)]
-        new_cols = np.setdiff1d( dict_new_info['columns'], dict_recorded_info['columns']).tolist()
+        ## Columns
+        num_cols_before, num_cols_after = (
+            dict_recorded_info['columns'], dict_new_info['columns'])
+        diff_cols = num_cols_before - num_cols_after
 
-        diff_cols = missing_cols + new_cols
-        return diff_cols
+        ## Size
+        diff_size = dict_new_info['size'] - dict_recorded_info['size']
+
+        ## Shape
+        diff_shape = ( [dict_new_info['shape'][i] - 
+            dict_recorded_info['shape'][i] for i in range(2)])
+
+        return (diff_cols, diff_size, diff_shape)
 
 
-    ## Info on new dict
+    ## Info on new df
     dict_new_info = record_df_info(df, _name = "after")
 
-    ## Get column information
-    diff_cols = get_columns_difference(
-        dict_new_info, dict_recorded_info)
-
-    ## Size & Shape
-    diff_size = dict_new_info['size'] - dict_recorded_info['size']
-    diff_shape = [dict_new_info['shape'][i] - dict_recorded_info['shape'][i] for i in range(2)]
+    ## Get df diff info
+    diff_cols, diff_size, diff_shape = (
+        get_df_diff_info( dict_recorded_info, dict_new_info))
 
     diff_info_keys = (
-        ('name', "Difference"),
+        ('name', "difference"),
         ('columns', diff_cols),
         ('size', diff_size),
         ('shape', diff_shape)
     )
     dict_diff_info = _create_dict(diff_info_keys)
-    
-    df_dfinfo = pd.DataFrame.from_dict(
-        [dict_recorded_info, dict_new_info, dict_diff_info])
-    printing.print_formatted_df(df_dfinfo)
+
+    df_dicts = [
+        dict_recorded_info,
+        dict_new_info,
+        dict_diff_info
+    ]
+    printing.print_formatted_dict(df_dicts)
 
