@@ -20,6 +20,7 @@ NOTE:
 
 TODO:
     - Use script to automatically use username & pw in twine upload 
+    https://twine.readthedocs.io/en/latest/#twine-upload
  ]
  */
 """
@@ -37,7 +38,7 @@ from setuptools import setup, find_packages
 ##########
 
 name = "pywrangle"
-version = "0.2.35"
+version = "0.2.36"
 description = "Auxiliary functions to clean pandas data frames"
 author = "Jai Miles"
 author_email = "jaimiles23@gmail.com"

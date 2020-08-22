@@ -85,7 +85,7 @@ def show_col_nulls(
     
     ## Print Nulls per column
     column_nulls = _count_column_nulls(df)
-    max_colname_length = printing.get_max_col_length(df, "Null")
+    max_colname_length = printing.get_max_colname_length(df, "Null")
     printing._print_headers_colname_singleattr(
         df= df, 
         singleattr_header= "Null",

@@ -24,7 +24,7 @@ import pandas as pd
 # Max col length
 ##########
 
-def get_max_col_length(df, colname_header: str = "Column:") -> int:
+def get_max_colname_length(df, colname_header: str = "Column:") -> int:
     """
     Returns the longest column name from the dataframe, including the passed colname_header.
     """
@@ -48,7 +48,7 @@ def _print_headers_colname_singleattr(
     Prints the headers for column names and a single attribute.
     """
     if not max_colname_length:
-        max_colname_length = get_max_col_length(df, colname_header= colname_header)
+        max_colname_length = get_max_colname_length(df, colname_header= colname_header)
     extra_space = ' ' * (max_colname_length - len(colname_header))
     
     print(f"{colname_header}{extra_space}{spacing}{singleattr_header}")
@@ -86,7 +86,7 @@ def print_formatted_df(df, spacing: str = "\t" * 1) -> None:
         max_col_charlengths: List[int] = list()
 
         for col in df.columns:
-            max_col_len = max( [df.col, str(col)], key = len)
+            max_col_len = len(max( [ df[[col]], str(col)], key = len))
             max_col_charlengths.append( max_col_len)
         return max_col_charlengths
     
@@ -100,10 +100,13 @@ def print_formatted_df(df, spacing: str = "\t" * 1) -> None:
 
             max_space = max_col_charlengths[i]
             col = df.columns[i]
+            val =  row[col]
+
+            print(max_space, col, val)
 
             print(
-                row[col],
-                ' ' * max_space - len(row[col]),    # padding space
+                val,
+                ' ' * max_space - len(str(val)),    # padding space
                 spacing,
                 end = ''
             )
