@@ -16,29 +16,37 @@
 
 from typing import (
     List,
-    Tuple
+    Tuple,
 )
 
-## functools for wrappers
+
 import numpy as np
+import seaborn as sns
 import pandas as pd
 
+
+try:
+    import printing
+except:
+    from pywrangle import printing
 
 ##########
 # Print Nulls per column
 ##########
 
-def print_nulls_per_col(df) -> None:
+def show_null_per_col(
+    df,
+    show_null_heatmap: bool = True,
+) -> None:
     """
     Calculates number of null values in each column and prints result.
     
-    Calls 2 auxiliary functions:
+    Calls auxiliary functions:
     - _count_column_nulls
-    - _print_column_nulls
 
     ## Tests
     >>> df_winereviews = pd.read_csv("../input/wine-reviews/winemag-data_first150k.csv")
-    >>> print_nulls_per_col(df_winereviews)
+    >>> show_null_per_col(df_winereviews)
         89977	region_2
         45735	designation
         25060	region_1
@@ -61,32 +69,33 @@ def print_nulls_per_col(df) -> None:
 
     def _count_column_nulls(df) -> List[ Tuple[ int, str]]:
         """
-        Returns list of tuples (int, str) indicating number of nulls per column.
+        Returns list of tuples (str, int) each column and its number of nulls.
         """
-        ## Column null values
-        col_nulls = []
+        col_nulls: List[ Tuple[int, str]] = []
 
         ## Create tuples of number of nulls in respective column.
         for col in df.columns:
             num_null = df[col].isna().sum()
-            col_nulls.append( (num_null, col))
+            col_nulls.append( (col, num_null))
 
-        col_nulls.sort(key = lambda x: x[0], reverse = True)
+        col_nulls.sort(key = lambda x: x[1], reverse = True)
         return col_nulls
-
-
-    def _print_column_nulls(null_per_columns: List[ Tuple[ int, str]]) -> None:
-        """
-        Prints null values and column name in tuple.
-
-        Pass list returned from _count_column_nulls.
-        """
-        print("NULLS\tColumn_name")
-        for val, name in null_per_columns:
-            print(val, name, sep = "\t")
-        return
     
     
-    ## Call auxiliary functions.
-    null_per_column = _count_column_nulls(df)
-    _print_column_nulls(null_per_column)
+    ## Print Nulls per column
+    column_nulls = _count_column_nulls(df)
+    max_colname_length = printing.get_max_col_length(df, "Null")
+    printing._print_headers_colname_singleattr(
+        df= df, 
+        singleattr_header= "Null",
+        max_colname_length= max_colname_length,
+    )
+    printing._print_tuple_with_spacing(
+        column_nulls, max_colname_length= max_colname_length)
+
+    ## Null heatmap
+    if show_null_heatmap:
+        sns.heatmap( df.isnull(), cbar = False)
+    return
+
+
