@@ -54,6 +54,7 @@ def _print_headers_colname_singleattr(
     print(f"{colname_header}{extra_space}{spacing}{singleattr_header}")
     print(f"{len(colname_header) * '-'}{extra_space}{spacing}{'-' * len(singleattr_header)}")
 
+
 def _print_tuple_with_spacing(
     two_val_tuple: Tuple[ str, Any],
     max_colname_length: int = None,
