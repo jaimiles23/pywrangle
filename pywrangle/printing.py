@@ -26,7 +26,7 @@ import pandas as pd
 
 try:
     import aux_functions
-except:
+except (ModuleNotFoundError):
     from pywrangle import aux_functions
 
 

@@ -25,7 +25,7 @@ try:
     import printing
     import aux_functions
 
-except:
+except (ModuleNotFoundError):
     from pywrangle import printing
     from pywrangle import aux_functions
 

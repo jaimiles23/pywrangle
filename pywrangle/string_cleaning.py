@@ -27,7 +27,7 @@ try:
         _print_headers_colname_singleattr,
         get_max_col_length
         )
-except:
+except (ModuleNotFoundError):
     from pywrangle.printing import (
         _print_headers_colname_singleattr,
         get_max_col_length

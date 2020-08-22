@@ -27,7 +27,7 @@ import pandas as pd
 
 try:
     import printing
-except:
+except (ModuleNotFoundError):
     from pywrangle import printing
 
 
