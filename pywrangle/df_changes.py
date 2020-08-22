@@ -70,7 +70,7 @@ def record_df_info(df, _name: str = "before") -> dict:
 # Dataframe key
 ##########
 
-def _get_df_info_dicr() -> dict:
+def _get_df_info_dict() -> dict:
     """
     Returns dictionary with information abou the dataframes to be printed.
     """
@@ -141,7 +141,7 @@ def print_df_changes(
     dict_diff_info = get_dict_df_diff( dict_recorded_info, dict_new_info)
     
     ## Info on dicts
-    dict_df_info = _get_df_info_dicr()
+    dict_df_info = _get_df_info_dict()
 
     df_dicts = [
         dict_df_info,
@@ -150,4 +150,3 @@ def print_df_changes(
         dict_diff_info
     ]
     printing.print_formatted_dict(df_dicts)
-
