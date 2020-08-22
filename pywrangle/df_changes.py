@@ -5,6 +5,10 @@
  * @modify date 2020-08-21 20:31:04
  * @desc [
     @size_change decorated function to tell the change in data frame size after running a function.
+ TODO:
+ - Add number of rows
+ - Refactor functions for clarity
+ - Rename functions for clarity.
  ]
  */
 """
