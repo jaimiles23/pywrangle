@@ -34,7 +34,7 @@ except:
 # Print Nulls per column
 ##########
 
-def show_null_per_col(
+def show_col_nulls(
     df,
     show_null_heatmap: bool = True,
 ) -> None:
@@ -46,7 +46,7 @@ def show_null_per_col(
 
     ## Tests
     >>> df_winereviews = pd.read_csv("../input/wine-reviews/winemag-data_first150k.csv")
-    >>> show_null_per_col(df_winereviews)
+    >>> show_col_nulls(df_winereviews)
         89977	region_2
         45735	designation
         25060	region_1
