@@ -115,7 +115,6 @@ def print_df_changes(
     ## Info on df diffs
     dict_diff_info = get_dict_df_diff( dict_recorded_info, dict_new_info)
     
-
     df_dicts = [
         dict_recorded_info,
         dict_new_info,

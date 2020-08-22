@@ -25,12 +25,12 @@ import pandas as pd
 try:
     from printing import (
         _print_headers_colname_singleattr,
-        get_max_col_length
+        get_max_colname_length
         )
 except (ModuleNotFoundError):
     from pywrangle.printing import (
         _print_headers_colname_singleattr,
-        get_max_col_length
+        get_max_colname_length
         )
 
 
@@ -130,7 +130,7 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int]) -> "DataFr
 
     ## Print column headers
     spacing = "\t" * 2
-    max_coltitle_length: int = get_max_col_length(df)
+    max_coltitle_length: int = get_max_colname_length(df)
     _print_headers_colname_singleattr(
         df= df,
         singleattr_header = "Str Cleaning",
