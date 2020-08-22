@@ -19,13 +19,18 @@ import pandas as pd
 ##########
 # NP to String
 ##########
-
+   
 def to_str(var):
     """
     Aux method to transform NP arrays into string type.
 
     Credit: https://stackoverflow.com/a/25085806/14122026
     """
-    return str(list(np.reshape(np.asarray(var), (1, np.size(var)))[0]))[1:-1]
-
-    
+    if type(var) is list:
+        return str(var)[1:-1] # list
+    if type(var) is np.ndarray:
+        try:
+            return str(list(var[0]))[1:-1] # numpy 1D array
+        except TypeError:
+            return str(list(var))[1:-1] # numpy sequence
+    return str(var) # everything else
