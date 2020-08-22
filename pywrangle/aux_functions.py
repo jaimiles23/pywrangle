@@ -22,7 +22,7 @@ import pandas as pd
 
 
 ##########
-# NP to String
+# To string
 ##########
    
 def to_str(var):
@@ -54,3 +54,14 @@ def create_dict( key_info: Tuple[ str, Any]) -> dict:
     for key, info in key_info:
         new_dict[key] = info
     return new_dict
+
+##########
+# Print new lines
+##########
+
+def print_lines(num_new_lines: int = 2) -> None:
+    """Prints number of new_line characters."""
+    print(
+        "\n" * num_new_lines,
+        end = '')
+    return

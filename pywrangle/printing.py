@@ -26,7 +26,6 @@ import pandas as pd
 
 try:
     import aux_functions
-    import df_changes
 
 except (ModuleNotFoundError):
     from pywrangle import aux_functions
@@ -83,6 +82,8 @@ def _print_tuple_with_spacing(
             spacing,
             val2,
         )
+        ## TODO: aux function for printing end spaces.
+    aux_functions.print_lines(2)
     return 
 
 
@@ -173,26 +174,23 @@ def print_formatted_dict(
             end = ''
             )
         print('')
-
+    
+    aux_functions.print_lines(2)
+    return
 
 
 ##########
 # Tests
 ##########
 
-def test_print_headers():
-    _print_headers_colname_singleattr(
-        None, 
-        "Null",
-        5
-    )
-    
+
+
 ##########
 # Main
 ##########
 
 def main():
-    test_print_headers()
+    pass
 
 
 if __name__ == "__main__":
