@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-08-20 23:42:36
- * @modify date 2020-08-21 14:32:12
+ * @modify date 2020-08-21 20:31:04
  * @desc [
     @size_change decorated function to tell the change in data frame size after running a funciton.
  ]
@@ -19,6 +19,12 @@ from typing import (
 
 import numpy as np
 import pandas as pd
+
+
+try:
+    import printing
+except:
+    from pywrangle import printing
 
 
 ##########
@@ -103,6 +109,7 @@ def print_df_changes(
     )
     dict_diff_info = _create_dict(diff_info_keys)
     
-    df_dfinfo = pd.DataFrame.from_dict([dict_recorded_info, dict_new_info, dict_diff_info])
-    print(df_dfinfo)
+    df_dfinfo = pd.DataFrame.from_dict(
+        [dict_recorded_info, dict_new_info, dict_diff_info])
+    printing.print_formatted_df(df_dfinfo)
 
