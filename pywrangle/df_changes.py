@@ -64,25 +64,37 @@ def print_df_changes(
         dict_recorded_info: dict,
         show_col_names: bool = False
     ) -> None:
-    """Differences between dataframe and previously recorded information."""
+    """Differences between dataframe and previously recorded information.
+    
+    Calls auxiliary get_column_info method.
+    """
+    
+
+    def get_column_info(dict_recorded_info: dict, dict_new_info: dict) -> tuple:
+        """Returns tuple with info on new df: (missing_cols, new_cols, diff_cols).
+        """
+        missing_cols = ['-' + column for column in
+            np.setdiff1d( dict_recorded_info['columns'], dict_new_info['columns'], assume_unique = True)]
+        new_cols = np.setdiff1d( dict_new_info['columns'], dict_recorded_info['columns']).tolist()
+
+        diff_cols = missing_cols + new_cols
+        return (missing_cols, new_cols, diff_cols)
+
+
+    ## Info on new dict
     dict_new_info = record_df_info(df, _name = "after")
 
-    # print(dict_recorded_info)
-    # print(dict_new_info)
+    ## Get column information
+    missing_cols, new_cols, diff_cols = get_column_info(
+        dict_new_info, dict_recorded_info)
 
-    missing_cols = ['-' + column for column in
-        np.setdiff1d( dict_recorded_info['columns'], dict_new_info['columns'], assume_unique = True)]
-    new_cols = np.setdiff1d( dict_new_info['columns'], dict_recorded_info['columns']).tolist()
-    # print(missing_cols, new_cols)
-    # print( type(missing_cols), type(new_cols))
-    diff_columns = missing_cols + new_cols
-
+    ## Size & Shape
     diff_size = dict_new_info['size'] - dict_recorded_info['size']
     diff_shape = [dict_new_info['shape'][i] - dict_recorded_info['shape'][i] for i in range(2)]
-
+    
     diff_info_keys = (
         ('name', "Difference"),
-        ('columns', diff_columns),
+        ('columns', diff_cols),
         ('size', diff_size),
         ('shape', diff_shape)
     )
