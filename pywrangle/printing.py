@@ -77,18 +77,40 @@ def _print_tuple_with_spacing(
 ##########
 # Print dataframe
 ##########
-def print_formatted_df(df) -> None:
+def print_formatted_df(df, spacing: str = "\t" * 1) -> None:
     """Prints dataframe with meta information for proper formatting."""
-
-    ## TODO: Create list of max length for each columns.
 
     def get_list_columns_max_charlength(df) -> List[int]:
         """Returns a list of each columns max character length."""
-        for col in df.columns:
 
+        max_col_charlengths: List[int] = list()
+
+        for col in df.columns:
+            max_col_len = max( [df.col, str(col)], key = len)
+            max_col_charlengths.append( max_col_len)
+        return max_col_charlengths
+    
+
+    df = df.astype(str)
+    max_col_charlengths = get_list_columns_max_charlength(df)
+
+    ## print headers
+    for _, row in df.iterrows():
+        for i in range(len(df.columns)):
+
+            max_space = max_col_charlengths[i]
+            col = df.columns[i]
+
+            print(
+                row[col],
+                ' ' * max_space - len(row[col]),    # padding space
+                spacing,
+                end = ''
+            )
+        print('')
+    return
 
     
-    df = df.astype(str)
 
 
 ##########
