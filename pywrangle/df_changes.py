@@ -31,21 +31,6 @@ except (ModuleNotFoundError):
 
 
 ##########
-# Auxiliary functions
-##########
-
-def _create_dict( key_info: Tuple[ str, Any]) -> dict:
-    """Returns dictionary from key_info tuple."""
-    if not isinstance(key_info, tuple):       # note: can change to tuple, list generic"
-        raise Exception("Must pass tuple of keys and information")
-
-    new_dict = dict()
-    for key, info in key_info:
-        new_dict[key] = info
-    return new_dict
-
-
-##########
 # Record df info
 ##########
 
@@ -67,27 +52,10 @@ def record_df_info(df, _name: str = "before") -> dict:
     key_info = (
         ('name', _name),
         ('columns', len(df.columns)),
-        ('size', df.size),
+        ('size', int(df.size)),
         ('shape', df.shape),
     )
-    return _create_dict(key_info)
-
-
-##########
-# Dataframe key
-##########
-
-def _get_df_info_dict() -> dict:
-    """
-    Returns dictionary with information abou the dataframes to be printed.
-    """
-    key_info = (
-        ('name', 'Dataframe'),
-        ('columns', 'Num columns'),
-        ('size', 'df size'),
-        ('shape', 'df shape')
-    )
-    return _create_dict(key_info)
+    return aux_functions.create_dict(key_info)
 
 
 ##########
@@ -138,7 +106,7 @@ def print_df_changes(
             ('size', diff_size),
             ('shape', diff_shape)
         )
-        return _create_dict(diff_info_keys)
+        return aux_functions.create_dict(diff_info_keys)
 
 
     ## Info on new df
@@ -147,11 +115,8 @@ def print_df_changes(
     ## Info on df diffs
     dict_diff_info = get_dict_df_diff( dict_recorded_info, dict_new_info)
     
-    ## Info on dicts
-    dict_df_info = _get_df_info_dict()
 
     df_dicts = [
-        dict_df_info,
         dict_recorded_info,
         dict_new_info,
         dict_diff_info
