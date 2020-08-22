@@ -31,10 +31,11 @@ import numpy as np
 
 try:
     from pywrangle.string_cleaning import clean_str_columns
-    from pywrangle.missing_data import print_nulls_per_col
+    from pywrangle.missing_data import show_col_nulls
+    from pywrangle.df_changes import record_df_info, print_df_changes
     
 except ModuleNotFoundError:
     from string_cleaning import clean_str_columns
-    from missing_data import print_nulls_per_col
-
+    from missing_data import show_col_nulls
+    from df_changes import record_df_info, print_df_changes
 

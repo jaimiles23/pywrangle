@@ -37,7 +37,7 @@ from setuptools import setup, find_packages
 ##########
 
 name = "pywrangle"
-version = "0.2.31"
+version = "0.2.35"
 description = "Auxiliary functions to clean pandas data frames"
 author = "Jai Miles"
 author_email = "jaimiles23@gmail.com"
@@ -89,7 +89,7 @@ setup_args = dict(
 install_requires = [
     'pandas >= 1.0.3',
     'numpy >= 1.14.4',
-    
+    'seaborn >= 0.9.0'
 ]
 
 
