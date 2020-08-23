@@ -144,5 +144,6 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int], spacing: s
             max_coltitle_len = max_coltitle_length,
             spacing = spacing
         )
+        
     aux_functions.print_lines(2)
     return df
