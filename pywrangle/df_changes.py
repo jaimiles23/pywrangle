@@ -5,9 +5,8 @@
  * @modify date 2020-08-22 15:16:38
  * @desc [
     @size_change decorated function to tell the change in data frame size after running a function.
- 
+
  TODO:
- - Add number of rows
  - Refactor functions for clarity
  - Rename functions for clarity.
  ]
@@ -57,6 +56,7 @@ def record_df_info(df, _name: str = "before") -> dict:
     key_info = (
         ('name', _name),
         ('columns', len(df.columns)),
+        ('rows', len(df)),
         ('size', int(df.size)),
         ('shape', df.shape),
     )
@@ -82,12 +82,15 @@ def print_df_changes(
     def get_df_diff_info(dict_recorded_info: dict, dict_new_info: dict) -> tuple:
         """Returns tuple with info on differences b/w dfs.
         
-        Tuple: (diff_cols, diff_size, diff_shape).
+        Tuple: (diff_cols, diff_rows, diff_size, diff_shape).
         """
         ## Columns
         num_cols_before, num_cols_after = (
             dict_recorded_info['columns'], dict_new_info['columns'])
         diff_cols = num_cols_before - num_cols_after
+
+        ## rows
+        diff_rows = dict_recorded_info['rows'] - dict_new_info['rows']
 
         ## Size
         diff_size = dict_new_info['size'] - dict_recorded_info['size']
@@ -96,18 +99,19 @@ def print_df_changes(
         diff_shape = ( [dict_new_info['shape'][i] - 
             dict_recorded_info['shape'][i] for i in range(2)])
 
-        return (diff_cols, diff_size, diff_shape)
+        return (diff_cols, diff_rows, diff_size, diff_shape)
     
 
     def get_dict_df_diff(dict_recorded_info: dict, dict_new_info: dict) -> dict:
         """Helper func to return dict of dataframe differences."""
         ## Get df diff info
-        diff_cols, diff_size, diff_shape = (
+        diff_cols, diff_rows, diff_size, diff_shape = (
             get_df_diff_info( dict_recorded_info, dict_new_info))
 
         diff_info_keys = (
             ('name', "df diff"),
             ('columns', diff_cols),
+            ('rows', diff_rows),
             ('size', diff_size),
             ('shape', diff_shape)
         )
@@ -123,6 +127,7 @@ def print_df_changes(
         key_info = (
             ('name', 'df'),
             ('columns', 'Num columns'),
+            ('rows', 'Num rows'),
             ('size', 'df.size'),
             ('shape', 'df.shape')
         )
@@ -147,4 +152,3 @@ def print_df_changes(
         df_dicts = df_dicts,
         header_dict = df_headers)
         
-
