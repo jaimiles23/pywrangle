@@ -44,7 +44,7 @@ from setuptools import setup, find_packages
 ##########
 
 name = "pywrangle"
-version = "0.2.47"
+version = "0.2.49"
 description = "Auxiliary functions to clean pandas data frames"
 author = "Jai Miles"
 author_email = "jaimiles23@gmail.com"
