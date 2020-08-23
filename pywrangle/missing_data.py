@@ -64,6 +64,10 @@ def show_col_nulls(
 
     TODO:
         - Update testing documentation to be compliant with pytests
+        - May like to add corr matrix of NULL values - need to test!
+            - https://stats.stackexchange.com/questions/464663/how-to-calculate-nullity-correlation-matrix
+            - https://towardsdatascience.com/better-heatmaps-and-correlation-matrix-plots-in-python-41445d0f2bec
+            
     """
 
 

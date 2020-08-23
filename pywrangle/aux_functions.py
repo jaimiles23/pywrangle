@@ -84,7 +84,7 @@ def get_max_colname_length(df, colname_header: str = "Column:") -> int:
 ##########
 # Rounded %
 ##########
-def get_percent( number: float, digits: int = 5) -> str:
+def get_percent( number: float, digits: int = 4) -> str:
     """Returns percentage of number to digits significant digits."""
     return round(number, digits) * 100
 
