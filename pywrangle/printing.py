@@ -42,7 +42,7 @@ def _print_headers_colname_oneattr(
     df: object,
     attr_header: str,
     max_colname_length: int = None,
-    colname_header: str = "Column:",
+    colname_header: str = "Column",
     spacing: str = "\t" * 1,
     ) -> None:
     """
