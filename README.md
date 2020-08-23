@@ -44,8 +44,5 @@ TODO lists available in pywrangle functions.
       1. show number of rows with NULL in only 1 column, 2 columns, 3 columns etc.
       2. May like to include optional parameters to show correlation b/w NULL values in different columns?
    3. Print number of rows with NULL in X columns - optional param for desc sort by num NULL?
-3. Create wrapper that prints changes in the data frame size.
-   1. Helpful when dropping is_na rows.
-   2. Can create optional param to assert that dropped_rows = num_na before
-4. Create pywrangle documentation website?
+3. Create pywrangle documentation website?
 
