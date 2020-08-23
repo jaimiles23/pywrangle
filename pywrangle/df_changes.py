@@ -151,8 +151,8 @@ def print_df_changes(
             
             dict_percent_diff_info[k] = val
         
-        dict_diff_info['name'] = "df % diff"
-        return dict_diff_info
+        dict_percent_diff_info['name'] = "df % diff"
+        return dict_percent_diff_info
 
 
     def get_df_dict_headers() -> dict:
