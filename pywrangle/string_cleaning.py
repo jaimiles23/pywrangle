@@ -4,7 +4,9 @@
  * @create date 2020-08-20 16:08:02
  * @modify date 2020-08-20 16:08:02
  * @desc [
-    Contains pywrangle functions for cleaning string data.
+    Contains functions to clean string data.
+
+    - clean_str_columns cleans columns of data according to ordinal function passed.
  ]
  */
 """
@@ -38,7 +40,7 @@ except (ModuleNotFoundError):
 # Imports
 ##########
 
-def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int]) -> "DataFrame":
+def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int], spacing: str = "\t" * 2) -> "DataFrame":
     """Master function to clean string columns using col_strcase_tuple key.
 
     col_strcase_tuple is a tuple of tuples representing the column names to be cleaned
@@ -129,7 +131,6 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int]) -> "DataFr
 
 
     ## Print column headers
-    spacing = "\t" * 2
     max_coltitle_length: int = get_max_colname_length(df)
     _print_headers_colname_oneattr(
         df= df,
