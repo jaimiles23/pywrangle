@@ -25,15 +25,19 @@ import pandas as pd
 
 
 try:
+    import aux_functions
     from printing import (
         _print_headers_colname_oneattr,
         get_max_colname_length
         )
+    
 except (ModuleNotFoundError):
+    import pywrangle.aux_functions
     from pywrangle.printing import (
         _print_headers_colname_oneattr,
         get_max_colname_length
         )
+    
 
 
 ##########
@@ -147,5 +151,5 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int], spacing: s
             max_coltitle_len = max_coltitle_length,
             spacing = spacing
         )
-    
+    aux_functions.print_lines(2)
     return df
