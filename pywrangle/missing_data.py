@@ -91,7 +91,7 @@ def show_col_nulls(
     ## Print headers
     printing._print_headers_colname_oneattr(
         df= df, 
-        attr_header_header= "Null",
+        attr_header= "Null",
         max_colname_length= max_colname_length,
     )
     printing._print_tuple_with_colname_spacing(
