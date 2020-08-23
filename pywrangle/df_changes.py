@@ -96,12 +96,10 @@ def print_df_changes(
         Tuple: (diff_cols, diff_rows, diff_size, diff_shape).
         """
         ## Columns
-        num_cols_before, num_cols_after = (
-            dict_recorded_info['columns'], dict_new_info['columns'])
-        diff_cols = num_cols_before - num_cols_after
+        diff_cols =  dict_new_info['columns'] - dict_recorded_info['columns']
 
         ## rows
-        diff_rows = dict_recorded_info['rows'] - dict_new_info['rows']
+        diff_rows = dict_new_info['rows'] - dict_recorded_info['rows']
 
         ## Size
         diff_size = dict_new_info['size'] - dict_recorded_info['size']
