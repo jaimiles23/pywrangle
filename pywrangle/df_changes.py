@@ -145,12 +145,12 @@ def print_df_changes(
                 val =  aux_functions.get_percent(diff_val / recorded_val)
             
             except (TypeError):     # shape is tuple
-                val1 = aux_functions.get_percent(diff_val[0] / recorded_val[0])
-                val2 = aux_functions.get_percent(diff_val[1] / recorded_val[1])
-                val = (val1, val2)
+                val0 = aux_functions.get_percent(diff_val[0] / recorded_val[0])
+                val1 = aux_functions.get_percent(diff_val[1] / recorded_val[1])
+                val = (val0, val1)
             
             except (ZeroDivisionError):
-                val = 0
+                val = '--'
             
             dict_percent_diff_info[k] = val
         
@@ -166,8 +166,8 @@ def print_df_changes(
         """
         key_info = (
             ('name', 'df'),
-            ('rows', 'Num rows'),
-            ('columns', 'Num columns'),
+            ('rows', 'num rows'),
+            ('columns', 'num columns'),
             ('shape', 'df.shape'),
             ('size', 'df.size'),
         )
