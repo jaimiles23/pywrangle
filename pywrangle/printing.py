@@ -141,7 +141,7 @@ def print_formatted_dict(
     
 
     ## Get max char length dict
-    max_char_length: dict = get_key_max_charlength(df_dicts + [header_dict])
+    max_char_length: dict = get_key_max_charlength(list(df_dicts) + [header_dict])          # df_dicts passed as tuple.
 
     ## Headers
     print_dict_headers(header_dict, max_char_length)
