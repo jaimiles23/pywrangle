@@ -21,6 +21,12 @@ NOTE:
 TODO:
     - Use script to automatically use username & pw in twine upload 
     https://twine.readthedocs.io/en/latest/#twine-upload
+
+
+    - Create documentation:
+        https://packaging.python.org/tutorials/creating-documentation/
+    - Add tests:
+        https://python-packaging.readthedocs.io/en/latest/testing.html
  ]
  */
 """

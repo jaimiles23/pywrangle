@@ -73,7 +73,7 @@ def _print_tuple_with_colname_spacing(
             val2,
         )
 
-    aux_functions.print_lines(2)
+    aux_functions.print_lines(1)
     return 
 
 
@@ -159,7 +159,7 @@ def print_formatted_dict(
             )
         print('')
     
-    aux_functions.print_lines(2)
+    aux_functions.print_lines(1)
     return
 
 

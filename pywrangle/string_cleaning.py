@@ -145,5 +145,5 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int], spacing: s
             spacing = spacing
         )
         
-    aux_functions.print_lines(2)
+    aux_functions.print_lines(1)
     return df
