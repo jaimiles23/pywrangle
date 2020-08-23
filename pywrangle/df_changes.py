@@ -4,11 +4,9 @@
  * @create date 2020-08-20 23:42:36
  * @modify date 2020-08-22 15:16:38
  * @desc [
-    @size_change decorated function to tell the change in data frame size after running a function.
-
- TODO:
- - Refactor functions for clarity
- - Rename functions for clarity.
+    Contains two methods that work in tandem:
+    - record_df_info, to record information about the dataframe before a change.
+    - print_df_changes, to print information about changes to dataframe since recorded info.
  ]
  */
 """
@@ -44,6 +42,7 @@ def record_df_info(df, _name: str = "before") -> dict:
     Information includes:
         - name (state of the dict, before or after)
         - number of columns
+        - number of rows
         - size of df
         - shape of df
 
