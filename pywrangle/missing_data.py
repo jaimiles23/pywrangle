@@ -27,8 +27,10 @@ import pandas as pd
 
 try:
     import printing
+    import aux_functions
 except (ModuleNotFoundError):
     from pywrangle import printing
+    from pywrangle import aux_functions
 
 
 ##########
@@ -83,9 +85,13 @@ def show_col_nulls(
         return col_nulls
     
     
-    ## Print Nulls per column
+    ## Null values
     column_nulls = _count_column_nulls(df)
-    max_colname_length = printing.get_max_colname_length(df, "Null")
+
+    ## Columns length
+    max_colname_length = aux_functions.get_max_colname_length(df, "Null")
+
+    ## Print headers
     printing._print_headers_colname_oneattr(
         df= df, 
         attr_header_header= "Null",

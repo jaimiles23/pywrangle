@@ -26,19 +26,12 @@ import pandas as pd
 
 try:
     import aux_functions
-    from printing import (
-        _print_headers_colname_oneattr,
-        get_max_colname_length
-        )
+    import printing
     
 except (ModuleNotFoundError):
-    import pywrangle.aux_functions
-    from pywrangle.printing import (
-        _print_headers_colname_oneattr,
-        get_max_colname_length
-        )
+    from pywrangle import aux_functions
+    from pywrangle import printing
     
-
 
 ##########
 # Imports
@@ -135,14 +128,14 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int], spacing: s
 
 
     ## Print column headers
-    max_coltitle_length: int = get_max_colname_length(df)
-    _print_headers_colname_oneattr(
+    max_coltitle_length: int = aux_functions.get_max_colname_length(df)
+    printing._print_headers_colname_oneattr(
         df= df,
         attr_header = "Str Cleaning",
         spacing = spacing,
     )
 
-    ## Print column name, and sentence case
+    ## Clean column, then Print colname, and sentence case
     for col_name, sent_case in col_strcase_tuple:
         df = _clean_str_data(
             df = df,

@@ -31,24 +31,14 @@ except (ModuleNotFoundError):
     from pywrangle import aux_functions
 
 
-##########
-# Max col length
-##########
 
-def get_max_colname_length(df, colname_header: str = "Column:") -> int:
-    """
-    Returns the longest column name from the dataframe, including the passed colname_header.
-    """
-    max_coltitle_length: int = len(
-        max((df.columns, colname_header), key = len))
-    return max_coltitle_length
 
 
 ##########
 # Single Header
 ##########
 
-def _print_dict_headers_colname_oneattr(
+def _print_headers_colname_oneattr(
     df: object,
     attr_header: str,
     max_colname_length: int = None,
@@ -59,7 +49,7 @@ def _print_dict_headers_colname_oneattr(
     Prints the headers for column names and a single attribute.
     """
     if not max_colname_length:
-        max_colname_length = get_max_colname_length(df, colname_header= colname_header)
+        max_colname_length = aux_functions.get_max_colname_length(df, colname_header= colname_header)
     extra_spaces = ' ' * (max_colname_length - len(colname_header))
     
     print(f"{colname_header}{extra_spaces}{spacing}{attr_header}")

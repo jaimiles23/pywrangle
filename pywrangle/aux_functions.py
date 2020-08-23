@@ -65,3 +65,16 @@ def print_lines(num_new_lines: int = 2) -> None:
         "\n" * num_new_lines,
         end = '')
     return
+
+
+##########
+# Max col length
+##########
+
+def get_max_colname_length(df, colname_header: str = "Column:") -> int:
+    """
+    Returns the the length of the longest column name in dataframe the dataframe, including passed colname_header.
+    """
+    max_coltitle_length: int = len(
+        max((df.columns, colname_header), key = len))
+    return max_coltitle_length
