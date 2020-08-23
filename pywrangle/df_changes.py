@@ -154,7 +154,7 @@ def print_df_changes(
             
             dict_percent_diff_info[k] = val
         
-        dict_percent_diff_info['name'] = "df % diff"
+        dict_percent_diff_info['name'] = "% diff"
         return dict_percent_diff_info
 
 
