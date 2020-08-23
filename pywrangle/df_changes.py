@@ -111,12 +111,13 @@ def print_df_changes(
         return (diff_cols, diff_rows, diff_size, diff_shape)
     
 
-    def get_dict_df_diff(dict_recorded_info: dict, dict_new_info: dict) -> dict:
+    def get_dict_df_diff(
+        diff_rows: int, 
+        diff_cols: int, 
+        diff_shape: tuple,
+        diff_size: int, 
+        ) -> dict:
         """Helper func to return dict of dataframe differences."""
-        ## Get df diff info
-        diff_cols, diff_rows, diff_size, diff_shape = (
-            get_df_diff_info( dict_recorded_info, dict_new_info))
-
         diff_info_keys = (
             ('name', "df diff"),
             ('rows', diff_rows),
@@ -125,6 +126,43 @@ def print_df_changes(
             ('size', diff_size),
         )
         return aux_functions.create_dict(diff_info_keys)
+    
+
+    def get_dict_df_percent_diff(
+        dict_recorded_info: dict,
+        diff_rows: int,
+        diff_cols: int,
+        diff_shape: tuple,
+        diff_size: int,
+        ) -> dict:
+        """Helper function to return dictionary of percentages of dataframe differences."""
+        diff_percent_keys = (
+            'rows', 
+            'columns'
+        )
+
+    
+
+    def get_dicts_df_differences(dict_recorded_info, dict_new_info) -> tuple:
+        """Returns 2 dicts of data frame differences:
+            1. raw value differences
+            2. percentage differences
+        """
+        ## Get df diff info
+        diff_cols, diff_rows, diff_size, diff_shape = (
+            get_df_diff_info( dict_recorded_info, dict_new_info))
+
+        ## Dict raw differences
+        dict_raw_diff = get_dict_df_diff(diff_cols, diff_rows, diff_size, diff_shape)
+
+        ## Dict % diff
+        dict_percent_diff = get_dict_df_percent_diff(diff_cols, diff_rows, diff_size, diff_shape)
+
+
+
+        
+
+
     
 
     def get_df_dict_headers() -> dict:
