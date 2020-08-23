@@ -55,6 +55,7 @@ def create_dict( key_info: Tuple[ str, Any]) -> dict:
         new_dict[key] = info
     return new_dict
 
+
 ##########
 # Print new lines
 ##########
@@ -78,3 +79,4 @@ def get_max_colname_length(df, colname_header: str = "Column:") -> int:
     max_coltitle_length: int = len(
         max((df.columns, colname_header), key = len))
     return max_coltitle_length
+

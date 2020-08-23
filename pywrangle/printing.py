@@ -72,7 +72,7 @@ def _print_tuple_with_colname_spacing(
             spacing,
             val2,
         )
-        ## TODO: aux function for printing end spaces.
+
     aux_functions.print_lines(2)
     return 
 
@@ -179,3 +179,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

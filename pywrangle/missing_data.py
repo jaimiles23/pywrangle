@@ -63,9 +63,6 @@ def show_col_nulls(
     https://www.kaggle.com/jaimiles23/wine-tasting
 
     TODO:
-        - Refactor lambda expression for clarity
-        - Create auxiliary function to count total chars in data frame names.
-        - Use aux func & switch num_nulls & col name columns
         - Update testing documentation to be compliant with pytests
     """
 
