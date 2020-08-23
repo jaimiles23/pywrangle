@@ -144,10 +144,13 @@ def print_df_changes(
                 diff_val, recorded_val = dict_diff_info[k], dict_recorded_info[k]
                 val =  aux_functions.get_percent(diff_val / recorded_val)
             
-            except (TypeError):
+            except (TypeError):     # shape is tuple
                 val1 = aux_functions.get_percent(diff_val[0] / recorded_val[0])
                 val2 = aux_functions.get_percent(diff_val[1] / recorded_val[1])
                 val = (val1, val2)
+            
+            except (ZeroDivisionError):
+                val = 0
             
             dict_percent_diff_info[k] = val
         
@@ -178,7 +181,7 @@ def print_df_changes(
     dict_diff_info = get_dict_diff_info( dict_recorded_info, dict_new_info)
     
     ## Info on df % diffs
-    dict_percent_diff_info = get_dict_df_percent_diff(dict_recorded_info, dict_diff_info)
+    dict_percent_diff_info = get_dict_df_percent_diff( dict_recorded_info, dict_diff_info)
 
     ## Headers
     df_headers: dict = get_df_dict_headers()
