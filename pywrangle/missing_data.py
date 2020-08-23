@@ -39,7 +39,8 @@ except (ModuleNotFoundError):
 
 def show_col_nulls(
     df,
-    show_null_heatmap: bool = True,
+    show_null_heatmap: bool = False,
+    show_null_corr_matrix: bool = False,
 ) -> None:
     """
     Calculates number of null values in each column and prints result.
@@ -63,11 +64,7 @@ def show_col_nulls(
     https://www.kaggle.com/jaimiles23/wine-tasting
 
     TODO:
-        - Update testing documentation to be compliant with pytests
-        - May like to add corr matrix of NULL values - need to test!
-            - https://stats.stackexchange.com/questions/464663/how-to-calculate-nullity-correlation-matrix
-            - https://towardsdatascience.com/better-heatmaps-and-correlation-matrix-plots-in-python-41445d0f2bec
-            
+        - Update testing documentation to be compliant with pytests            
     """
 
 
@@ -85,7 +82,27 @@ def show_col_nulls(
         col_nulls.sort(key = lambda x: x[1], reverse = True)
         return col_nulls
     
-    
+
+    def get_null_corr_matrix(df, col_nulls: List[ Tuple[int, str]]) -> None:
+        """Prints Null correlation matrix for variables with Null values.
+        
+        - https://stats.stackexchange.com/questions/464663/how-to-calculate-nullity-correlation-matrix
+        
+        ## May like to improve readability with this link:
+        - https://towardsdatascience.com/better-heatmaps-and-correlation-matrix-plots-in-python-41445d0f2bec
+        """
+        ## Remove columns with no null values
+        for col, null in col_nulls:
+            if null == 0:
+                df.drop(
+                    col,
+                    axis = 1,
+                    inplace = True
+                )
+                print(f"{col} has {null} null values.")
+        df.isnull().corr()
+        
+
     ## Null values
     column_nulls = _count_column_nulls(df)
 
@@ -104,5 +121,10 @@ def show_col_nulls(
     ## Null heatmap
     if show_null_heatmap:
         sns.heatmap( df.isnull(), cbar = False)
+    
+    ## Correlation matrix
+    if show_col_nulls:
+        get_null_corr_matrix(df, column_nulls)
+    
     return
 
