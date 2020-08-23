@@ -93,31 +93,27 @@ def print_df_changes(
     def get_df_diff_info(dict_recorded_info: dict, dict_new_info: dict) -> tuple:
         """Returns tuple with info on differences b/w dfs.
         
-        Tuple: (diff_cols, diff_rows, diff_size, diff_shape).
+        Tuple: (diff_rows, diff_cols, diff_shape, diff_size).
         """
-        ## Columns
-        diff_cols =  dict_new_info['columns'] - dict_recorded_info['columns']
-
-        ## rows
+        ## Rows & Cols
         diff_rows = dict_new_info['rows'] - dict_recorded_info['rows']
-
-        ## Size
-        diff_size = dict_new_info['size'] - dict_recorded_info['size']
+        diff_cols =  dict_new_info['columns'] - dict_recorded_info['columns']
 
         ## Shape
         diff_shape = ( [dict_new_info['shape'][i] - 
             dict_recorded_info['shape'][i] for i in range(2)])
+        ## Size
+        diff_size = dict_new_info['size'] - dict_recorded_info['size']
 
-        return (diff_cols, diff_rows, diff_size, diff_shape)
-    
+        return (diff_rows, diff_cols, diff_shape, diff_size )
 
-    def get_dict_df_diff(
-        diff_rows: int, 
-        diff_cols: int, 
-        diff_shape: tuple,
-        diff_size: int, 
-        ) -> dict:
+
+    def get_dict_df_diff(dict_recorded_info, dict_new_info) -> dict:
         """Helper func to return dict of dataframe differences."""
+        ## get differences
+        diff_rows, diff_cols, diff_shape, diff_size  = (
+            get_df_diff_info( dict_recorded_info, dict_new_info))
+
         diff_info_keys = (
             ('name', "df diff"),
             ('rows', diff_rows),
@@ -139,6 +135,7 @@ def print_df_changes(
         diff_percent_keys = (
             'rows', 
             'columns'
+            ""
         )
 
     
@@ -149,8 +146,7 @@ def print_df_changes(
             2. percentage differences
         """
         ## Get df diff info
-        diff_cols, diff_rows, diff_size, diff_shape = (
-            get_df_diff_info( dict_recorded_info, dict_new_info))
+        
 
         ## Dict raw differences
         dict_raw_diff = get_dict_df_diff(diff_cols, diff_rows, diff_size, diff_shape)
