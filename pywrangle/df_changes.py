@@ -47,7 +47,6 @@ def record_df_info(df, _name: str = "before") -> dict:
         - name (state of the dict, before or after)
         - number of rows
         - number of columns
-        - shape of df
         - size of df
 
     recorded dataframe information is passed to compare_dfs()
@@ -64,7 +63,6 @@ def record_df_info(df, _name: str = "before") -> dict:
         ('name', _name),
         ('rows', len(df)),
         ('columns', len(df.columns)),
-        ('shape', df.shape),
         ('size', int(df.size)),
     )
     return aux_functions.create_dict(key_info)
@@ -94,32 +92,28 @@ def print_df_changes(
     def get_df_diff_info(dict_recorded_info: dict, dict_new_info: dict) -> tuple:
         """Returns tuple with info on differences b/w dfs.
         
-        Tuple: (diff_rows, diff_cols, diff_shape, diff_size).
+        Tuple: (diff_rows, diff_cols, diff_size).
         """
         ## Rows & Cols
         diff_rows = dict_new_info['rows'] - dict_recorded_info['rows']
         diff_cols =  dict_new_info['columns'] - dict_recorded_info['columns']
 
-        ## Shape
-        diff_shape = ( [dict_new_info['shape'][i] - 
-            dict_recorded_info['shape'][i] for i in range(2)])
         ## Size
         diff_size = dict_new_info['size'] - dict_recorded_info['size']
 
-        return (diff_rows, diff_cols, diff_shape, diff_size )
+        return (diff_rows, diff_cols, diff_size )
 
 
     def get_dict_diff_info(dict_recorded_info, dict_new_info) -> dict:
         """Returns dictionary of differences between recorded and new dataframes."""
         ## get differences
-        diff_rows, diff_cols, diff_shape, diff_size  = (
+        diff_rows, diff_cols, diff_size  = (
             get_df_diff_info( dict_recorded_info, dict_new_info))
         
         diff_info_keys = (
             ('name', "df diff"),
             ('rows', diff_rows),
             ('columns', diff_cols),
-            ('shape', diff_shape),
             ('size', diff_size),
         )
         return aux_functions.create_dict(diff_info_keys)
@@ -135,7 +129,6 @@ def print_df_changes(
         diff_percent_keys = (
             'rows', 
             'columns',
-            'shape',
             'size',
         )
 
@@ -143,12 +136,7 @@ def print_df_changes(
             try:
                 diff_val, recorded_val = dict_diff_info[k], dict_recorded_info[k]
                 val =  aux_functions.get_percent(diff_val / recorded_val)
-            
-            except (TypeError):     # shape is tuple
-                val0 = aux_functions.get_percent(diff_val[0] / recorded_val[0])
-                val1 = aux_functions.get_percent(diff_val[1] / recorded_val[1])
-                val = (val0, val1)
-            
+
             except (ZeroDivisionError):
                 val = '--'
             
@@ -168,7 +156,6 @@ def print_df_changes(
             ('name', 'df'),
             ('rows', 'num rows'),
             ('columns', 'num columns'),
-            ('shape', 'df.shape'),
             ('size', 'df.size'),
         )
         return aux_functions.create_dict(key_info)
