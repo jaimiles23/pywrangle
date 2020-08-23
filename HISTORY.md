@@ -1,5 +1,9 @@
 # History
 
+## version = "0.2.40"
+- refactored code for clarity
+- added display info to print_df_changes
+
 ## version = "0.2.1"
 - Created __init__ file for function imports
 - Documentation on importing pywrangle
