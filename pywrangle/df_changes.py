@@ -7,6 +7,9 @@
     Contains two methods that work in tandem:
     - record_df_info, to record information about the dataframe before a change.
     - print_df_changes, to print information about changes to dataframe since recorded info.
+
+TODO:
+    - Add Df diff row to print_df_diff
  ]
  */
 """
@@ -42,23 +45,27 @@ def record_df_info(df, _name: str = "before") -> dict:
     
     Information includes:
         - name (state of the dict, before or after)
-        - number of columns
         - number of rows
-        - size of df
+        - number of columns
         - shape of df
+        - size of df
 
     recorded dataframe information is passed to compare_dfs()
     to check differences between dataframes.
+
+    >>> old_df = pw.df_info(df)
+    >>> ... # some change to df
+    >>> pw.print_df_changes(df, old_df)
     """
     if not isinstance(df, pd.DataFrame):
         raise Exception("Must pass pandas dataframe object.")
     
     key_info = (
         ('name', _name),
-        ('columns', len(df.columns)),
         ('rows', len(df)),
-        ('size', int(df.size)),
+        ('columns', len(df.columns)),
         ('shape', df.shape),
+        ('size', int(df.size)),
     )
     return aux_functions.create_dict(key_info)
 
@@ -77,6 +84,10 @@ def print_df_changes(
     Creates dicts of differences by calling 2 helper method:
         - get_df_diff_info
         - get_dict_df_diff
+    
+    >>> old_df = pw.df_info(df)
+    >>> ... # some change to df
+    >>> pw.print_df_changes(df, old_df)
     """
 
     def get_df_diff_info(dict_recorded_info: dict, dict_new_info: dict) -> tuple:
@@ -110,10 +121,10 @@ def print_df_changes(
 
         diff_info_keys = (
             ('name', "df diff"),
-            ('columns', diff_cols),
             ('rows', diff_rows),
+            ('columns', diff_cols),
+            ('shape', diff_shape),
             ('size', diff_size),
-            ('shape', diff_shape)
         )
         return aux_functions.create_dict(diff_info_keys)
     
@@ -126,10 +137,10 @@ def print_df_changes(
         """
         key_info = (
             ('name', 'df'),
-            ('columns', 'Num columns'),
             ('rows', 'Num rows'),
+            ('columns', 'Num columns'),
+            ('shape', 'df.shape'),
             ('size', 'df.size'),
-            ('shape', 'df.shape')
         )
         return aux_functions.create_dict(key_info)
 
