@@ -11,6 +11,8 @@
 - Reference aux_functions.py `is_negative` and `count_whole_digits`
   - NOTE: This will also affect the max length per columns, so need to incorporate both.
 
-
+### Missing data
+- null_correlation_matrix() function currently overwrites dataframe inplace. Should construct a new dataframe with the columns that contain nulls. 
+- Add print statement
 
 
