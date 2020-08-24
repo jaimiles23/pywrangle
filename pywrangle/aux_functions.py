@@ -100,18 +100,6 @@ def is_negative(number: Union[int, float]) -> bool:
     return number < 0
 
 
-# def get_dicts_has_negative(dict_list: dict) -> dict:
-#     """Returns dictionary indicating if each key in the list of dicts has a negative value."""
-#     negative_dict = dict()
-    
-#     for k, v in in dict_list[0].items():
-
-
-## NOTE: have to do the same for tuples, I THINk
-## OR, I CAN LOOK INTO TUPLE METHOD AND TRY TO COMBINE IT WITH DICT METHOD!?
-
-## Probably publish documentaiton first.
-
 ##########
 # Count whole digits
 ##########

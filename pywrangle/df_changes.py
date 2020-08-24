@@ -78,7 +78,7 @@ def print_df_changes(
         show_col_names: bool = False
     ) -> None:
     """
-    Differences between dataframe and previously recorded information.
+    Prints differences between dataframe and previously recorded information.
     
     Creates dicts of differences by calling 2 helper method:
         - get_df_diff_info
