@@ -87,7 +87,7 @@ def show_col_nulls(
         """Prints Null correlation matrix for variables with Null values.
         
         - https://stats.stackexchange.com/questions/464663/how-to-calculate-nullity-correlation-matrix
-        
+
         ## May like to improve readability with this link:
         - https://towardsdatascience.com/better-heatmaps-and-correlation-matrix-plots-in-python-41445d0f2bec
         """
@@ -123,7 +123,7 @@ def show_col_nulls(
         sns.heatmap( df.isnull(), cbar = False)
     
     ## Correlation matrix
-    if show_col_nulls:
+    if show_null_corr_matrix:
         get_null_corr_matrix(df, column_nulls)
     
     return
