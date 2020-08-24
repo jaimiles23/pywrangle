@@ -24,13 +24,14 @@ TODO:
 
 
     - Create documentation:
+        https://www.mkdocs.org/
+        https://docs.readthedocs.io/en/latest/intro/getting-started-with-mkdocs.html
         https://packaging.python.org/tutorials/creating-documentation/
     - Add tests:
         https://python-packaging.readthedocs.io/en/latest/testing.html
  ]
  */
 """
-
 
 ##########
 # Imports
@@ -44,7 +45,7 @@ from setuptools import setup, find_packages
 ##########
 
 name = "pywrangle"
-version = "0.2.51"
+version = "0.2.52"
 description = "Auxiliary functions to clean pandas data frames"
 author = "Jai Miles"
 author_email = "jaimiles23@gmail.com"
