@@ -92,15 +92,14 @@ def show_col_nulls(
         - https://towardsdatascience.com/better-heatmaps-and-correlation-matrix-plots-in-python-41445d0f2bec
         """
         ## Remove columns with no null values
+        null_cols = []
         for col, null in col_nulls:
             if null == 0:
-                df.drop(
-                    col,
-                    axis = 1,
-                    inplace = True
-                )
                 print(f"{col} has {null} null values.")
-        df.isnull().corr()
+            else:
+                null_cols.append(col)
+        df_null = df[null_cols]
+        print(df_null.isnull().corr())
         
 
     ## Null values
