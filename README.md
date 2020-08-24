@@ -27,10 +27,12 @@ Master function to clean string columns using col_strcase_tuple key.
 
 col_strcase_tuple is a tuple of tuples representing the column names to be cleaned
 and an ordinal number for the pandas str cleaning method to use.
+
 Ordinal case control structure to determine case:
-0 : lower_case
-1 : title_case
-2 : upper_case
+
+    0 : lower_case
+    1 : title_case
+    2 : upper_case
 
 ```python
 df_winereviews = pd.read_csv("../input/wine-reviews/winemag-data_first150k.csv")
@@ -65,10 +67,11 @@ The dataframe change functions `record_df_info` and `print_df_changes` are used 
 Records information about the dataframe.
     
 Information includes:
-    - name (state of the dict, before or after)
-    - number of rows
-    - number of columns
-    - size of df
+
+- name (state of the dict, before or after)
+- number of rows
+- number of columns
+- size of df
 
 recorded dataframe information is passed to compare_dfs()
 to check differences between dataframes.
