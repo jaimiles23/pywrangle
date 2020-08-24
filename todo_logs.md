@@ -16,3 +16,7 @@
 - Add print statement
 
 
+### Further notebook exploration
+- https://www.kaggle.com/esmadmrr/data-preprocessing#Missing-Value-Analysis
+- https://www.kaggle.com/aziztas1903/data-science-basics-about-winemag-dataset
+- https://www.kaggle.com/shawndddjjj/wine-reviews-seaborn-text-anlaysis 

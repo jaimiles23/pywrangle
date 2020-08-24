@@ -28,6 +28,7 @@ import pandas as pd
 try:
     import printing
     import aux_functions
+
 except (ModuleNotFoundError):
     from pywrangle import printing
     from pywrangle import aux_functions
@@ -92,6 +93,7 @@ def show_col_nulls(
         - https://towardsdatascience.com/better-heatmaps-and-correlation-matrix-plots-in-python-41445d0f2bec
         """
         ## Remove columns with no null values
+        
         null_cols = []
         for col, null in col_nulls:
             if null == 0:
@@ -99,7 +101,9 @@ def show_col_nulls(
             else:
                 null_cols.append(col)
         df_null = df[null_cols]
+        aux_functions.print_lines(1)
         print(df_null.isnull().corr())
+        aux_functions.print_lines(1)
         
 
     ## Null values
