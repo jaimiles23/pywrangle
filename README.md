@@ -1,4 +1,14 @@
 # Pywrangle
+- [Pywrangle](#pywrangle)
+  - [About](#about)
+  - [Install](#install)
+  - [Import](#import)
+  - [Uses](#uses)
+    - [String cleaning](#string-cleaning)
+    - [Missing Data](#missing-data)
+    - [Dataframe changes](#dataframe-changes)
+
+## About
 Library for Python data wrangling to streamline string cleaning, identifying missing data, and tracking dataframe changes. Available on PyPI [here](https://pypi.org/project/pywrangle/)
 
 
@@ -19,6 +29,8 @@ Per convention with Python Analysis modules, import pywrangle as follows:
 ```
 >>> import pywrangle as pw
 ```
+
+## Uses
 
 ### String cleaning
 > def clean_str_columns(df: object, col_strcase_tuple: tuple) -> df:
