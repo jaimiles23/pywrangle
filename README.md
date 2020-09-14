@@ -68,7 +68,7 @@ Calculates number of null values in each column and prints result.
 ### Dataframe changes
 The dataframe change functions `record_df_info` and `print_df_changes` are used in conjunction.
 ```python
->>> old_df = pw.df_info(df)
+>>> old_df = pw.record_df_info(df)
 >>> ... # some change to df
 >>> pw.print_df_changes(df, old_df)
 ```
