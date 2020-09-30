@@ -53,7 +53,7 @@ col_strcase_tuple = (
         ("description", 0)
         ("province", 1),
     )
-df_winereviews = clean_str_columns( df_winereviews, col_strcase_tuple)
+df_winereviews = pw.clean_str_columns( df_winereviews, col_strcase_tuple)
     column name:		str.clean_method
     country     		upper
     description 		lower
