@@ -8,6 +8,8 @@
     - [Missing Data](#missing-data)
     - [Dataframe changes](#dataframe-changes)
 
+---
+
 ## About
 Library for Python data wrangling to streamline string cleaning, identifying missing data, and tracking dataframe changes. Available on PyPI [here](https://pypi.org/project/pywrangle/)
 

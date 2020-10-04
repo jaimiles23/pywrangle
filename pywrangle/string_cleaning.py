@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-08-20 16:08:02
- * @modify date 2020-08-20 16:08:02
+ * @modify date 2020-10-01 21:15:57
  * @desc [
     Contains functions to clean string data.
 
@@ -10,6 +10,7 @@
  ]
  */
 """
+
 
 ##########
 # Imports
@@ -75,10 +76,10 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int], spacing: s
         Cleans strings in dataframe for passed column name.
         
         Ordinal case control structure to determine sentence case:
-        NOTE: case control structure for case is ostentatious. Re-try.
-        0 : lower_case
-        1 : title_case
-        2 : upper_case
+        NOTE: case control structure for sentence case is ostentatious. Re-try.
+            0 : lower_case
+            1 : title_case
+            2 : upper_case
 
         NOTE: 
         df not accepting pandas str methods as first class functions.
@@ -147,3 +148,16 @@ def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int], spacing: s
         
     aux_functions.print_lines(1)
     return df
+
+
+def clean_all_str_cols(df: object, case: int = 0) -> object:
+    """Cleans all string columns in dataframe using passed case.
+
+    Args:
+        df (dataframe): dataframe to clean
+        case (int, optional): represents sentence case to use in cleaning. Defaults to 0.
+
+    Returns:
+        object: (dataframe): Cleaned dataframe
+    """
+    pass
