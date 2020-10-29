@@ -3,6 +3,7 @@
   - [About](#about)
   - [Install](#install)
   - [Import](#import)
+  - [Contributing](#contributing)
   - [Uses](#uses)
     - [String cleaning](#string-cleaning)
     - [Missing Data](#missing-data)
@@ -11,7 +12,16 @@
 ---
 
 ## About
-Library for Python data wrangling to streamline string cleaning, identifying missing data, and tracking dataframe changes. Available on PyPI [here](https://pypi.org/project/pywrangle/)
+PyWrangle is an open-source Python library for data wrangling. Wikipedia defines data wrangling as follows:
+> is the process of transforming and mapping data from one "raw" data form into another format with the intent of making it more appropriate and valuable for a variety of downstream purposes such as analytics
+
+PyWrangle currently supports:
+- string cleaning
+- identifying missing data
+- tracking dataframe changes.
+
+
+PyWrangle is available on PyPI [here](https://pypi.org/project/pywrangle/)
 
 
 ## Install
@@ -31,6 +41,10 @@ Per convention with Python Analysis modules, import pywrangle as follows:
 ```
 >>> import pywrangle as pw
 ```
+
+## Contributing
+Like all developers, I _love_ open source. Please reference to the contributing guidelines [here]()
+<!-- TODO: ADD LINK TO CONTRIbuTING GUIDELINES> -->
 
 ## Uses
 
