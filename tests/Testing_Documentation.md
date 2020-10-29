@@ -16,8 +16,10 @@ python -m pip install -U pytest
 
 
 ## Naming convention
-Pytest uses files that include test_* and *_test in their names. Per convention, all tests are prefixed with:
-> test_*
+Pytest uses files that include test_*.py and *_test.py in their names. Per convention, all tests are prefixed with:
+> test_*.py
+
+Additionally, test functions must also follow the "test_" nomenclature to be collected by pytest.
 
 
 ## Test storage
@@ -47,6 +49,6 @@ To run all tests, navigate to the cloned repository directory; the parent dir :
 ```
 and run the pytest command:
 ```
-pytest
+pytest tests
 ```
 

@@ -40,3 +40,6 @@ df_test = pd.DataFrame(data, columns = df_cols)
 ##########
 # Test dataframes
 ##########
+
+def test_case():
+    assert 42 == 42
