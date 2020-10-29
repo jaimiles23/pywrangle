@@ -24,7 +24,6 @@ from typing import (
 import numpy as np
 import pandas as pd
 
-
 try:
     import aux_functions
     import printing
@@ -40,7 +39,7 @@ except (ModuleNotFoundError):
 
 def clean_str_columns(df: object, col_strcase_tuple: Tuple[str, int], spacing: str = "\t" * 2) -> "DataFrame":
     """Master function to clean string columns using col_strcase_tuple key.
-
+    
     col_strcase_tuple is a tuple of tuples representing the column names to be cleaned
     and an ordinal number for the pandas str cleaning method to use.
     Ordinal case control structure to determine case:
