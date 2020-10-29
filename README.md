@@ -12,7 +12,7 @@
 ---
 
 ## About
-PyWrangle is an open-source Python library for data wrangling. Wikipedia defines data wrangling as follows:
+PyWrangle is an open-source Python library for data wrangling. Wikipedia defines [data wrangling](https://en.wikipedia.org/wiki/Data_wrangling) as follows:
 > is the process of transforming and mapping data from one "raw" data form into another format with the intent of making it more appropriate and valuable for a variety of downstream purposes such as analytics
 
 PyWrangle currently supports:
@@ -43,7 +43,7 @@ Per convention with Python Analysis modules, import pywrangle as follows:
 ```
 
 ## Contributing
-Like all developers, I _love_ open source. Please reference to the contributing guidelines [here]()
+Like all developers, I _love_ open source. Please reference to the contributing guidelines [here](https://github.com/jaimiles23/pywrangle/blob/master/CONTRIBUTING.md)
 <!-- TODO: ADD LINK TO CONTRIbuTING GUIDELINES> -->
 
 ## Uses
