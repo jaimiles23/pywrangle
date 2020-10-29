@@ -24,8 +24,9 @@ Additionally, test functions must also follow the "test_" nomenclature to be col
 
 ## Test storage
 Tests are stored outside of the application code. This has the following benefits:
+- Tests are not included in package deployment, keeping the library lightweight.
 - Central location for all tests.
-- Tests to be run against a pip installed package.
+- Tests can be run against a pip installed package.
 
 ## Testing
 To run all tests, navigate to the cloned repository directory; the parent dir :
