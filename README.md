@@ -40,7 +40,7 @@ Per convention with Python Analysis modules, import pywrangle as follows:
 ```
 
 ## Contributing
-Like all developers, I _love_ open source. Please reference to the contributing guidelines [here](https://github.com/jaimiles23/pywrangle/blob/master/CONTRIBUTING.md)
+Like all developers, I _love_ open source. Please reference the contributing guidelines [here](https://github.com/jaimiles23/pywrangle/blob/master/CONTRIBUTING.md)
 <!-- TODO: ADD LINK TO CONTRIbuTING GUIDELINES> -->
 
 ## Documentation

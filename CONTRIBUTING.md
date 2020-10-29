@@ -8,7 +8,7 @@ To avoid excessive scope, please reference the intent this library.
 >> is the process of transforming and mapping data from one "raw" data form into another format with the intent of making it more appropriate and valuable for a variety of downstream purposes such as analytics
 
 
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+Please note that we have a code of conduct and it should be followed in all interactions with the project.
 
 ## Pull Request Process
 
