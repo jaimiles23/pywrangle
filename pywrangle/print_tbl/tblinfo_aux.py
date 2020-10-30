@@ -161,7 +161,7 @@ class Aux_TblInfo():
 
         ## Allowed Width
         try: allowed_width = os.get_terminal_size().columns 
-        except OSError: allowed_width = shutil.get_terminal_size().columns
+        except OSError: allowed_width = shutil.get_terminal_size().columns      # 3rd party app may block os method
         allowed_width *= self.ALLOWED_TERM_WIDTH
         
         if (
