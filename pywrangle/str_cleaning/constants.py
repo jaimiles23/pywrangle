@@ -12,8 +12,8 @@ import pandas as pd
 # Dictionary of tuple keys indicating what str.clean method to use
 
 CASE_TO_CLEAN = {
-    ('l', 0)    :   str.lower,
-    ('t', 1)    :   str.title,
-    ('u', 2)    :   str.upper,
+    'l'    :   str.lower,
+    't'    :   str.title,
+    'u'    :   str.upper,
 }
 

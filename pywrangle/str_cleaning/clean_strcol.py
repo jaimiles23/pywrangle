@@ -15,7 +15,7 @@ from .constants import CASE_TO_CLEAN
 
 
 ##########
-# Clean column function 
+# Clean string column
 ##########
 
 def clean_strcol(
