@@ -26,6 +26,7 @@
 ##########
 import os
 import math
+import shutil
 
 try:
     from script_objects import Union, Tuple
@@ -158,8 +159,11 @@ class Aux_TblInfo():
             return prop_col_width
 
 
-        ## Allowed
-        allowed_width = os.get_terminal_size().columns * self.ALLOWED_TERM_WIDTH
+        ## Allowed Width
+        try: allowed_width = os.get_terminal_size().columns 
+        except OSError: allowed_width = shutil.get_terminal_size().columns
+        allowed_width *= self.ALLOWED_TERM_WIDTH
+        
         if (
         self.width_cols_total + self.non_col_space <= allowed_width
         or self.markdown
