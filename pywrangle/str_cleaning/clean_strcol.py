@@ -1,5 +1,5 @@
 """
-Function used to clean column
+clean_strcol: function to clean string column
 """
 
 ##########
@@ -11,14 +11,14 @@ from typing import Union
 import numpy as np
 import pandas as pd
 
-from constants import CASE_TO_CLEAN
+from .constants import CASE_TO_CLEAN
 
 
 ##########
 # Clean column function 
 ##########
 
-def clean_col(
+def clean_strcol(
     df: "dataframe", 
     colname: str, 
     case: Union[str, int] = 'l', 
@@ -48,11 +48,12 @@ def clean_col(
     if trim:
         df[colname] = df[colname].str.strip()
     
-    if case in CASE_TO_CLEAN.keys()[0]:
+    case_keys = list(CASE_TO_CLEAN.keys())
+    if case in case_keys[0]:
         df[colname] = df[colname].str.lower()
-    elif case in CASE_TO_CLEAN.keys()[1]:
+    elif case in case_keys[1]:
         df[colname] = df[colname].str.title()
-    elif case in CASE_TO_CLEAN.keys()[2]:
+    elif case in case_keys[2]:
         df[colname] = df[colname].str.upper()
     
     return df
