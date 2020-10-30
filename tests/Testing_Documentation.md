@@ -1,5 +1,6 @@
 - [PyTest](#pytest)
   - [Installation](#installation)
+  - [Use](#use)
   - [Naming convention](#naming-convention)
   - [Test storage](#test-storage)
   - [Testing](#testing)
@@ -12,6 +13,12 @@ PyWrangle uses the pytest module. Pytest is a light framework that scales well f
 Pytest can be installed with pip
 ```
 python -m pip install -U pytest
+```
+
+## Use
+Pytest is run through the cmd. Navigate to the directory and run:
+```
+python -m pytest
 ```
 
 
