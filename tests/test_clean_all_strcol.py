@@ -9,18 +9,14 @@ Runs tests for clean_strcol() function in str_cleaning dir.
 import pathlib
 import os
 import pandas as pd
-import numpy as np
-from context import pywrangle as pw 
+import numpy as numpy
 
 try:
-    from context import pywrangle as pw 
-except ModuleNotFoundError: 
+    from context import pywrangle as pw
+
+except ModuleNotFoundError:
     from .context import pywrangle as pw
-
-
-
-# print(pywrangle)
-
+        
 
 ##########
 # Create df

@@ -13,7 +13,7 @@ import numpy as np
 
 try:
     from context import pywrangle as pw 
-except ModuleNotFoundError: 
+except ModuleNotFoundError:
     from .context import pywrangle as pw
 
 
