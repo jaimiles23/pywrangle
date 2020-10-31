@@ -13,6 +13,8 @@
 import pandas as pd
 import numpy as np
 
+from .constants import DF_KEYS
+
 
 ##########
 # Record df info func
@@ -32,8 +34,8 @@ def record_df_info( df: 'dataframe', name: str = 'before') -> dict:
         raise Exception("Must pass pandas dataframe object!")
 
     return {
-        'name'  :   name,
-        'rows'  :   len(df),
-        'cols'  :   len(df.columns),
-        'size'  :   int(df.size)
+        DF_KEYS[0]  :   name,
+        DF_KEYS[1]  :   len(df),
+        DF_KEYS[2]  :   len(df.columns),
+        DF_KEYS[3]  :   int(df.size)
     }
