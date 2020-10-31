@@ -1,17 +1,5 @@
-"""/**
- * @author [Jai Miles]
- * @email [jaimiles23@gmail.com]
- * @create date 2020-08-20 23:42:36
- * @modify date 2020-08-22 15:16:38
- * @desc [
-    Contains two methods that work in tandem:
-    - record_df_info, to record information about the dataframe before a change.
-    - print_df_changes, to print information about changes to dataframe since recorded info.
-
-TODO:
-    - Add Df diff row to print_df_diff
- ]
- */
+"""
+Functions to track dataframe changes
 """
 
 ##########
@@ -19,21 +7,12 @@ TODO:
 ##########
 
 from typing import (
-    Any, Tuple
+    Union
 )
 
-
-import numpy as np
 import pandas as pd
-
-
-try:
-    import printing
-    import aux_functions
-
-except (ModuleNotFoundError):
-    from pywrangle import printing
-    from pywrangle import aux_functions
+import numpy as np
+from ..print_tbl.table_class import TableInfo
 
 
 ##########
