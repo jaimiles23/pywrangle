@@ -162,18 +162,16 @@ class TableInfo(Aux_TblInfo):
 		return None
 	
 
-	def add_entries(self, entries: Iterator, user_objects: bool = False) -> None:
+	def add_entries(self, *args: Iterator, user_objects: bool = False) -> None:
 		"""Calls add_entry() method on iterable.
 
 		Args:
 			entries (Iterator): Iterable of entries to add.
 			user_objects (bool, optional): Indicates if entries are user defined objects. Defaults to False.
 		"""
-		if not hasattr(entries, '__iter__'):
-			raise Exception("Must pass Iterator!")
 
-		for entry in entries:
-			self.add_entry(entry, user_object= user_objects)
+		for a in args:
+			self.add_entry(a, user_object= user_objects)
 		return None
 
 
