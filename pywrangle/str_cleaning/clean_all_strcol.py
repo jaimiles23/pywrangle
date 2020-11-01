@@ -32,7 +32,7 @@ def clean_all_strcols(
     Args:
         df (dataframe): Dataframe to clean
         col_cases (Union[ list, tuple, None]): Names of the columns to clean. Defaults to None.
-        columns (Union[list, tuple, None], optional): col_casess to use with the columns. Defaults to None.
+        columns (Union[list, tuple, None], optional): col_cases to use with the columns. Defaults to None.
         trim (bool, optional): If should trim the columns. Defaults to True.
         all_strcols (bool, optional): If col_cases & column names are not provided, clean all string columns
         default_clean_case (Union[ str, None]): Sentence col_cases to default string column cleaning. Defaults to None.

@@ -16,38 +16,6 @@ from ..print_tbl.table_class import TableInfo
 
 
 ##########
-# Record df info
-##########
-
-def record_df_info(df, _name: str = "before") -> dict:
-    """Records information about the dataframe.
-    
-    Information includes:
-        - name (state of the dict, before or after)
-        - number of rows
-        - number of columns
-        - size of df
-
-    recorded dataframe information is passed to compare_dfs()
-    to check differences between dataframes.
-
-    >>> old_df = pw.df_info(df)
-    >>> ... # some change to df
-    >>> pw.print_df_changes(df, old_df)
-    """
-    if not isinstance(df, pd.DataFrame):
-        raise Exception("Must pass pandas dataframe object.")
-    
-    key_info = (
-        ('name', _name),
-        ('rows', len(df)),
-        ('columns', len(df.columns)),
-        ('size', int(df.size)),
-    )
-    return aux_functions.create_dict(key_info)
-
-
-##########
 # Print df changes
 ##########
 
