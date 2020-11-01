@@ -225,7 +225,7 @@ class TableInfo(Aux_TblInfo):
 		## Checks markdown
 		self._markdown_on(markdown, md_filename)
 		if not self.markdown:
-			print('\n' * 1)	# space @ beginning
+			print('\n' * 1, end = '')	# space @ beginning
 		else:
 			self.writemode = write_type
 		

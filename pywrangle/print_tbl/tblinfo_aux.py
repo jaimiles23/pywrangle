@@ -341,7 +341,7 @@ class Aux_TblInfo():
             while num_printed != len(self.tbl_keys):
                 row_records, num_printed = print_row(row_records, num_printed)
         
-        self._print('\n' * 2)
+        self._print('\n' * 1)
         return None
 
 
