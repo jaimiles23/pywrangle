@@ -48,6 +48,13 @@ def test_clean_nonstrcols():
     assert df1.equals(df2)
 
 
+def test_clean_mixedcols():
+    """Test that doesn't break when running in tests. Must manually check output."""
+    df1, df2 = (create_df.create_mixed_df_size(10, 10) for _ in range(2))
+    df2 = pw.clean_all_strcols(df2, trim = False)
+
+
+
 ##########
 # Main
 ##########
@@ -55,3 +62,4 @@ def test_clean_nonstrcols():
 if __name__ == "__main__":
     test_clean_all_strcols()
     test_clean_nonstrcols()
+    test_clean_mixedcols()
