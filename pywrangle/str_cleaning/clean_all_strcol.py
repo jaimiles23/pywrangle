@@ -54,7 +54,7 @@ def clean_all_strcols(
         raise Exception("Number of columns must match number of cases provided!")
     
     ## Info table to print
-    tbl_strcleaning_keys = ('Column', 'Is Str Column', 'Cleaning Method')
+    tbl_strcleaning_keys = ('Column', 'Is Str Col', 'Clean Method')
     tbl_strcleaning = TableInfo(tbl_strcleaning_keys)
 
     ## Iterate through columns.
@@ -64,7 +64,7 @@ def clean_all_strcols(
         if name not in df.columns:
             raise Exception(f"{name} not in DF colnames!\n{df.columns}")
 
-        is_str_col = isinstance(df.name.dtype, (pd.StringDtype, np.object))
+        is_str_col = df[name].dtype == (object)
         if is_str_col:
             df = clean_strcol(df, name, case, trim = trim)
             clean = CASE_TO_CLEAN[case].__name__
