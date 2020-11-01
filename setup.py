@@ -97,7 +97,9 @@ setup_args = dict(
 install_requires = [
     'pandas >= 1.0.3',
     'numpy >= 1.14.4',
-    'seaborn >= 0.9.0'
+    'fuzzywuzzy >= 0.18.0',
+    'python-levenshtein >= 0.12.0',
+    'metaphone >= 0.6'
 ]
 
 

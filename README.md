@@ -25,6 +25,9 @@ PyWrangle is available on PyPI [here](https://pypi.org/project/pywrangle/)
 - Python 3.6+
 - numpy
 - pandas
+- fuzzywuzzy
+- python-levenshtein
+- metaphone
 
 To install pywrangle, use pip:
 
