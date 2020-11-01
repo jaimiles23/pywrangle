@@ -10,27 +10,17 @@ import pandas as pd
 import numpy as numpy
 
 try:
-    from context import pywrangle as pw
+    from context import (
+        pywrangle as pw, 
+        create_df
+        )
 
 except ModuleNotFoundError:
-    from .context import pywrangle as pw
+    from .context import (
+        pywrangle as pw, 
+        create_df
+        )
         
-
-##########
-# Create df
-##########
-
-def create_df() -> "dataframe":
-    """Returns test dataframe.
-    """
-    data = [
-        ['Cat', 'Python', 'The'],
-        ['doG', 'r', 'A'],
-        ['biRd', 'SQL', None]
-    ]
-    columns = ('animals', 'languages', 'determiners')
-    df = pd.DataFrame(data=data, columns=columns)
-    return df
 
 
 ##########
@@ -40,8 +30,7 @@ def create_df() -> "dataframe":
 def test_clean_all_strcols():
     """Tests output for clean_str_col against the 'animals' column
     """
-    df1 = create_df()
-    df2 = create_df()
+    df1, df2 = (create_df.create_str_df1() for _ in range(2))
 
     for col in df1.columns:
         df1[col] = df1[col].str.lower()

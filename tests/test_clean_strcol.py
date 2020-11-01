@@ -10,30 +10,16 @@ import pandas as pd
 import numpy as np
 
 try:
-    from context import pywrangle as pw 
+    from context import (
+        pywrangle as pw, 
+        create_df
+        )
+
 except ModuleNotFoundError:
-    from .context import pywrangle as pw
-
-
-
-# print(pywrangle)
-
-
-##########
-# Create df
-##########
-
-def create_df() -> "dataframe":
-    """Returns test dataframe.
-    """
-    data = [
-        ['Cat', 'Python', 'The'],
-        ['doG', 'r', 'A'],
-        ['biRd', 'SQL', None]
-    ]
-    columns = ('animals', 'languages', 'determiners')
-    df = pd.DataFrame(data=data, columns=columns)
-    return df
+    from .context import (
+        pywrangle as pw, 
+        create_df
+        )
 
 
 ##########
@@ -43,8 +29,7 @@ def create_df() -> "dataframe":
 def test_clean_strcol():
     """Tests output for clean_str_col against the 'animals' column
     """
-    df1 = create_df()
-    df2 = create_df()
+    df1, df2 = (create_df.create_str_df1() for _ in range(2))
 
     CASE_LIST = ['l', 't', 'u']
     for i in range(len(CASE_LIST)):
