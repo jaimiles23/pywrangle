@@ -34,7 +34,7 @@ def test_record_df_info():
 
     print(df_info)
     assert df_info == {
-        'name'  :   'before',
+        'name'  :   None,
         'cols'  :   10,
         'rows'   :   20,
         'size'  :   200
