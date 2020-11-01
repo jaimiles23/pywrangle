@@ -20,6 +20,7 @@ import numpy as np
 
 from .constants import DF_KEYS
 from .record_df_info import record_df_info
+from ..print_tbl.table_class import TableInfo
 
 
 ##########
@@ -49,6 +50,14 @@ def print_df_info(
             raise Exception("Must pass pandas DataFrame or saved df_info!")
     
     ## Create table keys
+    tbl_dfinfo = TableInfo(DF_KEYS)
+
+    ## add values to table
+    for a in args:
+        if not isinstance(a, pd.DataFrame):
+            
+
+
     
 
     ## Add Tables
