@@ -7,6 +7,7 @@
 ##########
 # Imports
 ##########
+from typing import Union
 
 import pandas as pd
 import numpy as np
@@ -18,15 +19,18 @@ from .constants import DF_KEYS
 # Record df info func
 ##########
 
-def record_df_info( df: 'dataframe', name: str = 'before') -> dict:
+def record_df_info( df: 'dataframe', name: Union[str, int] = None) -> dict:
     """Records information about the dataframe, including name, cols, rows, and size.
 
     Args:
         df (dataframe): Dataframe to recor
-        name (str, optional): Name of the dataframe for comparison. Defaults to 'before'.
-
+        name (Union[str, int], optional): Name of the dataframe for comparison. Defaults to None
     Returns:
         dict: Containing df info.
+    
+    NOTE:
+    - Users may pre-emptively record a df & name it w/ this function. 
+    - The dict can then be passed to print_df_info(), and the name will be preserved.
     """
     if not isinstance(df, pd.DataFrame):
         raise Exception("Must pass pandas dataframe object!")
