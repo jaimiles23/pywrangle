@@ -3,8 +3,8 @@
 
 DF_KEYS = (
     'name',
-    'rows',
     'cols',
+    'rows',
     'size'
 )
 

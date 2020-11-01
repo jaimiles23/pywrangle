@@ -33,7 +33,7 @@ def record_df_info( df: 'dataframe', name: str = 'before') -> dict:
 
     return {
         DF_KEYS[0]  :   name,
-        DF_KEYS[1]  :   len(df),
-        DF_KEYS[2]  :   len(df.columns),
+        DF_KEYS[1]  :   len(df.columns),
+        DF_KEYS[2]  :   len(df),
         DF_KEYS[3]  :   int(df.size)
     }
