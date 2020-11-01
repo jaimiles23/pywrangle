@@ -28,7 +28,7 @@ except ModuleNotFoundError:
 def test_print_df_info():
     """Tests printing dataframe information.
     """
-    df1, df2, df3, df4, df5 = (create_df.create_size_df(i * 10, i * 20) for i in range(1, 6))
+    df1, df2, df3, df4, df5 = (create_df.create_int_df_size(i * 10, i * 20) for i in range(1, 6))
 
     ## Compare 2 dfs
     pw.print_df_info(df2, df1)

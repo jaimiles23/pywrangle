@@ -29,7 +29,7 @@ except ModuleNotFoundError:
 
 def test_record_df_info():
     """Tests recording dataframe information."""
-    df = create_df.create_size_df(10, 20)
+    df = create_df.create_int_df_size(10, 20)
     df_info = pw.record_df_info(df)
 
     print(df_info)
