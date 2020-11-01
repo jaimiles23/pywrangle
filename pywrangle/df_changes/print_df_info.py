@@ -56,7 +56,7 @@ def print_df_info(
         if not isinstance(a, dict):
             a = record_df_info(a)
         
-        tbl_df_info.add_entry(df_info)
+        tbl_df_info.add_entry(a)
 
     ## Calculate difference value, if applicable
     if compare_dfs and len(args) > 1:
