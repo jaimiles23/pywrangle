@@ -56,8 +56,8 @@ def clean_all_strcols(
         raise Exception("Number of columns must match number of cases provided!")
     
     ## Create table to print information
-    tbl_keys = ('Column', 'String Cleaning')
-    tbl = TableInfo(tbl_keys)
+    tbl_strcleaning_keys = ('Column', 'String Cleaning')
+    tbl_strcleaning = TableInfo(tbl_strcleaning_keys)
 
     ## Iterate through columns.
     for info in zip(columns, col_cases):
@@ -66,7 +66,7 @@ def clean_all_strcols(
         df = clean_strcol(df, name, case, trim = trim)
 
         entry = (name, CASE_TO_CLEAN[case].__name__)
-        tbl.add_entry(entry)
+        tbl_strcleaning.add_entry(entry)
     
-    tbl.print_info()
+    tbl_strcleaning.print_info()
     return df
