@@ -6,8 +6,6 @@ Runs tests for clean_strcol() function in str_cleaning dir.
 # Imports
 ##########
 
-import pathlib
-import os
 import pandas as pd
 import numpy as np
 
