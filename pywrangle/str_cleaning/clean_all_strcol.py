@@ -24,8 +24,7 @@ def clean_all_strcols(
     columns: Union[list, tuple, None] = None, 
     col_cases: Union[ list, tuple, None] = None, 
     trim: bool = True,
-    all_strcols: bool = True,
-    default_clean_case: Union[ str, None] = None
+    clean_case: str = 'l'
     ) -> 'dataframe':
     """Cleans string columns in dataframe.
 
@@ -34,38 +33,45 @@ def clean_all_strcols(
         col_cases (Union[ list, tuple, None]): Names of the columns to clean. Defaults to None.
         columns (Union[list, tuple, None], optional): col_cases to use with the columns. Defaults to None.
         trim (bool, optional): If should trim the columns. Defaults to True.
-        all_strcols (bool, optional): If col_cases & column names are not provided, clean all string columns
-        default_clean_case (Union[ str, None]): Sentence col_cases to default string column cleaning. Defaults to None.
+        clean_case (str): Sentence col_cases to default string column cleaning. Defaults to 'l'.
     
     Returns:
         DataFrame: Returns dataframe with cleaned colname.
     """
-    ## Check columns passed
+    ## Check columns
     if columns is None:
         columns = df.columns
     elif not isinstance(columns, (list, tuple)):
         raise Exception("Must pass list or tuple for columns!")
     
-    ## Check case provided
+    ## Check case
     if col_cases is None:
-        col_cases = ['l' for c in columns]
+        col_cases = [clean_case for c in columns]
     elif not isinstance(col_cases, (list, tuple)):
         raise Exception("Must pass list or tuple for case!")
 
     if len(columns) != len(col_cases):
         raise Exception("Number of columns must match number of cases provided!")
     
-    ## Create table to print information
-    tbl_strcleaning_keys = ('Column', 'String Cleaning')
+    ## Info table to print
+    tbl_strcleaning_keys = ('Column', 'Is Str Column', 'Cleaning Method')
     tbl_strcleaning = TableInfo(tbl_strcleaning_keys)
 
     ## Iterate through columns.
     for info in zip(columns, col_cases):
         name, case = info
 
-        df = clean_strcol(df, name, case, trim = trim)
+        if name not in df.columns:
+            raise Exception(f"{name} not in DF colnames!\n{df.columns}")
 
-        entry = (name, CASE_TO_CLEAN[case].__name__)
+        is_str_col = isinstance(df.name.dtype, (pd.StringDtype, np.object))
+        if is_str_col:
+            df = clean_strcol(df, name, case, trim = trim)
+            clean = CASE_TO_CLEAN[case].__name__
+        else:
+            clean = None
+        
+        entry = (name, is_str_col, clean)
         tbl_strcleaning.add_entry(entry)
     
     tbl_strcleaning.print_info()

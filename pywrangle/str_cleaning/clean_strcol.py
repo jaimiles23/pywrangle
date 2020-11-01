@@ -33,7 +33,7 @@ def clean_strcol(
         trim (bool, optional): If should trim white spaces from column. Defaults to True.
 
     Returns:
-        DataFrame: Returns dataframe with cleaned colname.
+        DataFrameo: Returns dataframe with cleaned colname.
     """
     if colname not in df.columns:
         Exception(
