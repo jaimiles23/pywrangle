@@ -126,7 +126,7 @@ class TableInfo(Aux_TblInfo):
 
 		elif isinstance(entry, dict):
 			entry_dict = entry
-			if entry.keys() != self.keys:
+			if list(entry.keys()) != self.keys:
 				flag_show_warning, warn_type = True, TblEntryWarning.WARN_KEYS
 		
 
