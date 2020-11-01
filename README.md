@@ -1,14 +1,14 @@
 # Pywrangle
 - [Pywrangle](#pywrangle)
-  - [About](#about)
-  - [Install](#install)
-  - [Import](#import)
-  - [Contributing](#contributing)
-  - [Documentation](#documentation)
+- [About](#about)
+- [Install](#install)
+- [Import](#import)
+- [Contributing](#contributing)
+- [Documentation](#documentation)
 
 ---
 
-## About
+# About
 PyWrangle is an open-source Python library for data wrangling. Wikipedia defines [data wrangling](https://en.wikipedia.org/wiki/Data_wrangling) as follows:
 > is the process of transforming and mapping data from one "raw" data form into another format with the intent of making it more appropriate and valuable for a variety of downstream purposes such as analytics
 
@@ -21,7 +21,7 @@ PyWrangle currently supports:
 PyWrangle is available on PyPI [here](https://pypi.org/project/pywrangle/)
 
 
-## Install
+# Install
 - Python 3.6+
 - numpy
 - pandas
@@ -32,16 +32,16 @@ To install pywrangle, use pip:
 pip install pywrangle
 ```
 
-## Import
+# Import
 
 Per convention with Python Analysis modules, import pywrangle as follows:
 ```
 >>> import pywrangle as pw
 ```
 
-## Contributing
+# Contributing
 Like all developers, I _love_ open source. Please reference the contributing guidelines [here](https://github.com/jaimiles23/pywrangle/blob/master/CONTRIBUTING.md)
 <!-- TODO: ADD LINK TO CONTRIbuTING GUIDELINES> -->
 
-## Documentation
+# Documentation
 Documentation on how to use PyWrangle is available [here](https://github.com/jaimiles23/pywrangle/blob/master/Documentation.md)
