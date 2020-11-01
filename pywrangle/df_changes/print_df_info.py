@@ -35,8 +35,7 @@ def print_df_info(
 
     Args:
         *args (Union['df', dict]): dfs & dicts of df info to print info
-        compare_dfs (bool, optional): Compare 1st & last column of dfs in table. 
-                                      Defaults to True.
+        compare_dfs (bool, optional): Compare 1st to last df_info arguments. Defaults to True.
     """
     ## Check correct args
     for a in args:
@@ -50,22 +49,20 @@ def print_df_info(
             raise Exception("Must pass pandas DataFrame or saved df_info!")
     
     ## Create table keys
-    tbl_dfinfo = TableInfo(DF_KEYS)
+    tbl_df_info = TableInfo(DF_KEYS)
 
     ## add values to table
     for a in args:
-        if not isinstance(a, pd.DataFrame):
-            
+        if not isinstance(a, dict):
+            a = record_df_info(a)
+        
+        tbl_df_info.add_entry(df_info)
 
+    ## Calculate difference value, if applicable
+    if compare_dfs and len(args) > 1:
+        df_diff_info = {args[0][key] - args[-1][key] for key in DF_KEYS}
+        tbl_df_info.add_entry(df_diff_info)
 
-    
-
-    ## Add Tables
-
-
-    ## Print object
-    
-
-
+    tbl_df_info.print_info()
 
 
