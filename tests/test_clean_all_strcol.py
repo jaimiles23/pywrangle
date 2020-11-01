@@ -54,7 +54,6 @@ def test_clean_all_strcols():
     return
 
 
-
 ##########
 # Main
 ##########
