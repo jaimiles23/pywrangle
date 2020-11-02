@@ -14,8 +14,8 @@ PyWrangle is an open-source Python library for data wrangling. Wikipedia defines
 
 PyWrangle currently supports:
 - string cleaning
-- identifying missing data
-- tracking dataframe changes.
+- tracking dataframe changes
+- Identifying data entry errors
 
 
 PyWrangle is available on PyPI [here](https://pypi.org/project/pywrangle/)
