@@ -37,8 +37,8 @@ def test_print_df_info():
     ## Print all dfs
     pw.print_df_info(df1, df2, df3, df4, df5, compare_dfs = False)
     pw.print_df_info(df1, df2, df3, df4, df5)
-    pw.print_df_info(df1, df2, df3, df4, df5, compare_base_df= 3, compare_end_df=4)
-    pw.print_df_info(df1, df2, df3, df4, df5, compare_base_df= 4, compare_end_df=3)
+    pw.print_df_info(df1, df2, df3, df4, df5, compare_base_df= 3, compare_end_df= 4)
+    pw.print_df_info(df1, df2, df3, df4, df5, compare_base_df= 4, compare_end_df= 3)
 
 
 ##########

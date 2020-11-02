@@ -56,3 +56,33 @@ def create_str_df1() -> "dataframe":
     columns = ('animals', 'languages', 'determiners')
     df = pd.DataFrame(data=data, columns=columns)
     return df
+
+def create_str_df2() -> "dataframe":
+    """Creates string dataframe 
+    """
+    states = [
+        ## Regular word
+        'california',
+        'colorado',
+        'utah',
+        'indiana',
+        'texas',
+        'okalhoma',
+        'Nevada',
+        
+        ## Random space in word
+        'cali fornia',
+        'colo rado',
+        'ut ah',
+        'i ndiana',
+        'te xas',
+        'okal homa',
+        'Neva da',
+    ]
+    data = {
+        'a':range(100),
+        'b': range(100),
+        'c': [random.choice(['a', 'b', 'c'])* random.randint(0, 5) for _ in range(100)],
+        'states': [random.choice(states) + ('s' if random.random() < 0.1 else '') for _ in range(100)] # Change for s
+    }
+    return pd.DataFrame(data)
