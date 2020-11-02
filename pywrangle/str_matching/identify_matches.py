@@ -12,6 +12,8 @@ import numpy as np
 
 from ..print_tbl import TableInfo
 
+from fuzzywuzzy import process
+
 
 ##########
 # Identify matches
@@ -29,11 +31,20 @@ def identify_errors(
 
     Returns:
         dict: dictionary containing ratio of matches.
+
+    TODO:
+    - Implement optional scorer option for process.extract
     """
 
-    ## TODO: Get keys
+    ## Get keys
+    keys = (df[col].unique())
+
+    for key in keys:
+        matches = process.extract(key, keys)
+        
 
     ## TODO: Identify top matches for each get.
+    # matches = process.extract(query, choices)
 
     ## TODO: Get ratio for top matches
 

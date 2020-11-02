@@ -55,7 +55,7 @@ def check_is_metaphone(t1: str, t2: str) -> int:
 # Ratio Dict
 ##########
 
-def ratio_dict(t1: str, t2: str) -> int:
+def get_ratio_dict(t1: str, t2: str) -> int:
     """Returns the exact token ratio between the two texts.
 
     Args:
