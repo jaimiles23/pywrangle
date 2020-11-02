@@ -28,6 +28,10 @@ def check_is_metaphone(t1: str, t2: str) -> int:
 
     Returns:
         int: 1, 0 indicating if homophone.
+    
+    NOTE:
+    - Metaphone is useful because it will consider words with spaces b/w the same, 
+    e.g., California == Cali fornia
     """
     t1_meta = doublemetaphone(t1)
     t2_meta = doublemetaphone(t2)
@@ -51,6 +55,10 @@ def get_ratio_dict(t1: str, t2: str) -> int:
 
     Returns:
         int: ratio b/w exact words
+    
+    NOTE:
+    - future iteration may like to use jaro winkler distance. This puts more emphasis on
+    beginning of word and thus more likely to catch tense & plurals.
     """
     ratio_dict = {
         constants.RATIO_TYPES[0]    :   fuzz.ratio(t1, t2),
