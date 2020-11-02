@@ -47,13 +47,16 @@ def identify_errors(
 
     ## Add keys to 
     for key in keys:
-        matches = process.extract(key, keys, limit = 5)
 
-        for m in matches:
-            if m == key:    # don't compare vs self.
+        match_ratios = process.extract(key, keys, limit = 5)
+        print(match_ratios)
+
+        for match, ratio in match_ratios:
+            if match == key:    # don't compare vs self.
                 continue
 
-            ratio_dict = ratios.get_ratio_dict(key, m)
+            print(match, ratio)
+            ratio_dict = ratios.get_ratio_dict(key, match)
             if ratio_dict[ ratios.RATIO_INDEX] >= threshold:
                 tbl_info_ratios.add_entry(ratio_dict)
     
