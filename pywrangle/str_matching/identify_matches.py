@@ -2,7 +2,6 @@
 Script used to identify potential matches between string keys.
 """
 
-
 ##########
 # Imports
 ##########
@@ -14,7 +13,7 @@ from ..print_tbl import TableInfo
 
 from fuzzywuzzy import process
 
-from . import ratios
+from . import ratios, constants
 
 
 ##########
@@ -43,6 +42,8 @@ def identify_errors(
     ## Get keys
     keys = sorted(df[col].unique())
 
+    ## TblInformation
+    tbl_info_ratios = TableInfo(constants.RATIO_TYPES)
 
     ## TODO: Create table info
     ## TODO: Don't need match_dict, can just add immediately to table info

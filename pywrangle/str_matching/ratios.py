@@ -14,6 +14,7 @@ from metaphone import doublemetaphone
 
 from . import constants
 
+
 ##########
 # Metaphone
 ##########
@@ -34,7 +35,7 @@ def check_is_metaphone(t1: str, t2: str) -> int:
     for e in t1_meta:
         if e in t2_meta and e != '':
             return 1
-    return 0
+    return None
 
 
 ##########
@@ -52,17 +53,14 @@ def get_ratio_dict(t1: str, t2: str) -> int:
         int: ratio b/w exact words
     """
     ratio_dict = {
-        constants.RATIO_TYPES[0]  :   fuzz.ratio(t1, t2),
-        constants.RATIO_TYPES[1]  :   fuzz.partial_ratio(t1, t2),
-        constants.RATIO_TYPES[2]  :   fuzz.token_sort_ratio(t1, t2),
-        constants.RATIO_TYPES[3]  :   fuzz.token_set_ratio(t1, t2),
-        constants.RATIO_TYPES[4]  :   fuzz.WRatio(t1, t2),
+        constants.RATIO_TYPES[0]    :   fuzz.ratio(t1, t2),
+        constants.RATIO_TYPES[1]    :   fuzz.partial_ratio(t1, t2),
+        constants.RATIO_TYPES[2]    :   fuzz.token_sort_ratio(t1, t2),
+        constants.RATIO_TYPES[3]    :   fuzz.token_set_ratio(t1, t2),
+        constants.RATIO_TYPES[4]    :   fuzz.WRatio(t1, t2),
+        constants.RATIO_TYPES[5]    :   check_is_metaphone(t1, t2)
     }
-    is_metaphone = check_is_metaphone(t1, t2)
-    if is_metaphone:
-        ratio_dict[constants.METAPHONE_KEY] = is_metaphone
 
-    ratio_dict[constants.RATIO_INDEX] = statistics.mean([v for v in ratio_dict.values()])
+    ratio_dict[constants.RATIO_INDEX] = statistics.mean([v for v in ratio_dict.values() if v != 0])     # Don't include 0 metaphone.
     return ratio_dict
-
 
