@@ -8,6 +8,7 @@ To avoid excessive scope, please reference the intent this library.
 >> is the process of transforming and mapping data from one "raw" data form into another format with the intent of making it more appropriate and valuable for a variety of downstream purposes such as analytics
 
 Let's make this _our_ code.
+
 ![](https://i.imgur.com/JQ8hMsE.jpg) 
 
 
