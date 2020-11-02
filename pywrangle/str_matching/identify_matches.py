@@ -57,7 +57,7 @@ def identify_errors(
 
             print(match, ratio)
             ratio_dict = ratios.get_ratio_dict(key, match)
-            if ratio_dict[ ratios.RATIO_INDEX] >= threshold:
+            if ratio_dict[ constants.RATIO_INDEX] >= threshold:
                 tbl_info_ratios.add_entry(ratio_dict)
     
     tbl_info_ratios.print_info()
