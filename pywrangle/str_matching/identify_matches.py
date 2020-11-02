@@ -43,19 +43,16 @@ def identify_errors(
     keys = sorted(df[col].unique())
 
     ## TblInfo
-    tbl_info_ratios = TableInfo(constants.RATIO_TYPES)
+    tbl_info_ratios = TableInfo(['key', 'match', constants.RATIO_INDEX])
 
     ## Add keys to 
     for key in keys:
-
         match_ratios = process.extract(key, keys, limit = 5)
-        print(match_ratios)
 
-        for match, ratio in match_ratios:
+        for match, _ in match_ratios:
             if match == key:    # don't compare vs self.
                 continue
 
-            print(match, ratio)
             ratio_dict = ratios.get_ratio_dict(key, match)
             if ratio_dict[ constants.RATIO_INDEX] >= threshold:
                 tbl_info_ratios.add_entry(ratio_dict)

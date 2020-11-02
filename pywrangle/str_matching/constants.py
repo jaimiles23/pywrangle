@@ -1,4 +1,3 @@
-
 """
 Constants for str_matching information.
 """
@@ -10,7 +9,10 @@ Constants for str_matching information.
 METAPHONE_KEY = 'metaphone'
 RATIO_INDEX = 'Ratio Index'
 
-RATIO_TYPES = (
+
+RATIO_DICT_KEYS = (
+    'key',
+    'match',
     'exact',
     'partial', 
     'token sort',
