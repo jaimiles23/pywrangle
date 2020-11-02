@@ -1,7 +1,7 @@
 """
 Module contains functions that return ratios b/w words.
 
-Fuzzywuzzy formulas use levenshtein's distance to compare strings
+Fuzzywuzzy formulas use levenshtein's distance to compare strings.
 """
 
 ##########
@@ -63,4 +63,3 @@ def get_ratio_dict(t1: str, t2: str) -> int:
 
     ratio_dict[constants.RATIO_INDEX] = statistics.mean([v for v in ratio_dict.values() if v != 0])     # Don't include 0 metaphone.
     return ratio_dict
-

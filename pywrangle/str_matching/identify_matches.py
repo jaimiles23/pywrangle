@@ -6,14 +6,12 @@ Script used to identify potential matches between string keys.
 # Imports
 ##########
 
-import pandas as pd 
 import numpy as np
-
-from ..print_tbl import TableInfo
-
+import pandas as pd
 from fuzzywuzzy import process
 
-from . import ratios, constants
+from ..print_tbl import TableInfo
+from . import constants, ratios
 
 
 ##########
@@ -21,10 +19,10 @@ from . import ratios, constants
 ##########
 
 def identify_errors(
-    df  :   'dataframe', 
-    col :   str,
-    threshold: int = 50
-    ) -> dict:
+    df          :   'dataframe', 
+    col         :   str,
+    threshold   :   int = 50
+    ):
     """Identifies potential data entry errors in the column.
 
     Args:
@@ -37,18 +35,17 @@ def identify_errors(
     TODO:
     - Implement optional scorer option for process.extract
     - Add limit variable for parameter.
+    - CONSIDER returning a dictionary of all these values -- create a second master dict that's returned. 
+        Returning a dictionary with matches will be faster processing when implementing a process to clean the information.
     """
 
     ## Get keys
     keys = sorted(df[col].unique())
 
-    ## TblInformation
+    ## TblInfo
     tbl_info_ratios = TableInfo(constants.RATIO_TYPES)
 
-    ## TODO: Create table info
-    ## TODO: Don't need match_dict, can just add immediately to table info
-    ## TODO: Should probably also create constants with ALL keys?
-
+    ## Add keys to 
     for key in keys:
         matches = process.extract(key, keys, limit = 5)
 
@@ -58,26 +55,7 @@ def identify_errors(
 
             ratio_dict = ratios.get_ratio_dict(key, m)
             if ratio_dict[ ratios.RATIO_INDEX] >= threshold:
-                match_dict[key] = ratio_dict
-        
-
-
-
-    ## TODO: Identify top matches for each get.
-    # matches = process.extract(query, choices)
-
-    ## TODO: Get ratio for top matches
-
-    ## TODO: Only add to dictionary if above theshold
-
-    ## TODO: Print table with top matches
-
-    ## TODO: return dict object
-
-    pass
-
-
-
-
-
-
+                tbl_info_ratios.add_entry(ratio_dict)
+    
+    tbl_info_ratios.print_info()
+    return
