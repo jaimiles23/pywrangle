@@ -39,7 +39,7 @@ def check_is_metaphone(t1: str, t2: str) -> int:
     for e in t1_meta:
         if e in t2_meta and e != '':
             return 1
-    return None
+    return 0
 
 
 ##########
