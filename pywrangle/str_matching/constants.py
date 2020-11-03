@@ -7,7 +7,7 @@ Constants for str_matching information.
 ##########
 
 METAPHONE_KEY = 'metaphone'
-RATIO_INDEX = 'Ratio Index'
+SIM_INDEX = 'Similarity Index'
 
 
 RATIO_DICT_KEYS = (
@@ -19,6 +19,6 @@ RATIO_DICT_KEYS = (
     'token set',
     'wratio',
     METAPHONE_KEY,
-    RATIO_INDEX
+    SIM_INDEX
 )
 

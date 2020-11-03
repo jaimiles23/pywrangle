@@ -74,10 +74,10 @@ def get_ratio_dict(t1: str, t2: str) -> int:
         constants.RATIO_DICT_KEYS[7]    :   check_is_metaphone(t1, t2)
     }
     
-    ratio_dict[constants.RATIO_INDEX] = statistics.mean([v for v in ratio_dict.values() if v != 0])     # Don't include 0 metaphone.
+    ratio_dict[constants.SIM_INDEX] = statistics.mean([v for v in ratio_dict.values() if v != 0])     # Don't include 0 metaphone.
     
     return_dict = {}
     return_dict['key'] = t1
     return_dict['match'] = t2
-    return_dict[constants.RATIO_INDEX] = round(statistics.mean([v for v in ratio_dict.values() if v != 0]), 5)
+    return_dict[constants.SIM_INDEX] = round(statistics.mean([v for v in ratio_dict.values() if v != 0]), 5)
     return return_dict
