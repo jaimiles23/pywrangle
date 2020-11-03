@@ -44,7 +44,11 @@ def identify_matching_strs(
     keys = sorted(df[col].unique())
 
     ## TblInfo
-    tbl_info_ratios = TableInfo(['key', 'match', constants.SIM_INDEX])
+    tbl_info_ratios = TableInfo(
+        (constants.TBL_DICT_KEYS[0],
+        constants.TBL_DICT_KEYS[1],
+        constants.TBL_DICT_KEYS[2]
+        ))
 
     ## Add keys to 
     for key in keys:
