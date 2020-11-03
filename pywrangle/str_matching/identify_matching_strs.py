@@ -18,7 +18,7 @@ from . import constants, ratios
 # Identify matches
 ##########
 
-def identify_errors(
+def identify_matching_strs(
     df          :   'dataframe', 
     col         :   str,
     threshold   :   int = 50
