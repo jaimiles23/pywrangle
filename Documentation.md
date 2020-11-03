@@ -141,17 +141,12 @@ def identify_matching_strs(
 ```python
 >>> pw.identify_matching_strs(df, 'states')     # identify matching strings in the states column.
 ...
-Record   |   Key           |   Match         |   Ratio Index
-------   |   -----------   |   -----------   |   -----------
-    1    |   Neva da       |   Neva das      |          94.4
-    2    |   Neva da       |   Nevada        |      65.33333
-    3    |   Neva das      |   Neva da       |          94.4
-    4    |   Neva das      |   Nevada        |          73.8
-    5    |   Nevada        |   Neva da       |      65.33333
-    6    |   Nevada        |   Neva das      |          73.8
-    7    |   cali fornia   |   california    |          78.5
-    8    |   cali fornia   |   californias   |            91
-    9    |   cali fornia   |   colorado      |          52.4
-    10   |   cali fornia   |   i ndiana      |          54.8
-    11   |   california    |   cali fornia   |          78.5
+Record   |   String        |   Match         |   Similarity Index
+------   |   -----------   |   -----------   |   ----------------
+    1    |   Neva da       |   Nevada        |              91.75
+    2    |   Nevada        |   Neva da       |              91.75
+    3    |   cali fornia   |   california    |              96.25
+    4    |   cali fornia   |   californias   |               91.0
+    5    |   california    |   cali fornia   |              96.25
+    6    |   california    |   californias   |              96.25
 ```
