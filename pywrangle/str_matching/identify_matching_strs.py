@@ -24,6 +24,7 @@ def identify_matching_strs(
     threshold   :   int = 50
     ):
     """Identifies potential data entry errors in the column.
+    Matching strings are identified based on a Similarity Index that is calculated from levenshtein's distance & doublemetaphone algorithms.
 
     Args:
         df (dataframe): DataFrame.
