@@ -2,6 +2,8 @@
 - [Pywrangle](#pywrangle)
 - [About](#about)
 - [Install](#install)
+  - [Requirements](#requirements)
+  - [Pip Install](#pip-install)
 - [Import](#import)
 - [Contributing](#contributing)
 - [Documentation](#documentation)
@@ -23,13 +25,16 @@ PyWrangle is available on PyPI [here](https://pypi.org/project/pywrangle/)
 
 
 # Install
-- Python 3.6+
-- numpy
-- pandas
-- fuzzywuzzy
-- python-levenshtein
-- metaphone
 
+## Requirements
+- Python 3.6+
+- numpy >= 1.14.4
+- pandas >= 1.0.3
+- fuzzywuzzy >= 0.18.0
+- python-levenshtein >= 0.12.0
+- metaphone >= 0.6
+
+## Pip Install
 To install pywrangle, use pip:
 
 ```
