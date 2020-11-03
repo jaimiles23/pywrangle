@@ -37,6 +37,9 @@ def clean_all_strcols(
     
     Returns:
         DataFrame: Returns dataframe with cleaned colname.
+    
+    Notes:
+    - Available cases include: 'l', 'u', and 't', for lower, upper and title respectively.
     """
     ## Check columns
     if columns is None:
