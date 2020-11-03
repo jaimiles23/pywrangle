@@ -26,7 +26,7 @@ def check_is_metaphone(t1: str, t2: str) -> int:
         t2 (str): Second text to compare.
 
     Returns:
-        int: 1, 0 indicating if homophone.
+        int: 100, 0 indicating if homophone.
     
     NOTE:
     - Metaphone is useful because it will consider words with spaces b/w the same, 
@@ -37,7 +37,7 @@ def check_is_metaphone(t1: str, t2: str) -> int:
 
     for e in t1_meta:
         if e in t2_meta and e != '':
-            return 1
+            return 100  # 100 match
     return 0
 
 ##########
@@ -58,7 +58,7 @@ def calculate_similarity_index(ratios_dict: dict) -> float:
     vals = [ v for v in ratios_dict.values() if isinstance(v, (int, float))]
     for _ in range(2):
         vals.remove(min(vals))
-    return round(sum(vals) / len(vals), 3)
+    return round(sum(vals) / len(vals), 2)
 
 
 ##########
