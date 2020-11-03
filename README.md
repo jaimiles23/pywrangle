@@ -52,7 +52,8 @@ Documentation on how to use PyWrangle is available [here](https://github.com/jai
 
 # TODO
 - [ ] Documentation
-  - [ ] Investigate dynamic documentation creation & hosting documentation on website.
+  - [ ] Create documentation with Sphinx
+  - [ ] Host the documentation on Read the Docs
 - [ ] Data entry cleaning
   - [ ] Re-think output method for matches strings that may be due to data entry errors
   - [ ] Create method for users to automatically clean those strings via either 

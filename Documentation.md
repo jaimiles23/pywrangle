@@ -2,6 +2,7 @@
 This file provides documentation on pywrangle functionalities.
 
 - [Documentation](#documentation)
+- [TODO](#todo)
 - [String cleaning](#string-cleaning)
   - [clean_all_strcols](#clean_all_strcols)
     - [Example](#example)
@@ -13,6 +14,10 @@ This file provides documentation on pywrangle functionalities.
 - [String matching](#string-matching)
   - [Identify errors](#identify-errors)
     - [Example](#example-2)
+
+# TODO
+- [ ] Create documentation using Sphinx
+- [ ] Host documentation on "Read the Docs"
 
 # String cleaning
 
