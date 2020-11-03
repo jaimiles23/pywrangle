@@ -93,7 +93,7 @@ def get_ratio_dict(t1: str, t2: str) -> int:
         constants.RATIO_DICT_KEYS[5]    :   check_is_metaphone(t1, t2)
     }
     return {
-        TBL_DICT_KEYS[0]    :   t1,
-        TBL_DICT_KEYS[1]    :   t2,
-        TBL_DICT_KEYS[2]    :   calculate_similarity_index(ratio_dict)
+        constants.TBL_DICT_KEYS[0]    :   t1,
+        constants.TBL_DICT_KEYS[1]    :   t2,
+        constants.TBL_DICT_KEYS[2]    :   calculate_similarity_index(ratio_dict)
     }
