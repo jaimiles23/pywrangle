@@ -52,10 +52,10 @@ Documentation on how to use PyWrangle is available [here](https://github.com/jai
 
 # TODO
 - [ ] Documentation
-  - [ ] Add examples of use
-  - [ ] Investigate dynamic documentation creation
-  - [ ] Host documentation on website.
+  - [ ] Investigate dynamic documentation creation & hosting documentation on website.
 - [ ] Data entry cleaning
   - [ ] Re-think output method for matches strings that may be due to data entry errors
-  - [ ] Create method for users to automatically clean those strings via a a threshold similarity parameter
+  - [ ] Create method for users to automatically clean those strings via either 
+    - [ ] (a) threshold similarity parameter or 
+      - [ ] (b) manual list of items - can print 'families' of words above a threshold and allow user to manually pick which one to select, e.g., provide index in that list when passing it to function.
   - [ ] Investigate using jaro winkler distance. This places heavier emphasis on the beginning of the word and thus is more efficient at identifying different tenses & plural/singular companion forms.
