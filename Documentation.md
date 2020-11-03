@@ -4,13 +4,15 @@ This file provides documentation on pywrangle functionalities.
 - [Documentation](#documentation)
 - [String cleaning](#string-cleaning)
   - [clean_all_strcols](#clean_all_strcols)
+    - [Example](#example)
   - [Clean strcol](#clean-strcol)
 - [Dataframe changes](#dataframe-changes)
   - [Print df info](#print-df-info)
+    - [Example](#example-1)
   - [Record df info](#record-df-info)
 - [String matching](#string-matching)
   - [Identify errors](#identify-errors)
-    - [Example](#example)
+    - [Example](#example-2)
 
 # String cleaning
 
@@ -39,6 +41,25 @@ def clean_all_strcols(
     Notes:
     - Available cases include: 'l', 'u', and 't', for lower, upper and title respectively.
 
+### Example
+```python
+>>> df2 = pw.clean_all_strcols(df2, clean_case = 'l')
+...
+# test df has column names A - J
+# prints if registered as string column, and applied clean
+Record   |   Column   |   Is Str Col   |   Clean Method
+------   |   ------   |   ----------   |   ------------
+    1    |   A        |        False   |   None
+    2    |   B        |         True   |   lower
+    3    |   C        |        False   |   None
+    4    |   D        |         True   |   lower
+    5    |   E        |        False   |   None
+    6    |   F        |         True   |   lower
+    7    |   G        |        False   |   None
+    8    |   H        |         True   |   lower
+    9    |   I        |        False   |   None
+    10   |   J        |         True   |   lower
+```
 
 
 ## Clean strcol
@@ -87,6 +108,19 @@ print_df_info(
     - Dataframes are assigned a name based on the index that they are passed into *args
     - Relative (%) difference is calculated as total of base df.
 
+### Example
+```python
+>>> pw.print_df_info(df2, df1, compare_dfs = True)
+...
+# Name is associated with index of dataframe passed
+# Below shows that df2 is 75% smaller than df1
+Name       |    Cols   |    Rows   |    Size
+--------   |   -----   |   -----   |   -----
+0          |      20   |      40   |     800
+1          |      10   |      20   |     200
+Abs Diff   |     -10   |     -20   |    -600
+% Diff     |   -50.0   |   -50.0   |   -75.0
+```
 
 ## Record df info
 ```python
