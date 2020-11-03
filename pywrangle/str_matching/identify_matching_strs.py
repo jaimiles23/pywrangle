@@ -44,7 +44,7 @@ def identify_matching_strs(
     keys = sorted(df[col].unique())
 
     ## TblInfo
-    tbl_info_ratios = TableInfo(
+    tbl_info_str_matches = TableInfo(
         (constants.TBL_DICT_KEYS[0],
         constants.TBL_DICT_KEYS[1],
         constants.TBL_DICT_KEYS[2]
@@ -60,7 +60,7 @@ def identify_matching_strs(
 
             ratio_dict = ratios.get_ratio_dict(key, match)
             if ratio_dict[ constants.SIM_INDEX] >= threshold:
-                tbl_info_ratios.add_entry(ratio_dict)
+                tbl_info_str_matches.add_entry(ratio_dict)
     
-    tbl_info_ratios.print_info()
+    tbl_info_str_matches.print_info()
     return
