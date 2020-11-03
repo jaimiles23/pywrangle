@@ -43,7 +43,7 @@ class Aux_TblInfo():
     """Contains aux methods & constants for the TblInfo class."""
     ALLOWED_TERM_WIDTH = 0.70
     indent = int((1 - ALLOWED_TERM_WIDTH) * 10)
-    records_key = 'records'
+    records_key = 'record'
     h_line = '-'
 
     ## markdown constants
@@ -252,7 +252,7 @@ class Aux_TblInfo():
                 continue
 
             indent = True if key == self.records_key else False
-            self._print_cell(key, key, indent = indent)
+            self._print_cell(key.title(), key, indent = indent)
 
         return
     
