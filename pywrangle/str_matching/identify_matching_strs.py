@@ -53,7 +53,9 @@ def identify_matching_strs(
     ## Add keys to 
     for key in keys:
         match_ratios = sorted(
-            process.extract(key, keys, limit = 5), key = lambda x: x[1], reverse= True)
+            process.extract(key, keys, limit = 5), 
+            key = lambda x: x[1], 
+            reverse= True)
 
         for match, _ in match_ratios:
             if match == key:    # don't compare vs self.
