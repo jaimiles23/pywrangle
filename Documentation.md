@@ -1,68 +1,133 @@
 # Documentation
 This file provides documentation on pywrangle functionalities.
 
-## String cleaning
-> def clean_str_columns(df: object, col_strcase_tuple: tuple) -> df:
+- [Documentation](#documentation)
+- [String cleaning](#string-cleaning)
+  - [clean_all_strcols](#clean_all_strcols)
+  - [Clean strcol](#clean-strcol)
+- [Dataframe changes](#dataframe-changes)
+  - [Print df info](#print-df-info)
+  - [Record df info](#record-df-info)
+- [String matching](#string-matching)
+  - [Identify errors](#identify-errors)
 
-Master function to clean string columns using col_strcase_tuple key.
+# String cleaning
 
-col_strcase_tuple is a tuple of tuples representing the column names to be cleaned
-and an ordinal number for the pandas str cleaning method to use.
-
-Ordinal case control structure to determine case:
-
-    0 : lower_case
-    1 : title_case
-    2 : upper_case
-
+## clean_all_strcols
 ```python
-df_winereviews = pd.read_csv("../input/wine-reviews/winemag-data_first150k.csv")
-col_strcase_tuple = (
-        ("country", 2),
-        ("description", 0)
-        ("province", 1),
-    )
-df_winereviews = pw.clean_str_columns( df_winereviews, col_strcase_tuple)
-    column name:		str.clean_method
-    country     		upper
-    description 		lower
-    province    		title
+def clean_all_strcols(
+    df: "dataframe", 
+    columns: Union[list, tuple, None] = None, 
+    col_cases: Union[ list, tuple, None] = None, 
+    trim: bool = True,
+    clean_case: str = 'l'
+    ) -> 'dataframe':
 ```
+    Cleans string columns in dataframe. Prints column names and cleaning method used.
 
-## Missing Data
-> print_nulls_per_col(df) -> None:
-
-Calculates number of null values in each column and prints result.
-
-## Dataframe changes
-The dataframe change functions `record_df_info` and `print_df_changes` are used in conjunction.
-```python
->>> old_df = pw.record_df_info(df)
->>> ... # some change to df
->>> pw.print_df_changes(df, old_df)
-```
-
-
-> record_df_info(df, _name: str = "before") -> None:
-
-Records information about the dataframe.
+    Args:
+        df (dataframe): Dataframe to clean
+        col_cases (Union[ list, tuple, None]): Names of the columns to clean. Defaults to None.
+        columns (Union[list, tuple, None], optional): col_cases to use with the columns. Defaults to None.
+        trim (bool, optional): If should trim the columns. Defaults to True.
+        clean_case (str): Sentence col_cases to default string column cleaning. Defaults to 'l'.
     
-Information includes:
+    Returns:
+        DataFrame: Returns dataframe with cleaned colname.
+    
+    Notes:
+    - Available cases include: 'l', 'u', and 't', for lower, upper and title respectively.
 
-- name (state of the dict, before or after)
-- number of rows
-- number of columns
-- size of df
 
-recorded dataframe information is passed to compare_dfs()
-to check differences between dataframes.
+## Clean strcol
+```python
+def clean_strcol(
+    df: "dataframe", 
+    colname: str, 
+    case: Union[str, int] = 'l', 
+    trim: bool = True
+) -> 'DataFrame':
+```
+    Cleans column in dataframe based on case and trim args.
 
-> print_df_changes(
-        df,
-        dict_recorded_info: dict,
-        show_col_names: bool = False
+    Args:
+        df (dataframe): Dataframe to clean
+        colname (str): Column to clean
+        case (Union[str, int]): Case to standardize column, available in constants.py module. Defaults to 'l'.
+        trim (bool, optional): If should trim white spaces from column. Defaults to True.
+
+    Returns:
+        DataFrame: Returns dataframe with cleaned colname.
+
+# Dataframe changes
+Prints out information about the dataframe for use.
+
+## Print df info
+```python
+print_df_info(
+    *args: List[ Union['df', dict]],
+    compare_dfs: bool = True,
+    compare_base_df: int = 0,
+    compare_end_df: int = -1
     ) -> None:
+```
+    Prints df informations from dfs & recorded info passed as args.
 
-Prints differences between dataframe and previously recorded information.
+    Args:
+        *args (List[ Union['df', dict]]): List of dfs & dicts of df info to print info
+        compare_dfs (bool, optional): Show the difference between 2 dataframes. 
+                                    Shows both absoluate and relative differences. 
+                                    Defaults to True.
+        compare_base_df (int): Index of base df to compare. Defaults to 0 (first df info).
+        compare_end_df (int): Index of end df to compare. Defaults to -1 (last df info).
+
+    NOTE: 
+    - Dataframes are assigned a name based on the index that they are passed into *args
+    - Relative (%) difference is calculated as total of base df.
 
 
+## Record df info
+```python
+def record_df_info( 
+    df: 'dataframe', 
+    name: Union[str, int] = None
+    ) -> dict:
+```
+    Records information about the dataframe, including name, cols, rows, and size.
+
+    Args:
+        df (dataframe): Dataframe to recor
+        name (Union[str, int], optional): Name of the dataframe for comparison. Defaults to None
+    Returns:
+        dict: Containing df info.
+    
+    NOTE:
+    - Users may pre-emptively record a df & name it w/ this function. 
+    - The dict can then be passed to `print_df_info()`, and the name will be preserved.
+
+# String matching
+
+## Identify errors
+```python
+def identify_errors(
+    df          :   'dataframe', 
+    col         :   str,
+    threshold   :   int = 50
+    ):
+```
+    Identifies potential data entry errors in the column. 
+    This method uses levenshtein's distance and double metaphone algorithms to identify
+    string distance and potential typos.
+
+    Args:
+        df (dataframe): DataFrame.
+        col (str): Column to check.
+
+    Returns:
+        dict: dictionary containing ratio of matches.
+
+    TODO:
+    - Implement optional scorer option for process.extract
+    - Add limit variable for parameter.
+    - CONSIDER returning a dictionary of all these values -- create a second master dict that's returned. 
+        Returning a dictionary with matches will be faster processing when implementing a process to clean the information.

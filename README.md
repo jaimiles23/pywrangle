@@ -5,6 +5,7 @@
 - [Import](#import)
 - [Contributing](#contributing)
 - [Documentation](#documentation)
+- [TODO](#todo)
 
 ---
 
@@ -48,3 +49,13 @@ Like all developers, I _love_ open source. Please reference the contributing gui
 
 # Documentation
 Documentation on how to use PyWrangle is available [here](https://github.com/jaimiles23/pywrangle/blob/master/Documentation.md)
+
+# TODO
+- [ ] Documentation
+  - [ ] Add examples of use
+  - [ ] Investigate dynamic documentation creation
+  - [ ] Host documentation on website.
+- [ ] Data entry cleaning
+  - [ ] Re-think output method for matches strings that may be due to data entry errors
+  - [ ] Create method for users to automatically clean those strings via a a threshold similarity parameter
+  - [ ] Investigate using jaro winkler distance. This places heavier emphasis on the beginning of the word and thus is more efficient at identifying different tenses & plural/singular companion forms.
