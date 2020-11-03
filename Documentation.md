@@ -10,6 +10,7 @@ This file provides documentation on pywrangle functionalities.
   - [Record df info](#record-df-info)
 - [String matching](#string-matching)
   - [Identify errors](#identify-errors)
+    - [Example](#example)
 
 # String cleaning
 
@@ -37,6 +38,7 @@ def clean_all_strcols(
     
     Notes:
     - Available cases include: 'l', 'u', and 't', for lower, upper and title respectively.
+
 
 
 ## Clean strcol
@@ -109,19 +111,22 @@ def record_df_info(
 
 ## Identify errors
 ```python
-def identify_errors(
+def identify_matching_strs(
     df          :   'dataframe', 
     col         :   str,
     threshold   :   int = 50
     ):
 ```
     Identifies potential data entry errors in the column. 
-    This method uses levenshtein's distance and double metaphone algorithms to identify
-    string distance and potential typos.
+    Prints a table with a row indicating the string and its matches.
+    Strings matches are ranked by a "Similarity Index" that uses levenshtein's distance and double metaphone algorithms.
+    
+    Only matches above a certain threshold are shown.
 
     Args:
         df (dataframe): DataFrame.
         col (str): Column to check.
+        threshold (int): Minimum Similarity Index to show. Defaults to 50.
 
     Returns:
         dict: dictionary containing ratio of matches.
@@ -131,3 +136,22 @@ def identify_errors(
     - Add limit variable for parameter.
     - CONSIDER returning a dictionary of all these values -- create a second master dict that's returned. 
         Returning a dictionary with matches will be faster processing when implementing a process to clean the information.
+
+### Example
+```python
+>>> pw.identify_matching_strs(df, 'states')     # identify matching strings in the states column.
+...
+Record   |   Key           |   Match         |   Ratio Index
+------   |   -----------   |   -----------   |   -----------
+    1    |   Neva da       |   Neva das      |          94.4
+    2    |   Neva da       |   Nevada        |      65.33333
+    3    |   Neva das      |   Neva da       |          94.4
+    4    |   Neva das      |   Nevada        |          73.8
+    5    |   Nevada        |   Neva da       |      65.33333
+    6    |   Nevada        |   Neva das      |          73.8
+    7    |   cali fornia   |   california    |          78.5
+    8    |   cali fornia   |   californias   |            91
+    9    |   cali fornia   |   colorado      |          52.4
+    10   |   cali fornia   |   i ndiana      |          54.8
+    11   |   california    |   cali fornia   |          78.5
+```
