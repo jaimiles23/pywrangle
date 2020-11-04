@@ -152,20 +152,20 @@ def record_df_info(
 ```python
 def identify_errrors(
     df          :   'dataframe', 
-    col         :   str,
-    threshold   :   int = 50
+    column         :   str,
+    threshold   :   int = 65,
+    show_progress   :   bool = False
     ):
 ```
-    Identifies potential data entry errors in the column. 
-    Prints a table with a row indicating the string and its matches.
-    Strings matches are ranked by a "Similarity Index" that uses levenshtein's distance and double metaphone algorithms.
-    
-    Only matches above a certain threshold are shown.
+    Identifies potential data entry errors in the column.
+    Matching strings are identified based on a Similarity Index.
+    This index is calculated from levenshtein's distance & doublemetaphone algorithms.
 
     Args:
         df (dataframe): DataFrame.
-        col (str): Column to check.
-        threshold (int): Minimum Similarity Index to show. Defaults to 50.
+        column (str): column to check.
+        threshold (int): Similarity index match threshold. A higher threshold returns more rigorous matching. Defaults to 65 out of 100.
+        show_progress (bool): Identifying potential errors may be computationally intense. This prints matching progress to console. Defaults to False.
 
     Returns:
         dict: dictionary containing ratio of matches.
