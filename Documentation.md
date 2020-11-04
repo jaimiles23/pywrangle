@@ -11,7 +11,7 @@ This file provides documentation on pywrangle functionalities.
   - [Print df info](#print-df-info)
     - [Example](#example-1)
   - [Record df info](#record-df-info)
-- [String matching](#string-matching)
+- [Errors](#errors)
   - [Identify errors](#identify-errors)
     - [Example](#example-2)
 
@@ -146,11 +146,11 @@ def record_df_info(
     - Users may pre-emptively record a df & name it w/ this function. 
     - The dict can then be passed to `print_df_info()`, and the name will be preserved.
 
-# String matching
+# Errors
 
 ## Identify errors
 ```python
-def identify_matching_strs(
+def identify_errrors(
     df          :   'dataframe', 
     col         :   str,
     threshold   :   int = 50
