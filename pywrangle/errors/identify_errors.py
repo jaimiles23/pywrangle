@@ -25,8 +25,11 @@ def identify_errors(
     show_progress   :   bool = False, 
     ):
     """Identifies potential data entry errors in the column.
-    Matching strings are identified based on a Similarity Index that is calculated from levenshtein's distance & doublemetaphone algorithms.
-
+    Matching strings are identified based on a Similarity Index.
+    This index is calculated from levenshtein's distance & doublemetaphone algorithms.
+        https://en.wikipedia.org/wiki/Levenshtein_distance
+        https://en.wikipedia.org/wiki/Metaphone
+        
     Args:
         df (dataframe): DataFrame.
         column (str): column to check.

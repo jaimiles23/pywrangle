@@ -160,6 +160,8 @@ def identify_errrors(
     Identifies potential data entry errors in the column.
     Matching strings are identified based on a Similarity Index.
     This index is calculated from levenshtein's distance & doublemetaphone algorithms.
+        https://en.wikipedia.org/wiki/Levenshtein_distance
+        https://en.wikipedia.org/wiki/Metaphone
 
     Args:
         df (dataframe): DataFrame.
