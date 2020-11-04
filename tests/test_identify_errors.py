@@ -29,7 +29,7 @@ def test_identifying_matches():
     """Test identifying matches algo. This requires visual confirmation
     """
     df = create_df.create_str_df2()
-    pw.identify_errors(df, 'states')
+    pw.identify_errors(df = df, column= 'states', threshold=61, show_progress= True)
 
 
 ##########
