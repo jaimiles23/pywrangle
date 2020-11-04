@@ -67,7 +67,7 @@ def create_str_df2() -> "dataframe":
         'utah',
         'indiana',
         'texas',
-        'okalhoma',
+        'oklahoma',
         'Nevada',
         
         ## Random space in word
@@ -76,7 +76,7 @@ def create_str_df2() -> "dataframe":
         'ut ah',
         'i ndiana',
         'te xas',
-        'okal homa',
+        'okla homa',
         'Neva da',
     ]
     data = {
