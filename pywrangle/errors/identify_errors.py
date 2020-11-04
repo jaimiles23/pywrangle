@@ -19,16 +19,19 @@ from . import constants, ratios
 ##########
 
 def identify_errors(
-    df          :   'dataframe', 
-    col         :   str,
-    threshold   :   int = 60,
+    df              :   'dataframe', 
+    column          :   str,
+    threshold       :   int = 60,
+    show_progress   :   bool = False, 
     ):
     """Identifies potential data entry errors in the column.
     Matching strings are identified based on a Similarity Index that is calculated from levenshtein's distance & doublemetaphone algorithms.
 
     Args:
         df (dataframe): DataFrame.
-        col (str): Column to check.
+        column (str): column to check.
+        threshold (int): Similarity index match threshold. A higher threshold returns more rigorous matching. Defaults to 60 out of 100.
+        show_progress (bool): Identifying potential errors may be computationally intense. This prints matching progress to console. Defaults to False.
 
     Returns:
         dict: dictionary containing ratio of matches.
@@ -41,7 +44,7 @@ def identify_errors(
     """
 
     ## Get keys
-    keys = sorted(df[col].unique())
+    keys = sorted(df[column].unique())
 
     ## TblInfo
     tbl_info_str_matches = TableInfo(
@@ -51,7 +54,11 @@ def identify_errors(
         ))
 
     ## Add keys to 
+    if show_progress: print("Identifying potential errors for:")
     for key in keys:
+        if show_progress:
+            print(f"- {key}")
+
         match_ratios = sorted(
             process.extract(key, keys, limit = 5), 
             key = lambda x: x[1], 
