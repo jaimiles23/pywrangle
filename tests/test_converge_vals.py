@@ -1,4 +1,5 @@
-""" 
+""" Function to test converge vals.
+Must be visually checked.
 """
 ##########
 # Imports
@@ -27,8 +28,10 @@ def test_change_val():
     """Test change_val() function.
     """
     df = create_df.create_str_df3()
+    values = ['a', 'b', 'd']
+    val_index = 2
+    df = pw.converge_vals(df, 'b', values, val_index)
     print(df)
-    df = pw.change_val(df, column= 'a', current_val = 1, desired_val = 'FIXED')
 
 
 ##########
