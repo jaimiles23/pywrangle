@@ -8,6 +8,7 @@
 import pandas as pd 
 import random
 
+
 ##########
 # Int df Size
 ##########
@@ -57,6 +58,7 @@ def create_str_df1() -> "dataframe":
     df = pd.DataFrame(data=data, columns=columns)
     return df
 
+
 def create_str_df2() -> "dataframe":
     """Creates string dataframe 
     """
@@ -80,7 +82,7 @@ def create_str_df2() -> "dataframe":
         'Neva da',
     ]
     data = {
-        'a':range(100),
+        'a': range(100),
         'b': range(100),
         'c': [random.choice(['a', 'b', 'c'])* random.randint(0, 5) for _ in range(100)],
         'states': [random.choice(states) + ('s' if random.random() < 0.1 else '') for _ in range(100)] # Change for s
@@ -99,3 +101,4 @@ def create_str_df3() -> "dataframe":
         'b' :   [random.choice(str_vals) for _ in range(20)],
     }
     return pd.DataFrame(data)
+

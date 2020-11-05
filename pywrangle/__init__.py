@@ -4,4 +4,4 @@ from .print_tbl import TableInfo
 from .str_cleaning.clean_all_strcol import clean_all_strcols
 from .str_cleaning.clean_strcol import clean_strcol
 from .errors.identify_errors import identify_errors
-from .errors.change_val import change_val
+from .errors.converge_vals import converge_vals
