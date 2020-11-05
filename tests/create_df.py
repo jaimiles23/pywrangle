@@ -86,3 +86,16 @@ def create_str_df2() -> "dataframe":
         'states': [random.choice(states) + ('s' if random.random() < 0.1 else '') for _ in range(100)] # Change for s
     }
     return pd.DataFrame(data)
+
+
+def create_str_df3() -> "dataframe":
+    """Creates string dataframe 
+    """
+    int_vals = [1,2,3]
+    str_vals = ['a', 'b', 'c']
+
+    data = {
+        'a' :   [random.choice(int_vals) for _ in range(20)],
+        'b' :   [random.choice(str_vals) for _ in range(20)],
+    }
+    return pd.DataFrame(data)
