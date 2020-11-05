@@ -1,3 +1,7 @@
+# Documentation
+_static
+_templates
+
 # API Token
 API_token.txt
 *.pypirc
