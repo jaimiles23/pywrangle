@@ -11,7 +11,7 @@ import pandas as pd
 from fuzzywuzzy import process
 
 from ..print_tbl import TableInfo
-from . import constants, ratios
+from . import constants, similarity_index
 
 
 ##########
@@ -54,29 +54,24 @@ def identify_errors(
     keys = sorted(df[column].unique())
 
     ## TblInfo
-    tbl_info_str_matches = TableInfo(
-        (constants.TBL_DICT_KEYS[0],
-        constants.TBL_DICT_KEYS[1],
-        constants.TBL_DICT_KEYS[2]
-        ))
+    tbl_info_str_matches = TableInfo( constants.TBL_DICT_KEYS)
 
     ## Add keys to 
     if show_progress:   print("Identifying potential data errors for:")
     for key in keys:
         if show_progress:   print(f"- {key}")
 
-        match_ratios = sorted(
+        matched_strs = sorted(
             process.extract(key, keys, limit = limit), 
             key = lambda x: x[1], 
             reverse= True)
 
-        for match, _ in match_ratios:
-            if match == key:    # don't compare vs self.
-                continue
+        for match, _ in matched_strs:
+            if match == key:    continue
 
-            similarity_index: dict = ratios.get_similarity_index_dict(key, match)
-            if similarity_index[ constants.SIM_INDEX] >= threshold:
-                tbl_info_str_matches.add_entry(similarity_index)
+            similarity_dict = similarity_index.get_similarity_index_dict(key, match)
+            if similarity_dict[ constants.SIM_INDEX] >= threshold:
+                tbl_info_str_matches.add_entry(similarity_dict)
     
     tbl_info_str_matches.print_info()
     return
