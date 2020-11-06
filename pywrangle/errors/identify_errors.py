@@ -49,14 +49,9 @@ def identify_errors(
     - CONSIDER returning a dictionary of all these values -- create a second master dict that's returned. 
         Returning a dictionary with matches will be faster processing when implementing a process to clean the information.
     """
-
-    ## Get keys
     keys = sorted(df[column].unique())
+    tbl_info_str_matches = TableInfo( constants.TBL_DICT_KEYS)  # printing info
 
-    ## TblInfo
-    tbl_info_str_matches = TableInfo( constants.TBL_DICT_KEYS)
-
-    ## Add keys to 
     if show_progress:   print("Identifying potential data errors for:")
     for key in keys:
         if show_progress:   print(f"- {key}")
@@ -64,7 +59,7 @@ def identify_errors(
         matched_strs = sorted(
             process.extract(key, keys, limit = limit), 
             key = lambda x: x[1], 
-            reverse= True)
+            reverse = True)
 
         for match, _ in matched_strs:
             if match == key:    continue
