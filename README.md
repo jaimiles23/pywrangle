@@ -53,12 +53,12 @@ Like all developers, I _love_ open source. Please reference the contributing gui
 <!-- TODO: ADD LINK TO CONTRIbuTING GUIDELINES> -->
 
 # Documentation
-Documentation on how to use PyWrangle is available [here](https://github.com/jaimiles23/pywrangle/blob/master/Documentation.md)
+Documentation on how to use PyWrangle is available [here](https://pywrangle.readthedocs.io/en/latest/)
 
 # TODO
 - [ ] Documentation
-  - [ ] Create documentation with Sphinx
-  - [ ] Host the documentation on Read the Docs
+  - [x] Create documentation with Sphinx
+  - [x] Host the documentation on Read the Docs
   - [ ] Requirements currently stored in `setup.py` - investigate reading from a `requirements.txt` file
 - [ ] Data entry cleaning
   - [ ] Re-think output method for matches strings that may be due to data entry errors
