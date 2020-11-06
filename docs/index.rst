@@ -16,11 +16,10 @@ Guide:
 ^^^^^^
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    :caption: Contents:
 
-   modules 
-
+   modules
 
 
 Indices and tables
