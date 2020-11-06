@@ -1,10 +1,7 @@
-pywrangle_lib
-=============
+pywrangle
+=========
 
 .. toctree::
    :maxdepth: 4
 
-   conftest
    pywrangle
-   setup
-   tests
