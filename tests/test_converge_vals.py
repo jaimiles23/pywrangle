@@ -37,4 +37,5 @@ def test_change_val():
 ##########
 # Main
 ##########
-test_change_val()
+if __name__ == "__main__":
+    test_change_val()
