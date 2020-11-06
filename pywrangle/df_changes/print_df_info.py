@@ -1,13 +1,7 @@
-""" Function to print difference between two dataframes:
+"""Print DataFrame Information with differences between two DataFrames:
     - Columns
     - Rows
     - Size
-
-
-Note: Should be able to pass list iterable.
-For each one, print out size, etc.
-
-Then, if length of the list is only 2, THAT'S WHEN print 3rd row comparing.
 """
 
 ##########
@@ -31,22 +25,27 @@ def print_df_info(
     *args: List[ Union['df', dict]],
     compare_dfs: bool = True,
     compare_base_df: int = 0,
-    compare_end_df: int = -1
+    compare_end_df: int = -1,
+    abs_comparison: bool = True,
+    relative_comparison: bool = True,
     ) -> None:
-    """Prints df informations from dfs & recorded info in args
+    """Prints DataFrame information from *args. 
+
+    *Args may include either be either pd.DataFrame or a dict returned from the
+    `record_df_info` function.
 
     Args:
-        *args (List[ Union['df', dict]]): List of dfs & dicts of df info to print info
-        compare_dfs (bool, optional): Show the difference between 2 dataframes. 
-                                    Shows both absoluate and relative differences. 
-                                    Defaults to True.
-        compare_base_df (int): Index of base df to compare. Defaults to 0 (first df info).
-        compare_end_df (int): Index of end df to compare. Defaults to -1 (last df info).
+        *args (List[ Union['df', dict]]): List of DataFrames & dicts to print information.
+        compare_dfs (bool, optional): Show the difference between 2 DataFrames. 
+            May show absolute and relative differences. Defaults to True.
+        compare_base_df (int): Index of base DataFrame for comparison. Defaults to 0.
+        compare_end_df (int): Index of DataFrame to compare to base. Defaults to -1.
+        abs_comparison (bool): If should show absolute comparison between DataFrames.
+        relative_comparison (bool): If should show relative comparison between DataFrames.
                     
     NOTE: 
-    - Dataframes are assigned a name based on the index that they are passed into *args
+    - DataFrames are assigned a name based on the index that they are passed into *args
     - Relative (%) difference is calculated as total of base df.
-
     """
     args = list(args)
 
@@ -72,6 +71,7 @@ def print_df_info(
         if args[i][DF_KEYS[0]] is None: [DF_KEYS[0]] = i  # Change name if not indicated
         tbl_df_info.add_entry(args[i])
 
+    ## Comparison
     if compare_dfs and len(args) > 1:   ## Dataframe difference
 
         df_abs_diff, df_rel_diff = dict(), dict()
@@ -85,7 +85,9 @@ def print_df_info(
             df_abs_diff[key] = val_abs
             df_rel_diff[key] = val_rel
 
-        tbl_df_info.add_entries(df_abs_diff, df_rel_diff)
+        if abs_comparison: tbl_df_info.add_entry(df_abs_diff)
+        if relative_comparison: tbl_df_info.add_entry(df_rel_diff)
+
 
     tbl_df_info.print_info(show_records_col= False)
     if compare_dfs:
