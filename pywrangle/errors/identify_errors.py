@@ -22,26 +22,30 @@ def identify_errors(
     df              :   'dataframe', 
     column          :   str,
     threshold       :   int = 65,
-    show_progress   :   bool = False, 
-    ):
-    """Identifies potential data entry errors in the column.
-    Matching strings are identified based on a Similarity Index.
-    This index is calculated from levenshtein's distance & doublemetaphone algorithms.
+    show_progress   :   bool = False,
+    limit           :   int = 5,
+    ) -> None:
+    """Prints to console potential data error entries in the specified DataFrame column.
+
+    Data entry errors are identified based on string similarity, measured by a Similarity Index.
+    The Similarity Index is calculated using algorithm's derived from levenshtein's distance 
+    and doublemetaphone.
         https://en.wikipedia.org/wiki/Levenshtein_distance
         https://en.wikipedia.org/wiki/Metaphone
         
     Args:
         df (dataframe): DataFrame.
-        column (str): column to check.
-        threshold (int): Similarity index match threshold. A higher threshold returns more rigorous matching. Defaults to 65 out of 100.
-        show_progress (bool): Identifying potential errors may be computationally intense. This prints matching progress to console. Defaults to False.
+        column (str): Column in DataFrame to check.
+        threshold (int): Rigor threshold to identify potential data errors. 
+            A higher threshold returns more rigorous matching. 
+            Defaults to 65 out of 100.
+        show_progress (bool): Prints matching progress to console. Defaults to False.
+        limit (int): Limits the number of matches to each string.
+            Higher values increase computation time and return more false positives.
+            Defaults to 5.
 
-    Returns:
-        dict: dictionary containing ratio of matches.
-
-    TODO:
-    - Implement optional scorer option for process.extract
-    - Add limit variable for parameter.
+    TODO Improvements:
+    - Investigate different option scorer options for process.extract. This is the first round of identifying potential matches.
     - CONSIDER returning a dictionary of all these values -- create a second master dict that's returned. 
         Returning a dictionary with matches will be faster processing when implementing a process to clean the information.
     """
@@ -57,13 +61,12 @@ def identify_errors(
         ))
 
     ## Add keys to 
-    if show_progress: print("Identifying potential errors for:")
+    if show_progress:   print("Identifying potential data errors for:")
     for key in keys:
-        if show_progress:
-            print(f"- {key}")
+        if show_progress:   print(f"- {key}")
 
         match_ratios = sorted(
-            process.extract(key, keys, limit = 5), 
+            process.extract(key, keys, limit = limit), 
             key = lambda x: x[1], 
             reverse= True)
 
@@ -71,9 +74,9 @@ def identify_errors(
             if match == key:    # don't compare vs self.
                 continue
 
-            ratio_dict = ratios.get_ratio_dict(key, match)
-            if ratio_dict[ constants.SIM_INDEX] >= threshold:
-                tbl_info_str_matches.add_entry(ratio_dict)
+            similarity_index: dict = ratios.get_similarity_index_dict(key, match)
+            if similarity_index[ constants.SIM_INDEX] >= threshold:
+                tbl_info_str_matches.add_entry(similarity_index)
     
     tbl_info_str_matches.print_info()
     return
