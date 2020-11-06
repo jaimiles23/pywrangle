@@ -40,8 +40,8 @@ def print_df_info(
             May show absolute and relative differences. Defaults to True.
         compare_base_df (int): Index of base DataFrame for comparison. Defaults to 0.
         compare_end_df (int): Index of DataFrame to compare to base. Defaults to -1.
-        abs_comparison (bool): If should show absolute comparison between DataFrames.
-        relative_comparison (bool): If should show relative comparison between DataFrames.
+        abs_comparison (bool): If should show absolute comparison between DataFrames. Defaults to True.
+        relative_comparison (bool): If should show relative comparison between DataFrames. Defaults to True.
                     
     NOTE: 
     - DataFrames are assigned a name based on the index that they are passed into *args
