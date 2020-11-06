@@ -1,6 +1,8 @@
 PyWrangle: Documentation
 =====================================
 
+This is documentation for the PyWrangle package.
+
 Another Simple Header
 =====================
 
@@ -15,8 +17,9 @@ Guide:
 
 .. toctree::
    :maxdepth: 3
+   :caption: Contents:
 
-   test
+   modules 
 
 
 
