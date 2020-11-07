@@ -18,17 +18,15 @@ def converge_vals(
     df          :   'DataFrame',
     column      :   str,
     values      :   list,
-    val_index   :   int,
+    correct_index   :   int,
     ) -> "DataFrame":
-    """Returns DataFrame with all values in column changed to value at val_index.
-
-    This function will have all 'values' converge on the value at the specified index.
-
+    """Returns DataFrame with column cleaned so values converge to value at correct index.
+    
     Args:
         df (DataFrame): DataFrame to change.
         column (str): Column name.
         values (list): Values to change
-        val_index (int): Index of value in values to converge on.
+        correct_index (int): Index of value in values to converge on.
     
     **Example**
 
@@ -46,7 +44,7 @@ def converge_vals(
         >>> values = ['California', 'Californias', 'Californi a']
         >>> index = 0
         >>> df = pw.converge_vals(df= df, column= 'States', 
-            values= values, val_index= index)
+            values= values, correct_index= index)
         >>> print(df)
                 Index      States
             0      1  California
@@ -55,8 +53,8 @@ def converge_vals(
             3      4  California
             Index(['Index', 'States'], dtype='object')
     """
-    correct_val = values[val_index]
-    del values[val_index]
+    correct_val = values[correct_index]
+    del values[correct_index]
 
     matching_rows = df[column].isin(values)    
     df.loc[matching_rows, column] = correct_val

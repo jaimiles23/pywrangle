@@ -62,7 +62,7 @@ def print_df_info(
         Abs Diff   |     -10   |     -20   |    -600
         % Diff     |   -50.0   |   -50.0   |   -75.0
 
-        Compared DataFrames at index -1 to 0
+        Compared indices -1 & 0
     """
     args = list(args)
 
@@ -108,6 +108,6 @@ def print_df_info(
 
     tbl_df_info.print_info(show_records_col= False)
     if compare_dfs:
-        print(f"Compared DataFrames at index {compare_end_df} to {compare_base_df}")
+        print(f"Compared indices {compare_end_df} & {compare_base_df}")
 
 

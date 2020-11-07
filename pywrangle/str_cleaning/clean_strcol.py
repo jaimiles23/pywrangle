@@ -18,9 +18,9 @@ from .constants import CASE_TO_CLEAN
 ##########
 
 def clean_strcol(
-    df: "DataFrame", 
-    colname: str, 
-    case: Union[str, int] = 'l', 
+    df: "DataFrame",
+    colname: str,
+    case: Union['l', 't', 'u'] = 'l',
     trim: bool = True
 ) -> "DataFrame":
     """Cleans column in DataFrame based on case and trim args.
@@ -28,7 +28,7 @@ def clean_strcol(
     Args:
         df (DataFrame): DataFrame to clean.
         colname (str): Column to clean.
-        case (Union[str, int]): Case to standardize column, available in constants.py module. Defaults to 'l' for lowercase.
+        case (Union['l', 't', 'u']): Case to standardize column, available in constants.py module. Defaults to 'l' for lowercase.
         trim (bool, optional): If should trim white spaces from column. Defaults to True.
 
     Returns:

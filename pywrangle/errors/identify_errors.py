@@ -21,7 +21,7 @@ def identify_errors(
     show_progress   :   bool = False,
     limit           :   int = 5,
     ) -> None:
-    """Prints to console potential data error entries in the specified DataFrame column.
+    """Prints potential data errors in the specified DataFrame column.
 
     Args:
         df (dataframe): DataFrame.
@@ -36,17 +36,17 @@ def identify_errors(
     
     **Notes**
 
-    Data entry errors are identified based on string similarity, measured by a Similarity Index.
-    The Similarity Index is calculated using algorithm's derived from levenshtein's distance 
+    - Data entry errors are identified based on a Similarity Index.
+    - The Similarity Index is calculated using algorithm's derived from levenshtein's distance 
     and doublemetaphone.
 
-    - `Levenstein's distance <https://en.wikipedia.org/wiki/Levenshtein_distance>`_
-    - `Metaphone <https://en.wikipedia.org/wiki/Metaphone>`_
+        - `Levenstein's distance <https://en.wikipedia.org/wiki/Levenshtein_distance>`_
+        - `Metaphone <https://en.wikipedia.org/wiki/Metaphone>`_
 
 
     **Example**
 
-    code-block:: python
+    .. code-block:: python
 
         >>> df = create_df.create_str_df2()
         >>> pw.identify_errors(df= df, column= 'states', threshold= 70)

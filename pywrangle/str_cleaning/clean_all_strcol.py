@@ -24,9 +24,9 @@ def clean_all_strcols(
     columns: Union[list, tuple, None] = None, 
     col_cases: Union[ list, tuple, None] = None, 
     trim: bool = True,
-    clean_case: str = 'l'
+    clean_case: Union['l', 't', 'u'] = 'l'
     ) -> "DataFrame":
-    """Cleans string columns in DataFrame.
+    """Returns DataFrame with cleaned string columns.
 
     Args:
         df (DataFrame): DataFrame to clean.
@@ -35,21 +35,23 @@ def clean_all_strcols(
         columns (Union[list, tuple, None], optional): col_cases to use with the columns. 
             If not specified, will default to optional clean_case parameter.
         trim (bool, optional): If should trim the string data in columns. Defaults to True.
-        clean_case (str): Sentence case to default string column cleaning. Defaults to 'l', or lowercase.
+        clean_case (Union['l', 't', 'u']): Sentence case to default string column cleaning. Defaults to 'l', or lowercase.
     
     Returns:
         DataFrame: Returns DataFrame with cleaned string columns.
     
     **Notes**
-    
-    - Available sentence cases include: 'l', 'u', and 't', for lower, upper and title respectively.
+
+    - If `columns` is not specified, the function will clean all string columns in DataFrame.
+    - May optionally pass column & col_cases to specify what columns to clean and how.
+    - Available clean_case arguments represent lower, title, and upper respectively.
 
     **Example**
 
     .. code-block:: python
 
         >>> df = create_df.create_mixed_df_size(10, 10)
-        >>> df = pw.clean_all_strcols(df, trim = False)
+        >>> df = pw.clean_all_strcols(df)
 
         Record   |   Column   |   Is Str Col   |   Clean Method
         ------   |   ------   |   ----------   |   ------------

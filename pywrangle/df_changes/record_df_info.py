@@ -23,7 +23,7 @@ def record_df_info(
     df: 'DataFrame',
     name: Union[str, int] = None
     ) -> dict:
-    """Records information about the DataFrame, including name, cols, rows, and size.
+    """Returns dict with information about DataFrame, including name, cols, rows, and size.
 
     Args:
         df (DataFrame): DataFrame to record information from.
