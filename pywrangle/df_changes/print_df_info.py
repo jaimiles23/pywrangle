@@ -1,4 +1,5 @@
-"""Print DataFrame Information with differences between two DataFrames:
+"""
+Print DataFrame Information with differences between two DataFrames:
     - Columns
     - Rows
     - Size
@@ -29,13 +30,13 @@ def print_df_info(
     abs_comparison: bool = True,
     relative_comparison: bool = True,
     ) -> None:
-    """Prints DataFrame information from *args. 
+    """Prints DataFrame information from args. 
 
-    *Args may include either be either pd.DataFrame or a dict returned from the
+    Args may include either be either pd.DataFrame or a dict returned from the
     `record_df_info` function.
 
     Args:
-        *args (List[ Union['df', dict]]): List of DataFrames & dicts to print information.
+        args (List[ Union['df', dict]]): List of DataFrames & dicts to print information.
         compare_dfs (bool, optional): Show the difference between 2 DataFrames. 
             May show absolute and relative differences. Defaults to True.
         compare_base_df (int): Index of base DataFrame for comparison. Defaults to 0.
