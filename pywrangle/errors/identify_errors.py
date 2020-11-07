@@ -50,7 +50,6 @@ def identify_errors(
 
         >>> df = create_df.create_str_df2()
         >>> pw.identify_errors(df= df, column= 'states', threshold= 70)
-
         Record   |   String         |   Match          |   Similarity Index
         ------   |   ------------   |   ------------   |   ----------------
             1    |   Neva da        |   Nevada         |              91.75
