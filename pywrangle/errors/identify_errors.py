@@ -40,6 +40,17 @@ def identify_errors(
         limit (int): Limits the number of matches to each string.
             Higher values increase computation time and return more false positives.
             Defaults to 5.
+    
+    **Example**
+
+    ======  ========      ========      ================
+    Record  String        Match         Similarity Index
+    ------  --------      --------      ----------------
+         1  Neva da       Neva das                 94.75
+         2  Neva da       Nevada                   91.75
+         3  Neva das      Neva da                  94.75
+    ======  ========      ========      ================
+
     """
     keys = sorted(df[column].unique())
     tbl_info_str_matches = TableInfo( constants.TBL_DICT_KEYS)  # printing info

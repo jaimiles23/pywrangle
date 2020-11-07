@@ -31,11 +31,21 @@ def record_df_info(
     Returns:
         dict: Contains information on DataFrame
     
-    Notes:
+    **Notes**
 
     - This function allows users to record a DataFrame state and then change it. 
     
         - For instance, filtering for a subset of data. The two states can then be compared using the **print_df_info** function.
+
+    **Example**
+    
+    .. code-block:: python
+
+        >>> df = create_df.create_int_df_size(10, 20)
+        >>> df_info = pw.record_df_info(df)
+        >>> print(df_info)
+        {'name': None, 'cols': 10, 'rows': 20, 'size': 200}
+
     """
     if not isinstance(df, pd.DataFrame):
         raise Exception("Must pass pandas DataFrame object!")
