@@ -33,9 +33,11 @@ def check_is_metaphone(str_1: str, str_2: str) -> int:
     Returns:
         int: 100 if str_1 and str_2 are homophones. Else 0.
     
-    NOTE:
+    Notes:
+
     - The doublemetaphone algorithm will return 100 for words with incorrect spacing.
-    e.g., California == Cali fornia
+    
+        - e.g., California == Cali fornia
     """
     str_1_meta = doublemetaphone(str_1)
     str_2_meta = doublemetaphone(str_2)

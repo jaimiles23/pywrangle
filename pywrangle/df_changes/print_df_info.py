@@ -43,7 +43,8 @@ def print_df_info(
         abs_comparison (bool): If should show absolute comparison between DataFrames. Defaults to True.
         relative_comparison (bool): If should show relative comparison between DataFrames. Defaults to True.
                     
-    NOTE: 
+    Notes:
+    
     - DataFrames are assigned a name based on the index that they are passed into args
     - Relative (%) difference is calculated as total of base df.
     """
