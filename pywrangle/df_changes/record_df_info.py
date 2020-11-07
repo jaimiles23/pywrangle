@@ -29,7 +29,7 @@ def record_df_info(
         df (DataFrame): DataFrame to record information from.
         name (Union[str, int], optional): Name of the DataFrame for comparison. Defaults to None.
     Returns:
-        dict: Contains information on DataFrame
+        dict: Contains information about DataFrame.
     
     **Notes**
 

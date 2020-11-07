@@ -45,7 +45,7 @@ def print_df_info(
     
     **Notes**
     
-    - DataFrames are assigned a name based on the index that they are passed into args
+    - DataFrames are assigned a name based on the index that they are passed into args.
     - Relative (%) difference is calculated as total of base df.
 
     **Example**

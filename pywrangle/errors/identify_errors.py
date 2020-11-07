@@ -53,9 +53,9 @@ def identify_errors(
 
         Record   |   String         |   Match          |   Similarity Index
         ------   |   ------------   |   ------------   |   ----------------
-            1   |   Neva da        |   Nevada         |              91.75
-            2   |   Nevada         |   Neva da        |              91.75
-            3   |   cali fornia    |   cali fornias   |               97.0
+            1    |   Neva da        |   Nevada         |              91.75
+            2    |   Nevada         |   Neva da        |              91.75
+            3    |   cali fornia    |   cali fornias   |               97.0
 
     """
     keys = sorted(df[column].unique())
