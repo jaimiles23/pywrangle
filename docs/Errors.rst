@@ -1,4 +1,4 @@
-pywrangle.errors package
+Errors
 ========================
 
 converge_vals
