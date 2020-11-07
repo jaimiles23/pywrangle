@@ -41,9 +41,10 @@ To install pywrangle, use pip:
 pip install pywrangle
 ```
 
+
 # Import
 
-Per convention with Python Analysis modules, import pywrangle as follows:
+Per convention with Python libraries for data science, import pywrangle as follows:
 ```
 >>> import pywrangle as pw
 ```
