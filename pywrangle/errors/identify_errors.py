@@ -30,8 +30,8 @@ def identify_errors(
     Data entry errors are identified based on string similarity, measured by a Similarity Index.
     The Similarity Index is calculated using algorithm's derived from levenshtein's distance 
     and doublemetaphone.
-        https://en.wikipedia.org/wiki/Levenshtein_distance
-        https://en.wikipedia.org/wiki/Metaphone
+    - https://en.wikipedia.org/wiki/Levenshtein_distance
+    - https://en.wikipedia.org/wiki/Metaphone
         
     Args:
         df (dataframe): DataFrame.

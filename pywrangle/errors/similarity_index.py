@@ -37,7 +37,7 @@ def check_is_metaphone(str_1: str, str_2: str) -> int:
     
     NOTE:
     - The doublemetaphone algorithm will return 100 for words with incorrect spacing.
-        e.g., California == Cali fornia
+    e.g., California == Cali fornia
     """
     str_1_meta = doublemetaphone(str_1)
     str_2_meta = doublemetaphone(str_2)
@@ -83,16 +83,11 @@ def get_similarity_index_dict(str_1: str, str_2: str) -> int:
         str_2 (str): Second string to compare.
 
     Returns:
-        int: 
+        int: Similarity Index from 0 to 100 representing the similarity of the two strings.
     
     NOTE:
     - future iteration may like to use jaro winkler distance. This puts more emphasis on
     beginning of word and thus more likely to catch tense & plurals.
-
-    TODO:
-    - Better implementation of dict 
-        - should change mean implementaiton for clarity. 
-        - Should refactor ratio_dict to not include str_1 name & add that in outside method.
     """
     ratio_dict = {
         constants.RATIO_DICT_KEYS[0]    :   fuzz.ratio(str_1, str_2),

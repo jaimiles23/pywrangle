@@ -33,7 +33,7 @@ def record_df_info(
     
     NOTE:
     - This function allows users to record a DataFrame state and then change it. For instance,
-      filtering for a subset of data. The two states can then be compared using the `print_df_info` function.
+    filtering for a subset of data. The two states can then be compared using the `print_df_info` function.
     """
     if not isinstance(df, pd.DataFrame):
         raise Exception("Must pass pandas DataFrame object!")
