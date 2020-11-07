@@ -45,7 +45,7 @@ def print_df_info(
         relative_comparison (bool): If should show relative comparison between DataFrames. Defaults to True.
                     
     NOTE: 
-    - DataFrames are assigned a name based on the index that they are passed into *args
+    - DataFrames are assigned a name based on the index that they are passed into args
     - Relative (%) difference is calculated as total of base df.
     """
     args = list(args)
