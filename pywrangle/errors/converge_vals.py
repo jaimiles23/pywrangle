@@ -1,5 +1,5 @@
-"""Converge all values in a Column to a single value.
-"""
+# Converge all values in a Column to a single value.
+
 
 ##########
 # Imports

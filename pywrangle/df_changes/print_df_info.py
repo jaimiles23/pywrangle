@@ -1,9 +1,8 @@
-"""
-Print DataFrame Information with differences between two DataFrames:
-    - Columns
-    - Rows
-    - Size
-"""
+# Print DataFrame Information with differences between two DataFrames:
+#     - Columns
+#     - Rows
+#     - Size
+
 
 ##########
 # Imports

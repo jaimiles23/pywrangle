@@ -1,6 +1,5 @@
-"""
-Constants for the String Cleaning Sub Package.
-"""
+# Constants for the String Cleaning Sub Package.
+
 ##########
 # Imports 
 ##########

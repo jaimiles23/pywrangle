@@ -1,6 +1,4 @@
-"""
-Constants for String matching Sub-Package.
-"""
+# Constants for String matching Sub-Package.
 
 ##########
 # Constants

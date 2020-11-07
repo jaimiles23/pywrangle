@@ -1,7 +1,3 @@
-"""
-Script used to identify potential matches between string keys.
-"""
-
 ##########
 # Imports
 ##########
@@ -30,9 +26,10 @@ def identify_errors(
     Data entry errors are identified based on string similarity, measured by a Similarity Index.
     The Similarity Index is calculated using algorithm's derived from levenshtein's distance 
     and doublemetaphone.
-    - https://en.wikipedia.org/wiki/Levenshtein_distance
-    - https://en.wikipedia.org/wiki/Metaphone
-        
+
+    - `Levenstein's distance <https://en.wikipedia.org/wiki/Levenshtein_distance>`_
+    - `Metaphone <https://en.wikipedia.org/wiki/Metaphone>`_
+
     Args:
         df (dataframe): DataFrame.
         column (str): Column in DataFrame to check.

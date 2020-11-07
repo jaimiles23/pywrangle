@@ -1,6 +1,5 @@
-"""
-Clean String Column
-"""
+# Clean String Column
+
 
 ##########
 # Imports 

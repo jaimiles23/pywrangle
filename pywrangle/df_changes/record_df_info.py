@@ -1,8 +1,8 @@
-"""Contains `record_df_info` to record information: 
-    - Columns
-    - Rows
-    - Size
-"""
+# Contains `record_df_info` to record information: 
+#     - Columns
+#     - Rows
+#     - Size
+
 
 ##########
 # Imports

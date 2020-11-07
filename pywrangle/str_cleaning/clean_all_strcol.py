@@ -1,6 +1,5 @@
-"""
-Clean all string columns in a DataFrame.
-"""
+# Clean all string columns in a DataFrame.
+
 
 ##########
 # Imports 
@@ -42,6 +41,7 @@ def clean_all_strcols(
         DataFrame: Returns DataFrame with cleaned string columns.
     
     Notes:
+    
     - Available sentence cases include: 'l', 'u', and 't', for lower, upper and title respectively.
     """
     ## Check columns

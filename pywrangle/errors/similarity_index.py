@@ -1,12 +1,10 @@
-"""
-Algorithms to calcualte similarity ration between two words.
+# Algorithms to calcualte similarity ration between two words.
 
-Fuzzywuzzy uses levenshtein's distance to calculate distance between strings, and 
-metaphone uses the doublemetaphone algorithm to identify homophones.
+# Fuzzywuzzy uses levenshtein's distance to calculate distance between strings, and 
+# metaphone uses the doublemetaphone algorithm to identify homophones.
 
-https://en.wikipedia.org/wiki/Levenshtein_distance
-https://en.wikipedia.org/wiki/Metaphone
-"""
+# https://en.wikipedia.org/wiki/Levenshtein_distance
+# https://en.wikipedia.org/wiki/Metaphone
 
 
 ##########
