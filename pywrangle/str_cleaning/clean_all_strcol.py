@@ -40,9 +40,24 @@ def clean_all_strcols(
     Returns:
         DataFrame: Returns DataFrame with cleaned string columns.
     
-    Notes:
+    **Notes**
     
     - Available sentence cases include: 'l', 'u', and 't', for lower, upper and title respectively.
+
+    **Example**
+
+    .. code-block:: python
+
+        >>> df = create_df.create_mixed_df_size(10, 10)
+        >>> df = pw.clean_all_strcols(df, trim = False)
+
+        Record   |   Column   |   Is Str Col   |   Clean Method
+        ------   |   ------   |   ----------   |   ------------
+            1    |   A        |        False   |   None
+            2    |   B        |         True   |   lower
+            3    |   C        |        False   |   None
+            4    |   D        |         True   |   lower
+            5    |   E        |        False   |   None
     """
     ## Check columns
     if columns is None:

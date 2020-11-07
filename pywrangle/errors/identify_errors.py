@@ -23,13 +23,6 @@ def identify_errors(
     ) -> None:
     """Prints to console potential data error entries in the specified DataFrame column.
 
-    Data entry errors are identified based on string similarity, measured by a Similarity Index.
-    The Similarity Index is calculated using algorithm's derived from levenshtein's distance 
-    and doublemetaphone.
-
-    - `Levenstein's distance <https://en.wikipedia.org/wiki/Levenshtein_distance>`_
-    - `Metaphone <https://en.wikipedia.org/wiki/Metaphone>`_
-
     Args:
         df (dataframe): DataFrame.
         column (str): Column in DataFrame to check.
@@ -41,15 +34,28 @@ def identify_errors(
             Higher values increase computation time and return more false positives.
             Defaults to 5.
     
+    **Notes**
+
+    Data entry errors are identified based on string similarity, measured by a Similarity Index.
+    The Similarity Index is calculated using algorithm's derived from levenshtein's distance 
+    and doublemetaphone.
+
+    - `Levenstein's distance <https://en.wikipedia.org/wiki/Levenshtein_distance>`_
+    - `Metaphone <https://en.wikipedia.org/wiki/Metaphone>`_
+
+
     **Example**
 
-    ======  ========      ========      ================
-    Record  String        Match         Similarity Index
-    ------  --------      --------      ----------------
-         1  Neva da       Neva das                 94.75
-         2  Neva da       Nevada                   91.75
-         3  Neva das      Neva da                  94.75
-    ======  ========      ========      ================
+    code-block:: python
+
+        >>> df = create_df.create_str_df2()
+        >>> pw.identify_errors(df= df, column= 'states', threshold= 70)
+
+        Record   |   String         |   Match          |   Similarity Index
+        ------   |   ------------   |   ------------   |   ----------------
+            1   |   Neva da        |   Nevada         |              91.75
+            2   |   Nevada         |   Neva da        |              91.75
+            3   |   cali fornia    |   cali fornias   |               97.0
 
     """
     keys = sorted(df[column].unique())

@@ -41,12 +41,28 @@ def print_df_info(
         compare_base_df (int): Index of base DataFrame for comparison. Defaults to 0.
         compare_end_df (int): Index of DataFrame to compare to base. Defaults to -1.
         abs_comparison (bool): If should show absolute comparison between DataFrames. Defaults to True.
-        relative_comparison (bool): If should show relative comparison between DataFrames. Defaults to True.
-                    
-    Notes:
+        relative_comparison (bool): If should show relative comparison between DataFrames. Defaults to True.         
+    
+    **Notes**
     
     - DataFrames are assigned a name based on the index that they are passed into args
     - Relative (%) difference is calculated as total of base df.
+
+    **Example**
+
+    .. code-block:: python
+
+        >>> df1, df2 = (create_df.create_int_df_size(cols= i * 10, rows= i * 20) for i in range(1, 3))
+        >>> pw.print_df_info(df2, df1)
+
+        Name       |    Cols   |    Rows   |    Size
+        --------   |   -----   |   -----   |   -----
+        0          |      20   |      40   |     800
+        1          |      10   |      20   |     200
+        Abs Diff   |     -10   |     -20   |    -600
+        % Diff     |   -50.0   |   -50.0   |   -75.0
+
+        Compared DataFrames at index -1 to 0
     """
     args = list(args)
 

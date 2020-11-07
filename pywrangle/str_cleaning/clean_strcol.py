@@ -33,6 +33,12 @@ def clean_strcol(
 
     Returns:
         DataFrame: Returns DataFrame with cleaned strings in specified column.
+    
+    **Example**
+
+    .. code-block:: python
+
+        >>> df1.animals = pw.clean_strcol(df1, 'animals', CASE_LIST[i])
     """
     if colname not in df.columns:
         Exception(

@@ -102,3 +102,12 @@ def create_str_df3() -> "dataframe":
     }
     return pd.DataFrame(data)
 
+
+def create_str_df4() -> "dataframe":
+    """Creates dataframe for converge values."""
+    data = {
+        'Index' :   [1,2,3,4],
+        'States'    :   ['California', 'California', 'Californias', 'Californi a']
+    }
+    return pd.DataFrame(data)
+

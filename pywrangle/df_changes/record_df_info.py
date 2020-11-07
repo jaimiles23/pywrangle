@@ -41,7 +41,7 @@ def record_df_info(
     
     .. code-block:: python
 
-        >>> df = create_df.create_int_df_size(10, 20)
+        >>> df = create_df.create_int_df_size(cols= 10, rows= 20)
         >>> df_info = pw.record_df_info(df)
         >>> print(df_info)
         {'name': None, 'cols': 10, 'rows': 20, 'size': 200}

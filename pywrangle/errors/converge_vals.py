@@ -29,6 +29,31 @@ def converge_vals(
         column (str): Column name.
         values (list): Values to change
         val_index (int): Index of value in values to converge on.
+    
+    **Example**
+
+    .. code-block:: python
+
+        >>> df = create_df.create_str_df4()
+        >>> print(df)
+                Index       States
+            0      1   California
+            1      2   California
+            2      3  Californias
+            3      4  Californi a
+            Index(['Index', 'States'], dtype='object')
+
+        >>> values = ['California', 'Californias', 'Californi a']
+        >>> index = 0
+        >>> df = pw.converge_vals(df= df, column= 'States', 
+            values= values, val_index= index)
+        >>> print(df)
+                Index      States
+            0      1  California
+            1      2  California
+            2      3  California
+            3      4  California
+            Index(['Index', 'States'], dtype='object')
     """
     correct_val = values[val_index]
     del values[val_index]
