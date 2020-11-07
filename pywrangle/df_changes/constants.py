@@ -1,4 +1,5 @@
-"""Constants for df_changes library.
+"""
+Contains constants for the DataFrame Changes Library.
 """
 
 DF_KEYS = (

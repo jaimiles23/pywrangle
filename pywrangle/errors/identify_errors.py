@@ -43,11 +43,6 @@ def identify_errors(
         limit (int): Limits the number of matches to each string.
             Higher values increase computation time and return more false positives.
             Defaults to 5.
-
-    TODO Improvements:
-    - Investigate different option scorer options for process.extract. This is the first round of identifying potential matches.
-    - CONSIDER returning a dictionary of all these values -- create a second master dict that's returned. 
-        Returning a dictionary with matches will be faster processing when implementing a process to clean the information.
     """
     keys = sorted(df[column].unique())
     tbl_info_str_matches = TableInfo( constants.TBL_DICT_KEYS)  # printing info

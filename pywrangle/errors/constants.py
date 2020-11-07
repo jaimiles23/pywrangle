@@ -1,5 +1,5 @@
 """
-Constants for str_matching information.
+Constants for String matching Sub-Package.
 """
 
 ##########

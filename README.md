@@ -27,7 +27,7 @@ PyWrangle is available on PyPI [here](https://pypi.org/project/pywrangle/)
 # Install
 
 ## Requirements
-- Python 3.8+
+- Python >= 3.8+
 - numpy >= 1.14.4
 - pandas >= 1.0.3
 - fuzzywuzzy >= 0.18.0

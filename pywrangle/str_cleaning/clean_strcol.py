@@ -1,5 +1,5 @@
 """
-clean_strcol: function to clean string column
+Clean String Column
 """
 
 ##########
@@ -19,21 +19,21 @@ from .constants import CASE_TO_CLEAN
 ##########
 
 def clean_strcol(
-    df: "dataframe", 
+    df: "DataFrame", 
     colname: str, 
     case: Union[str, int] = 'l', 
     trim: bool = True
-) -> 'DataFrame':
-    """Cleans column in dataframe based on case and trim args.
+) -> "DataFrame":
+    """Cleans column in DataFrame based on case and trim args.
 
     Args:
-        df (dataframe): Dataframe to clean
-        colname (str): Column to clean
-        case (Union[str, int]): Case to standardize column, available in constants.py module. Defaults to 'l'.
+        df (DataFrame): DataFrame to clean.
+        colname (str): Column to clean.
+        case (Union[str, int]): Case to standardize column, available in constants.py module. Defaults to 'l' for lowercase.
         trim (bool, optional): If should trim white spaces from column. Defaults to True.
 
     Returns:
-        DataFrame: Returns dataframe with cleaned colname.
+        DataFrame: Returns DataFrame with cleaned strings in specified column.
     """
     if colname not in df.columns:
         Exception(
@@ -43,8 +43,6 @@ def clean_strcol(
     elif df[colname].dtype != np.object:
         Exception(f"{colname} is not a numpy object!")
 
-    
-    ## Trim
     if trim:
         df[colname] = df[colname].str.strip()
     

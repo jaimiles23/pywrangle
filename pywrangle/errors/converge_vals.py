@@ -1,4 +1,4 @@
-"""Function to changes values in a dataframe column.
+"""Converge all values in a Column to a single value.
 """
 
 ##########
@@ -19,14 +19,16 @@ def converge_vals(
     column      :   str,
     values      :   list,
     val_index   :   int,
-) -> "DataFrame":
-    """Returns dataframe with all values in column changed to value at index.
+    ) -> "DataFrame":
+    """Returns DataFrame with all values in column changed to value at val_index.
+
+    This function will have all 'values' converge on the value at the specified index.
 
     Args:
-        df (DataFrame): DataFrame to change
-        column (str): Column Name
+        df (DataFrame): DataFrame to change.
+        column (str): Column name.
         values (list): Values to change
-        val_index (int): Index of value to change others.
+        val_index (int): Index of value in values to converge on.
     """
     correct_val = values[val_index]
     del values[val_index]

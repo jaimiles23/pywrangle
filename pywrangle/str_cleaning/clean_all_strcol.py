@@ -1,4 +1,5 @@
-"""Function to clean all string columns in data frame.
+"""
+Clean all string columns in a DataFrame.
 """
 
 ##########
@@ -20,26 +21,28 @@ from .constants import CASE_TO_CLEAN
 ##########
 
 def clean_all_strcols(
-    df: "dataframe", 
+    df: "DataFrame", 
     columns: Union[list, tuple, None] = None, 
     col_cases: Union[ list, tuple, None] = None, 
     trim: bool = True,
     clean_case: str = 'l'
-    ) -> 'dataframe':
-    """Cleans string columns in dataframe.
+    ) -> "DataFrame":
+    """Cleans string columns in DataFrame.
 
     Args:
-        df (dataframe): Dataframe to clean
-        col_cases (Union[ list, tuple, None]): Names of the columns to clean. Defaults to None.
-        columns (Union[list, tuple, None], optional): col_cases to use with the columns. Defaults to None.
-        trim (bool, optional): If should trim the columns. Defaults to True.
-        clean_case (str): Sentence col_cases to default string column cleaning. Defaults to 'l'.
+        df (DataFrame): DataFrame to clean.
+        col_cases (Union[ list, tuple, None]): Names of the columns to clean.
+            If not specified, will attempt to clean all columns.
+        columns (Union[list, tuple, None], optional): col_cases to use with the columns. 
+            If not specified, will default to optional clean_case parameter.
+        trim (bool, optional): If should trim the string data in columns. Defaults to True.
+        clean_case (str): Sentence case to default string column cleaning. Defaults to 'l', or lowercase.
     
     Returns:
-        DataFrame: Returns dataframe with cleaned colname.
+        DataFrame: Returns DataFrame with cleaned string columns.
     
     Notes:
-    - Available cases include: 'l', 'u', and 't', for lower, upper and title respectively.
+    - Available sentence cases include: 'l', 'u', and 't', for lower, upper and title respectively.
     """
     ## Check columns
     if columns is None:
@@ -65,10 +68,11 @@ def clean_all_strcols(
         name, case = info
 
         if name not in df.columns:
-            raise Exception(f"{name} not in DF colnames!\n{df.columns}")
+            raise Exception(
+        f"{name} not in DataFrame colnames!" + 
+        "".join(["\n - " + str(col) for col in df.columns]))
 
-        is_str_col = df[name].dtype == (object)
-        if is_str_col:
+        if (is_str_col := df[name].dtype == (object)):
             df = clean_strcol(df, name, case, trim = trim)
             clean = CASE_TO_CLEAN[case].__name__
         else:
