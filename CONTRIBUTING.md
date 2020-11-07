@@ -4,8 +4,10 @@ Like all developers, I _love_ open source. Feel free to improve any existing fun
 
 To avoid excessive scope, please reference the intent this library.
 
-> PyWrangle is an open-source Python library for data wrangling. Wikipedia defines data wrangling as follows:
->> is the process of transforming and mapping data from one "raw" data form into another format with the intent of making it more appropriate and valuable for a variety of downstream purposes such as analytics
+> PyWrangle is an open-source Python library for data wrangling. 
+> Wikipedia defines data wrangling as follows:
+> 
+> is the process of transforming and mapping data from one "raw" data form into another format with the intent of making it more appropriate and valuable for a variety of downstream purposes such as analytics
 
 
 Let's make this _our_ code.
