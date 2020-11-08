@@ -50,7 +50,7 @@ PyWrangle can be installed with pip.
 Requirements
 ^^^^^^^^^^^^
 
-- Python >= 3.8+
+- Python >= 3.8
 - numpy >= 1.14.4
 - pandas >= 1.0.3
 - fuzzywuzzy >= 0.18.0
