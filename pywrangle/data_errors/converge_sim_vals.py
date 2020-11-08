@@ -5,7 +5,7 @@
 # Imports
 ##########
 
-from typing import Any
+from typing import Any, Union
 import pandas as pd 
 import numpy as np
 
@@ -17,16 +17,16 @@ import numpy as np
 def converge_sim_vals(
     df          :   'DataFrame',
     column      :   str,
-    values      :   list,
-    correct_index   :   int,
+    values      :   Union[tuple, list],
+    index       :   int,
     ) -> "DataFrame":
-    """Returns DataFrame with column cleaned so values converge to value at correct index.
+    """Returns DataFrame with similar values in column 'converge' to the value at index.
     
     Args:
         df (DataFrame): DataFrame to change.
         column (str): Column name.
-        values (list): Values to change
-        correct_index (int): Index of value in values to converge on.
+        values (Union[tuple, list]): Values to change.
+        index (int): index in values for similar values to converge.
     
     **Example**
 
@@ -44,7 +44,7 @@ def converge_sim_vals(
         >>> values = ['California', 'Californias', 'Californi a']
         >>> index = 0
         >>> df = pw.change_values(df= df, column= 'States', 
-            values= values, correct_index= index)
+            values= values, index= index)
         >>> print(df)
                 Index      States
             0      1  California
@@ -53,8 +53,8 @@ def converge_sim_vals(
             3      4  California
             Index(['Index', 'States'], dtype='object')
     """
-    correct_val = values[correct_index]
-    del values[correct_index]
+    correct_val = values[index]
+    del values[index]
 
     matching_rows = df[column].isin(values)    
     df.loc[matching_rows, column] = correct_val
