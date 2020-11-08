@@ -4,15 +4,16 @@ Data Errors
 identify_errors
 ---------------
 
-.. automodule:: pywrangle.errors.identify_errors
+.. automodule:: pywrangle.data_errors.identify_errors
    :members:
    :undoc-members:
    :show-inheritance:
 
-converge_vals
--------------
 
-.. automodule:: pywrangle.errors.converge_sim_vals
+converge_sim_vals
+-----------------
+
+.. automodule:: pywrangle.data_errors.converge_sim_vals
    :members:
    :undoc-members:
    :show-inheritance:

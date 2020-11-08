@@ -33,9 +33,9 @@ def record_df_info(
     
     **Notes**
 
-    - This function allows users to record a DataFrame state and then change it. 
+    - This function allows users change a DataFrame while recording its previous state.
     
-        - For instance, filtering for a subset of data. The two states can then be compared using the **print_df_info** function.
+        - For instance, after filtering a DataFrame, you may compare the two DataFrames using the **print_df_info** function.
 
     **Example**
     

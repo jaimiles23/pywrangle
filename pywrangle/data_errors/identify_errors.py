@@ -37,8 +37,7 @@ def identify_errors(
     **Notes**
 
     - Data entry errors are identified based on a Similarity Index.
-    - The Similarity Index is calculated using algorithm's derived from levenshtein's distance 
-    and doublemetaphone.
+    - The Similarity Index is calculated using algorithm's derived from levenshtein's distance and doublemetaphone.
 
         - `Levenstein's distance <https://en.wikipedia.org/wiki/Levenshtein_distance>`_
         - `Metaphone <https://en.wikipedia.org/wiki/Metaphone>`_

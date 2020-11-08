@@ -43,7 +43,7 @@ def converge_sim_vals(
 
         >>> values = ['California', 'Californias', 'Californi a']
         >>> index = 0
-        >>> df = pw.change_values(df= df, column= 'States', 
+        >>> df = pw.converge_sim_vals(df= df, column= 'States', 
             values= values, index= index)
         >>> print(df)
                 Index      States
