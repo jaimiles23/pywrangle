@@ -30,7 +30,7 @@ def test_change_val1():
     df = create_df.create_str_df3()
     values = ['a', 'b', 'd']
     val_index = 2
-    df = pw.converge_vals(df, 'b', values, val_index)
+    df = pw.converge_sim_vals(df, 'b', values, val_index)
     print(df)
 
 
@@ -41,8 +41,8 @@ def test_change_val2():
     print(df)
     values = ['California', 'Californias', 'Californi a']
     index = 0
-    df = pw.converge_vals(df= df, column= 'States', 
-        values= values, val_index= index)
+    df = pw.converge_sim_vals(df= df, column= 'States', 
+        values= values, index= index)
     print(df)
 
 
@@ -50,5 +50,5 @@ def test_change_val2():
 # Main
 ##########
 if __name__ == "__main__":
-    # test_change_val1()
+    test_change_val1()
     test_change_val2()
