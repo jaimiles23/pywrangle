@@ -14,7 +14,7 @@ import numpy as np
 # Dataframe
 ##########
 
-def converge_vals(
+def converge_sim_vals(
     df          :   'DataFrame',
     column      :   str,
     values      :   list,
@@ -43,7 +43,7 @@ def converge_vals(
 
         >>> values = ['California', 'Californias', 'Californi a']
         >>> index = 0
-        >>> df = pw.converge_vals(df= df, column= 'States', 
+        >>> df = pw.change_values(df= df, column= 'States', 
             values= values, correct_index= index)
         >>> print(df)
                 Index      States
