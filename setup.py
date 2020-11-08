@@ -6,29 +6,6 @@
  * @modify date 2020-08-13 17:26:18
  * @desc [
     Setup for AlexaUtils PyPi
-
-Steps When uploading changes:
-    - update verison variable below
-    - cmd, navigate to dir:
-        - python setup.py sdist
-        - twine upload dist/*
-            - username: __token__
-            - pw in API_token.txt
-
-NOTE:
-    - If run into HTTPError: 403 Forbidden, may need to delete old version in dist to avoid duplicate uploads.  
-
-TODO:
-    - Use script to automatically use username & pw in twine upload 
-    https://twine.readthedocs.io/en/latest/#twine-upload
-
-
-    - Create documentation:
-        https://www.mkdocs.org/
-        https://docs.readthedocs.io/en/latest/intro/getting-started-with-mkdocs.html
-        https://packaging.python.org/tutorials/creating-documentation/
-    - Add tests:
-        https://python-packaging.readthedocs.io/en/latest/testing.html
  ]
  */
 """
@@ -49,7 +26,7 @@ version = "0.3.0"
 description = "Auxiliary functions to clean pandas data frames"
 author = "Jai Miles"
 author_email = "jaimiles23@gmail.com"
-keywords = ['clean', 'wrangle', 'pandas', 'dataframe', 'mangle',]
+keywords = ['clean', 'wrangle', 'pandas', 'dataframe', 'mangle', 'data', 'numpy', 'text', 'missing']
 url = 'https://github.com/jaimiles23/pywrangle'
 download_url = ''
 
