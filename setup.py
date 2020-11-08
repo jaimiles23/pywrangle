@@ -87,6 +87,7 @@ setup_args = dict(
     keywords = keywords,
     url = url,
     download_url = download_url,
+    python_requires='>=3.8',
 )
 
 
