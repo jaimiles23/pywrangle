@@ -8,7 +8,7 @@ Subpackages
    :maxdepth: 4
 
    DataFrame Changes
-   Errors
+   Data Errors
    String Cleaning
 
 Module contents

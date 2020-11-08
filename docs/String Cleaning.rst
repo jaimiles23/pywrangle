@@ -1,6 +1,14 @@
 String Cleaning
 ===============
 
+clean_strcol
+------------
+
+.. automodule:: pywrangle.str_cleaning.clean_strcol
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 clean_all_strcol
 ----------------
@@ -10,10 +18,3 @@ clean_all_strcol
    :undoc-members:
    :show-inheritance:
 
-clean_strcol
-------------
-
-.. automodule:: pywrangle.str_cleaning.clean_strcol
-   :members:
-   :undoc-members:
-   :show-inheritance:
