@@ -35,10 +35,11 @@ def converge_sim_vals(
         >>> df = create_df.create_str_df4()
         >>> print(df)
                 Index       States
-            0      1   California
-            1      2   California
-            2      3  Californias
-            3      4  Californi a
+            0      1    california
+            1      2    california
+            2      3   cali fornia
+            3      4   californias
+            4      5   californi a
             Index(['Index', 'States'], dtype='object')
 
         >>> values = ['California', 'Californias', 'Californi a']
@@ -47,10 +48,11 @@ def converge_sim_vals(
             values= values, index= index)
         >>> print(df)
                 Index      States
-            0      1  California
-            1      2  California
-            2      3  California
-            3      4  California
+            0      1   california
+            1      2   california
+            2      3   california
+            3      4   california
+            4      5   california    
             Index(['Index', 'States'], dtype='object')
     """
     correct_val = values[index]

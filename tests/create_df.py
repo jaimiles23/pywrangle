@@ -106,8 +106,28 @@ def create_str_df3() -> "dataframe":
 def create_str_df4() -> "dataframe":
     """Creates dataframe for converge values."""
     data = {
-        'Index' :   [1,2,3,4],
-        'States'    :   ['California', 'California', 'Californias', 'Californi a']
+        'Index' :   [1,2,3,4, 5],
+        'States'    :   ['california', 'california', 'cali fornia', 'californias', 'californi a']
     }
     return pd.DataFrame(data)
 
+
+def create_str_df5() -> "dataframe":
+    """Creates string dataframe & show similarity between words
+    """
+    states = [
+        ## Regular word
+        'california',
+        'cali fornia',
+        'californian',
+        'Californias',
+        'Californi a',
+    ]
+
+    data = {
+        'a': range(100),
+        'b': range(100),
+        'c': [random.choice(['a', 'b', 'c'])* random.randint(0, 5) for _ in range(100)],
+        'states': [random.choice(states) + ('s' if random.random() < 0.1 else '') for _ in range(100)] # Change for s
+    }
+    return pd.DataFrame(data)

@@ -39,7 +39,7 @@ def test_change_val2():
     """
     df = create_df.create_str_df4()
     print(df)
-    values = ['California', 'Californias', 'Californi a']
+    values = ['california', 'cali fornia', 'californias', 'californi a', ]
     index = 0
     df = pw.converge_sim_vals(df= df, column= 'States', 
         values= values, index= index)

@@ -31,6 +31,13 @@ def test_identifying_matches():
     df = create_df.create_str_df2()
     pw.identify_errors(df = df, column= 'states', threshold=61, show_progress= True)
 
+def test_identifying_matches2():
+    """Test identifying matches algo. This requires visual confirmation
+    """
+    df = create_df.create_str_df5()
+    pw.identify_errors(df = df, column= 'states', threshold=61, show_progress= True)
+
+
 
 ##########
 # Main
@@ -38,4 +45,4 @@ def test_identifying_matches():
 
 if __name__ == "__main__":
     test_identifying_matches()
-
+    test_identifying_matches2()
