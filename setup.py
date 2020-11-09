@@ -22,7 +22,7 @@ from setuptools import setup, find_packages
 ##########
 
 name = "pywrangle"
-version = "0.3.0"
+version = "0.3.01"
 description = "Auxiliary functions to clean pandas data frames"
 author = "Jai Miles"
 author_email = "jaimiles23@gmail.com"
