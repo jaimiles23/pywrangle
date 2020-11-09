@@ -55,7 +55,7 @@ def identify_errors(
             1    |   california     |   californi as   |              92.75
             2    |   california     |   californi a    |               97.0
             3    |   california     |   californias    |              94.25
-            4    |   california     |   cali fornia    |              96.50
+            4    |   california     |   cali fornia    |               96.0
     """
     keys = sorted(df[column].unique())
     tbl_info_str_matches = TableInfo( constants.TBL_DICT_KEYS)  # printing info
