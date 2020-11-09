@@ -48,7 +48,7 @@ def identify_errors(
     .. code-block:: python
 
         >>> df = create_df.create_str_df2()
-        >>> pw.identify_errors(df= df, column= 'states', threshold= 70)
+        >>> pw.identify_errors(df= df, column= 'states', threshold= 70)     ## Identify errors in the state column
         Record   |   String         |   Match          |   Similarity Index
         ------   |   ------------   |   ------------   |   ----------------
             1    |   California     |   Californi as   |               97.0
