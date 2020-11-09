@@ -20,7 +20,7 @@ def converge_sim_vals(
     values      :   Union[tuple, list],
     index       :   int,
     ) -> "DataFrame":
-    """Returns DataFrame with similar values in column 'converge' to the value at index.
+    """Returns DataFrame with values in specified column 'converged' to the value at index.
     
     Args:
         df (DataFrame): DataFrame to change.
