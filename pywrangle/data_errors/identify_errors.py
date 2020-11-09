@@ -51,11 +51,10 @@ def identify_errors(
         >>> pw.identify_errors(df= df, column= 'states', threshold= 70)
         Record   |   String         |   Match          |   Similarity Index
         ------   |   ------------   |   ------------   |   ----------------
-            1    |   Californi a    |   Californi as   |               97.0
-            2    |   Californi a    |   california     |              92.75
-            3    |   Californi a    |   Californias    |              88.75
-            4    |   Californi a    |   cali fornia    |              89.75
-            5    |   Californi as   |   Californi a    |               97.0
+            1    |   California     |   Californi as   |               97.0
+            2    |   California     |   californi a    |              92.75
+            3    |   California     |   Californias    |              88.75
+            4    |   California     |   cali fornia    |              89.75
     """
     keys = sorted(df[column].unique())
     tbl_info_str_matches = TableInfo( constants.TBL_DICT_KEYS)  # printing info
