@@ -43,8 +43,6 @@ class TableInfo(Aux_TblInfo):
 		Args:
 			tbl_keys (Union[dict, Iterator[Any]]): List of attr keys to store information in tbl.
 			col_alignment (Union[dict, None], optional): Alignment for markdown table. Defaults to None
-		
-		TODO: Test if passing dict.keys() works.
 		"""
 		if not hasattr(tbl_keys, '__iter__'):
 			raise Exception("Initialization TableInfo must be type: List, Tuple, or Dictionary.")
