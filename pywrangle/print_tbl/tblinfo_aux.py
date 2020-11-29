@@ -365,19 +365,20 @@ class Aux_TblInfo():
     # Markdown
     ##########
 
-    def _markdown_on(self, markdown: bool, md_filename: str):
+    def _markdown_on(self, markdown: bool, md_filename: str, write_type: str):
         """If markdown, sets up markdown attributes."""
         self.markdown = False
         if markdown:
             if not md_filename:
                 raise Exception("Must pass `md_filename` to append table to.")
             self.markdown = True
-            self.mdfile = open(md_filename, self.writemode)
+            self.mdfile = open(md_filename, write_type)
         return
     
     def _markdown_off(self, md_filename: str) -> None:
         """If markdown, shutsdown markdown attributes."""
-        if not self.markdown: return
+        if not self.markdown: 
+            return
 
         self.markdown = False
         self.mdfile.close()
@@ -386,7 +387,6 @@ class Aux_TblInfo():
     ##########
     # Alignment
     ##########
-
     def _parse_data_for_alignment(self) -> None:
         """Automatically checks data in column how to align data.
 

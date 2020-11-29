@@ -135,7 +135,7 @@ def test_add_entries() -> bool:
 	# 			raise Exception
 
 
-def test_print_info():
+def test_print_info(markdown: bool = False, write_type: str = 'a'):
 	print_test_header("Testing print info")
 	## Test 1
 	keys = ['a', 'b', 'c', 'd']
@@ -150,7 +150,10 @@ def test_print_info():
 	for r in records:
 		tbl.add_entry(r)
 	
-	tbl.print_info()
+	if markdown:
+		tbl.print_info( markdown = True, md_filename = 'test.md', write_type = write_type)
+	else:
+		tbl.print_info()
 
 	## Test 2
 	keys = ['a', 'b', 'c', 'd']
@@ -165,7 +168,10 @@ def test_print_info():
 	for r in records:
 		tbl.add_entry(r)
 	
-	tbl.print_info()
+	if markdown:
+		tbl.print_info( markdown = True, md_filename = 'test.md', write_type = write_type)
+	else:
+		tbl.print_info()
 
 
 	## Test 3
@@ -181,7 +187,10 @@ def test_print_info():
 	for r in records:
 		tbl.add_entry(r)
 	
-	tbl.print_info()
+	if markdown:
+		tbl.print_info( markdown = True, md_filename = 'test.md', write_type = write_type)
+	else:
+		tbl.print_info()
 
 	## Test 4
 	keys = ['a', 'b', 'c', 'd', 'e']
@@ -191,13 +200,16 @@ def test_print_info():
 		entry = [random.randint(1, 10) for _ in keys]
 		tbl.add_entry(entry)
 	
-	tbl.print_info()
+	if markdown:
+		tbl.print_info( markdown = True, md_filename = 'test.md', write_type = write_type)
+	else:
+		tbl.print_info()
 
 
 def print_test_header(text: str):
 	header = '#' * 10
 	spacing = '\n'
-	print(spacing, header,spacing, header[0], text,spacing, header, spacing)
+	print(spacing, header,spacing, header[0], text, spacing, header, spacing)
 
 
 ##########
@@ -206,8 +218,9 @@ def print_test_header(text: str):
 
 def main():
 	# test_init_tbl()
-	test_add_entries()
+	# test_add_entries()
 	# test_print_info()
+	test_print_info(markdown = True, write_type = 'a')
 
 
 if __name__ == "__main__":

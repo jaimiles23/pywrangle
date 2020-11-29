@@ -219,11 +219,9 @@ class TableInfo(Aux_TblInfo):
 			self._parse_data_for_alignment()
 
 		## Checks markdown
-		self._markdown_on(markdown, md_filename)
-		if not self.markdown:
-			print('\n' * 1, end = '')	# space @ beginning
-		else:
-			self.writemode = write_type
+		self._markdown_on(markdown, md_filename, write_type)
+		self._print('\n' * 1)	# space @ beginning
+		
 		
 		## Table Widths
 		self._set_width_attrs()
