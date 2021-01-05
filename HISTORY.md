@@ -1,5 +1,8 @@
 # History
 
+## Version = "0.3.03
+- Removed walrus operator for Pre-3.8 compatability. Now Python 3.6+ compatable.
+
 ## Version = "0.3.0"
 - Removed identify missing data from library -- too much overlap with the missingno library.
 - Added identify_errors() function. Uses levenshtein's distance & double metaphone string matching algorithms to identify potential data entry errors in string columns.
