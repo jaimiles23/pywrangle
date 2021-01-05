@@ -88,14 +88,15 @@ def clean_all_strcols(
             raise Exception(
         f"{name} not in DataFrame colnames!" + 
         "".join(["\n - " + str(col) for col in df.columns]))
-
-        if (is_str_col := df[name].dtype == (object)):
+        
+        coltype = df[name].dtype
+        if (coltype  == (object)):
             df = clean_strcol(df, name, case, trim = trim)
             clean = CASE_TO_CLEAN[case].__name__
         else:
             clean = None
         
-        entry = (name, is_str_col, clean)
+        entry = (name, coltype, clean)
         tbl_strcleaning.add_entry(entry)
     
     tbl_strcleaning.print_info()
