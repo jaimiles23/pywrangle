@@ -36,7 +36,7 @@ Tests are stored outside of the application code. This has the following benefit
 - Tests can be run against a pip installed package.
 
 ## Testing
-To run all tests, navigate to the cloned repository directory; the parent dir :
+To run all tests, navigate to the cloned repository directory; the parent dir `pywrangle_lib` :
 ```
 ├── API_token.txt
 ├── CONTRIBUTING.md
