@@ -85,7 +85,8 @@ def print_df_info(
         if not isinstance(args[i], dict):
             args[i] = record_df_info(args[i], name = i)
         
-        if args[i][DF_KEYS[0]] is None: [DF_KEYS[0]] = i  # Change name if not indicated
+        if args[i][DF_KEYS[0]] is None: 
+            [DF_KEYS[0]] = i  # Change name if not indicated
         tbl_df_info.add_entry(args[i])
 
     ## Comparison
@@ -94,16 +95,18 @@ def print_df_info(
         df_abs_diff, df_rel_diff = dict(), dict()
         for key in DF_KEYS:
             if key == DF_KEYS[0]:   # name
-                val_abs, val_rel = "Abs Diff", "% Diff"
+                dif_abs, dif_relative = "Abs Diff", "% Diff"
             else:
-                val_abs = args[compare_end_df][key] - args[compare_base_df][key]
-                val_rel = round(val_abs / args[compare_base_df][key], 5) * 100
+                dif_abs = args[compare_end_df][key] - args[compare_base_df][key]
+                dif_relative = round(dif_abs / args[compare_base_df][key] * 100, 5)
 
-            df_abs_diff[key] = val_abs
-            df_rel_diff[key] = val_rel
+            df_abs_diff[key] = dif_abs
+            df_rel_diff[key] = dif_relative
 
-        if abs_comparison: tbl_df_info.add_entry(df_abs_diff)
-        if relative_comparison: tbl_df_info.add_entry(df_rel_diff)
+        if abs_comparison: 
+            tbl_df_info.add_entry(df_abs_diff)
+        if relative_comparison: 
+            tbl_df_info.add_entry(df_rel_diff)
 
 
     tbl_df_info.print_info(show_records_col= False)
